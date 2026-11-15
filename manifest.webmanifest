@@ -1,0 +1,19 @@
+{
+  "name": "OPIc IM3 문장 연습장",
+  "short_name": "오픽 IM3",
+  "description": "갤럭시에서 문장을 연습하고 목소리를 녹음하는 오픽 IM3 학습장",
+  "id": "./",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#f8f6f0",
+  "theme_color": "#5368d5",
+  "lang": "ko",
+  "categories": ["education"],
+  "icons": [
+    {"src": "./icon-192.png", "type": "image/png", "sizes": "192x192", "purpose": "any maskable"},
+    {"src": "./icon-512.png", "type": "image/png", "sizes": "512x512", "purpose": "any maskable"}
+  ],
+  "prefer_related_applications": false
+}
