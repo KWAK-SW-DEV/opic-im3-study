@@ -240,6 +240,10 @@ body:has(#studyView:not([hidden])) .topbar,body:has(#studyView:not([hidden])) .f
 .compact-advanced .study-search-row{margin-top:7px}
 #studyView .study-notice:empty{display:none}
 #studyView .study-notice{min-height:0;margin:0 0 7px}
+.study-notice-row{display:flex;gap:8px;align-items:center;justify-content:space-between;min-height:0}
+.study-notice-row .study-notice{flex:1;min-width:0;line-height:1.5}
+.show-all-cards{flex:none;display:inline-block;margin:0 0 5px;padding:6px 10px;border:1px solid #bbc8eb;border-radius:8px;background:#eef2ff;color:#3f58ac;font-size:11px;font-weight:850;cursor:pointer}
+.show-all-cards[hidden]{display:none!important}.show-all-cards:focus-visible{outline:3px solid #a1b0ef;outline-offset:2px}
 #studyView .deck-area{max-width:100%}
 #studyView .deck-topline{margin-bottom:7px}
 #studyView .deck-tag{background:none;border:0;padding:3px 1px;font-size:10px;color:#7380a5}
@@ -307,6 +311,7 @@ body:has(#studyView:not([hidden])) .topbar,body:has(#studyView:not([hidden])) .f
 @media(max-width:640px){.compact-study-controls{display:block}.topic-picker{display:block;width:100%}.topic-picker select{height:46px}.compact-study-controls .mode-tabs{margin-top:8px;padding-bottom:6px}.compact-advanced{margin:4px 0 7px}#studyView .flip-card{padding:17px 17px 13px}#studyView .korean-sentence{font-size:23px;margin:13px 0 20px}#studyView .english-sentence{font-size:21px}.card-inline-tools{gap:7px;padding-top:12px}.tool-cluster{gap:5px}.record-tools{padding-left:9px}.icon-tool{width:40px;height:42px}.card-voice-footer{font-size:10px}#studyView .deck-nav>span{display:none}#studyView .deck-nav{margin-top:7px}#studyView .card-source{font-size:9px}#studyView .audio-row{flex-direction:row;gap:6px}.voice-picker select{width:117px;max-width:35vw;font-size:10px;padding-left:7px}}
 @media(max-width:370px){#studyView .flip-card{padding-left:12px;padding-right:12px}.icon-tool{width:36px;height:39px}.tool-cluster{gap:4px}.record-tools{padding-left:7px}.card-inline-tools{gap:5px}}
 @media(max-width:640px){#studyView .korean-sentence{margin-top:8px;margin-bottom:14px}#studyView .flip-card{padding-top:14px;padding-bottom:11px}#studyView .card-inline-tools{padding-top:9px;margin-top:9px}#studyView .card-source{margin-top:7px}#studyView .deck-nav{margin-top:3px}}
+@media(max-width:640px){.study-notice-row{align-items:start}.study-notice-row .study-notice{font-size:10px}.show-all-cards{font-size:10px;padding:6px 8px}}
 @media(prefers-reduced-motion:reduce){.record-tool.recording{animation:none}}
 
 
@@ -408,7 +413,7 @@ body:has(#studyView:not([hidden])) .topbar,body:has(#studyView:not([hidden])) .f
         <section class="practice-section" id="practiceSection" aria-label="문장 플래시카드">
           <div class="compact-study-controls"><label class="topic-picker">학습 주제<select id="topicSelect" aria-label="학습 주제 선택"></select></label><div class="mode-tabs" id="modeTabs" role="group" aria-label="학습 방식"><button class="mode-tab active" data-mode="all" aria-pressed="true">전체</button><button class="mode-tab" data-mode="priority" aria-pressed="false">★ 우선</button><button class="mode-tab" data-mode="core" aria-pressed="false">핵심</button><button class="mode-tab" data-mode="variation" aria-pressed="false">응용</button><button class="mode-tab" data-mode="review" aria-pressed="false">복습 <span id="tabReviewCount">0</span></button><button class="mode-tab" data-mode="saved" aria-pressed="false">☆ 저장</button></div></div>
           <details class="compact-advanced"><summary>⌕ 검색·출처 필터</summary><div class="study-search-row"><label class="search-box"><span aria-hidden="true">⌕</span><input type="search" id="searchInput" placeholder="문장 검색" aria-label="학습 문장 검색" /></label><label class="source-select-label">문장 출처<select id="sourceFilter" aria-label="문장 출처 필터"><option value="all">모든 출처</option><option value="lecture">첨부 강의 표현</option><option value="original">직접 제작 예문</option><option value="custom">내가 추가한 문장</option></select></label></div></details>
-          <p class="study-notice" id="studyNotice" aria-live="polite"></p>
+          <div class="study-notice-row"><p class="study-notice" id="studyNotice" aria-live="polite"></p><button type="button" id="showAllCardsButton" class="show-all-cards">전체 문장 보기 ↗</button></div>
           <div id="deckArea" class="deck-area"><div class="deck-topline"><div class="deck-tag" id="deckTag">문장 학습</div><div class="deck-counter"><span id="cardNumber">01</span> / <span id="filteredTotal">00</span></div></div><div class="deck-progress"><span id="deckProgressFill"></span></div>
             <div class="flip-card" id="flipCard" role="button" tabindex="0" aria-label="카드를 누르면 영어 정답이 표시됩니다" aria-expanded="false">
               <div class="card-micro"><span id="cardCategory">음악</span><button id="saveButton" class="save-button" type="button" aria-label="카드 저장" title="카드 저장">☆</button></div>
@@ -1278,6 +1283,14 @@ window.OPIC_CARD_TOPIC_MAP = {
       if (state.mode==='priority' && !lastCard.priority) state.mode='all';
     }
   }
+  // 과거 버전은 새 문장 저장 후 '내 문장만' 필터를 강제로 켰습니다.
+  // 기존 카드가 삭제된 것처럼 보이는 상태를 처음 한 번 전체 보기로 복구합니다.
+  if (!old.visibilityFixV1 && state.sourceFilter==='custom' && state.mode==='all' && !state.query
+    && state.custom.some(card=>card.id===state.lastCardId)) {
+    state.category='all';
+    state.sourceFilter='all';
+    state.index=0;
+  }
   const $ = id => document.getElementById(id);
   const nameFor = id => (categories.find(c => c.id === id) || {}).name || id;
   let deck = [];
@@ -1298,24 +1311,24 @@ window.OPIC_CARD_TOPIC_MAP = {
 
   function rebuildCards() {
     cards = [...builtInCards, ...state.custom];
-    state.known = new Set([...state.known].filter(id => cards.some(card => card.id === id)));
-    state.review = new Set([...state.review].filter(id => cards.some(card => card.id === id)));
-    state.saved = new Set([...state.saved].filter(id => cards.some(card => card.id === id)));
-    state.hidden = new Set([...state.hidden].filter(id => builtInCards.some(card => card.id === id)));
+    // 데이터 목록이 바뀌더라도 암기·복습·저장·제외 기록은 자동 삭제하지 않습니다.
+    // 명시적인 카드 삭제만 해당 기록을 제거할 수 있습니다.
   }
 
   function persist() {
     try {
       localStorage.setItem(storeKey, JSON.stringify({
-        schema:2, known:[...state.known], review:[...state.review], saved:[...state.saved], voiceKey:state.voiceKey,
+        schema:2, visibilityFixV1:true, known:[...state.known], review:[...state.review], saved:[...state.saved], voiceKey:state.voiceKey,
         listen:{index:state.listen.index,repeat:state.listen.repeat,speed:state.listen.speed},
         hidden:[...state.hidden], custom:state.custom, daily:state.daily,
         position:{category:state.category,sourceFilter:state.sourceFilter,mode:state.mode,query:state.query,index:state.index,cardId:currentCard()?.id || null},
         updatedAt:new Date().toISOString()
       }));
       if ($('saveStatus')) $('saveStatus').textContent = `자동 저장됨 · ${new Date().toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'})}`;
+      return true;
     } catch {
       if ($('saveStatus')) $('saveStatus').textContent = '저장 실패 · 저장 공간을 확인해 줘';
+      return false;
     }
   }
 
@@ -1384,6 +1397,9 @@ window.OPIC_CARD_TOPIC_MAP = {
       button.classList.toggle('active', active);
       button.setAttribute('aria-pressed', String(active));
     });
+    const allVisible=state.category==='all' && state.sourceFilter==='all' && state.mode==='all' && !state.query.trim();
+    $('showAllCardsButton').hidden=allVisible;
+    $('showAllCardsButton').textContent=`전체 ${availableCards().length}개 문장 보기 ↗`;
   }
 
   function englishVoices() {
@@ -1789,14 +1805,23 @@ window.OPIC_CARD_TOPIC_MAP = {
     if (!card) return;
     const same = cards.find(x=>x.en.trim().toLowerCase()===en.toLowerCase() && x.id!==id);
     if (same && !window.confirm('같은 영어 문장이 이미 있어. 그래도 저장할까?')) return;
+    const previousCustom=state.custom.slice();
     const i = state.custom.findIndex(x=>x.id===id);
     if (i>=0) state.custom[i]=card; else state.custom.push(card);
     rebuildCards();
-    state.category=card.category; state.sourceFilter='custom'; state.mode='all'; state.query=''; state.index=0; state.revealed=false; state.lastCardId=id;
+    if (!persist()) {
+      state.custom=previousCustom;
+      rebuildCards();
+      $('customFeedback').textContent='저장 공간 문제로 문장을 저장하지 못했어. 입력한 내용은 그대로 남겨 뒀으니 저장 공간을 확인한 뒤 다시 시도해 줘.';
+      $('customFeedback').className='workbench-feedback warning';
+      return;
+    }
+    // 새 카드가 선택되되, 기존 모든 카드/복습 카드도 계속 목록에 남도록 합니다.
+    state.category='all'; state.sourceFilter='all'; state.mode='all'; state.query=''; state.index=0; state.revealed=false; state.lastCardId=id;
     $('searchInput').value='';
     clearCustomForm();
     refresh();
-    $('studyNotice').textContent=i>=0?'내 문장을 수정했어. 이 카드로 바로 연습해 봐.':'내 문장을 추가했어. 이 카드로 바로 연습해 봐.';
+    $('studyNotice').textContent=i>=0?'내 문장을 수정했어. 기존 문장과 함께 전체 목록에서 볼 수 있어.':'내 문장을 추가했어. 기존 문장도 그대로 있고, 지금은 전체 문장을 보고 있어.';
     showPage('study');
   }
 
@@ -2384,6 +2409,13 @@ window.OPIC_CARD_TOPIC_MAP = {
     if (!button) return;
     state.mode = button.dataset.mode;
     state.index = 0; state.revealed = false;
+    refresh();
+  });
+  $('showAllCardsButton').addEventListener('click',()=>{
+    state.category='all';state.sourceFilter='all';state.mode='all';state.query='';state.index=0;
+    state.lastCardId=null;state.revealed=false;state.shuffledIds=null;
+    $('searchInput').value='';
+    $('studyNotice').textContent='전체 문장을 다시 보여 주고 있어. 저장된 복습·암기·녹음 기록은 그대로야.';
     refresh();
   });
   $('searchInput').addEventListener('input', event => {
