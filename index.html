@@ -206,10 +206,17 @@ html:not(.opic-locked) .opic-entry-gate{display:none!important}
 .progress-save{margin-top:12px;max-width:800px}
 #progressView .stats{margin:13px 0 25px}
 #progressView .study-guide{margin:58px 0 45px}
+.continuous-player{max-width:880px;margin:0 0 28px;padding:24px;border:1px solid #dfe6f6;border-radius:20px;background:linear-gradient(155deg,#fff 65%,#f4f6ff);box-shadow:0 12px 26px rgba(40,55,100,.045)}
+.continuous-head{display:flex;justify-content:space-between;gap:16px;align-items:start}.continuous-head h2{margin:6px 0;color:#263559;font-size:20px;letter-spacing:-.045em}.continuous-head p{font-size:12px;color:#7d8ba7;line-height:1.6;margin:4px 0 0}.continuous-count{flex:none;min-width:70px;text-align:right;color:#4f64bc;font-size:14px;font-weight:900}
+.continuous-track{height:5px;border-radius:10px;background:#e9edf8;overflow:hidden;margin:19px 0}.continuous-track>span{display:block;width:0;height:100%;background:#6077dd;transition:width .25s}
+.continuous-sentence{min-height:146px;padding:18px;border-radius:13px;background:#f7f8fe;border:1px solid #e9edf8}.continuous-stage{display:inline-block;padding:4px 9px;border-radius:99px;background:#e8eefd;color:#4d62b5;font-size:11px;font-weight:900}.continuous-stage[data-lang="ko"]{background:#fff1df;color:#945919}.continuous-stage[data-lang="en"]{background:#e9efff;color:#4c62c4}.continuous-ko,.continuous-en{margin:12px 0 0;line-height:1.6;overflow-wrap:anywhere}.continuous-ko{color:#263657;font-size:17px;font-weight:850}.continuous-en{color:#536ac0;font-size:15px;font-weight:750}
+.continuous-controls{display:grid;grid-template-columns:auto 1fr auto auto;gap:9px;margin-top:16px}.continuous-controls button{min-height:45px;border-radius:11px;font-size:12px;font-weight:850;cursor:pointer}.continuous-main{padding:10px 15px;border:1px solid #4c60b9;background:#5267cc;color:#fff;box-shadow:0 5px 15px rgba(70,91,184,.14)}.continuous-skip,.continuous-stop{padding:9px 13px;border:1px solid #d9e0f0;background:#fff;color:#566892}.continuous-stop{color:#9a5b67;border-color:#eddfe0}.continuous-controls button:disabled{opacity:.42;cursor:not-allowed}.continuous-controls button:focus-visible,.continuous-options select:focus-visible,.continuous-options input:focus-visible{outline:3px solid #9dacfb;outline-offset:2px}
+.continuous-options{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:15px}.continuous-repeat{display:inline-flex;align-items:center;gap:8px;color:#566582;font-size:13px;font-weight:850;cursor:pointer}.continuous-repeat input{width:17px;height:17px;accent-color:#5368d0}.continuous-speed{display:inline-flex;align-items:center;gap:9px;color:#71809a;font-size:12px;font-weight:800}.continuous-speed select{padding:8px;border:1px solid #dde3f0;border-radius:8px;background:white;color:#4b5f94;font-size:12px}.continuous-status{margin:13px 0 0;min-height:18px;color:#697a99;font-size:12px;line-height:1.5}
 .footer{margin-top:60px}
 @media(max-width:1200px){.page-heading{align-items:start}.page-quick-actions{justify-content:flex-start}}
 @media(max-width:950px){.sidebar{display:none}.app-shell{display:block}.main-content{padding:0 20px 94px}.topbar{padding:20px 0 14px}.mobile-page-nav{display:grid;grid-template-columns:repeat(4,1fr);position:fixed;left:0;right:0;bottom:0;z-index:80;padding:8px 12px max(9px,env(safe-area-inset-bottom));border-top:1px solid #e3e7f0;box-shadow:0 -9px 25px rgba(40,50,88,.06);background:rgba(255,255,255,.98)}.mobile-page-nav a{display:grid;justify-items:center;gap:4px;text-align:center;text-decoration:none;border-radius:9px;color:#939cb1;padding:6px 0;font-size:10px;font-weight:850}.mobile-page-nav a>span{font-size:20px;line-height:1.3}.mobile-page-nav a.active{color:#4f63c1;background:#f0f3ff}.page-heading{margin:16px 0 22px}.page-heading h1{font-size:30px}.page-heading p{font-size:11px}.topic-panel{padding:17px 15px}.topic-chip-row{flex-wrap:nowrap;overflow-x:auto;padding-bottom:3px;scrollbar-width:thin}.topic-chip-row .category-button{flex:none}.topic-panel-heading{display:block}.topic-panel-heading>span{display:block;margin-top:4px}.practice-section .toolbar{display:block}.study-search-row{margin-top:11px}}
 @media(max-width:640px){.main-content{padding:0 14px 97px}.page-heading{display:block}.page-quick-actions{margin-top:18px;justify-content:flex-start}.page-quick-actions .primary-btn{padding:11px 15px}.topic-panel{border-radius:13px}.topic-chip-row .category-button{padding:8px 11px}.topic-panel-note{margin-top:10px}.practice-heading h2{font-size:19px}.practice-section{margin-top:24px}.source-select-label{flex:1}.source-select-label select{flex:1;min-width:0}.study-search-row .search-box{max-width:none;flex:1;min-width:175px}.recording-standalone{margin-top:19px}.form-two-cols{grid-template-columns:1fr;gap:0}.management-toolbar{display:block;padding:13px}.management-toolbar .search-box{max-width:none}.manage-filter-tabs{margin-top:12px}.manage-summary{display:block;margin-top:18px}.manage-summary>span{display:block}.manage-card{display:block;padding:14px}.manage-card-actions{justify-content:flex-end;margin-top:12px}.progress-save{margin-top:0}#progressView .stats{grid-template-columns:1fr 1fr;margin:10px 0 18px}.footer{margin-top:34px}}
+@media(max-width:640px){.continuous-player{padding:17px 14px;border-radius:15px;margin-bottom:20px}.continuous-head h2{font-size:18px}.continuous-head p{font-size:11px}.continuous-count{min-width:54px;font-size:12px}.continuous-sentence{min-height:146px;padding:15px}.continuous-ko{font-size:16px}.continuous-en{font-size:14px}.continuous-controls{grid-template-columns:1fr 1fr 1fr;gap:7px}.continuous-controls .continuous-main{grid-column:1/4;grid-row:1}.continuous-controls .continuous-stop{grid-column:2}.continuous-controls button{min-height:43px;padding:8px 6px}.continuous-controls .continuous-skip:first-child{grid-column:1;grid-row:2}.continuous-controls .continuous-skip:nth-child(3){grid-column:3;grid-row:2}.continuous-controls .continuous-stop{grid-row:2}}
 
 
 /* compact-card.css */
@@ -428,7 +435,26 @@ body:has(#studyView:not([hidden])) .topbar,body:has(#studyView:not([hidden])) .f
 
       <section class="app-page" id="manageView" data-page="manage" aria-labelledby="manageHeading" hidden><div class="page-heading"><div><span class="eyebrow eyebrow-accent">03 — LIBRARY</span><h1 id="manageHeading">문장 관리</h1><p>문장을 검색하고 수정하거나, 필요 없는 문장을 학습에서 제외해.</p></div><button id="manageAddButton" class="primary-btn" type="button">＋ 새 문장 만들기</button></div><div class="management-toolbar"><label class="search-box"><span aria-hidden="true">⌕</span><input id="manageSearch" type="search" placeholder="한글·영어·주제 검색" aria-label="관리할 문장 검색" /></label><div class="manage-filter-tabs" id="manageFilters" role="group" aria-label="관리 문장 보기"><button class="active" type="button" data-manage-filter="visible">학습 중</button><button type="button" data-manage-filter="custom">직접 추가</button><button type="button" data-manage-filter="hidden">제외한 문장</button></div></div><div class="manage-summary"><span id="manageCount">0개 문장</span><span>기본 문장은 숨김·복원, 내가 만든 문장은 수정·삭제할 수 있어.</span></div><div id="manageList" class="manage-list" aria-live="polite"></div><div id="manageEmpty" class="manage-empty" hidden>해당하는 문장이 없어.</div><button id="manageMoreButton" class="manage-more" type="button" hidden>문장 더 보기 ↓</button><div class="restore-row manage-restore"><span>현재 제외한 기본 문장 <b id="hiddenCount">0</b>개</span><button id="restoreHiddenButton" type="button">전체 복원</button></div></section>
 
-      <section class="app-page" id="progressView" data-page="progress" aria-labelledby="progressHeading" hidden><div class="page-heading"><div><span class="eyebrow eyebrow-accent">04 — PROGRESS</span><h1 id="progressHeading">내 학습 기록</h1><p>오늘 얼마나 연습했는지 확인하고, 학습 내용을 백업해 둬.</p></div></div><section class="stats" aria-label="학습 현황"><div class="stat"><span>학습 중인 카드</span><strong id="totalCount">—</strong><small>제외한 문장 제외</small></div><div class="stat"><span>외운 문장</span><strong id="masteredCount">0</strong><small>내가 말할 수 있는 문장</small></div><div class="stat"><span>다시 복습</span><strong id="reviewCount">0</strong><small>헷갈리는 문장</small></div><div class="stat stat-progress"><span>전체 진행률</span><strong id="progressPercent">0%</strong><div class="overall-progress"><span id="overallProgressFill"></span></div></div></section><section class="workbench-panel save-section progress-save"><div class="save-section-title"><span>오늘의 연습</span><strong><span id="todayCount">0</span>장 직접 답해 봄</strong></div><p>외운 카드, 복습 카드, 직접 추가한 문장과 마지막 학습 위치는 자동 저장돼.</p><div class="workbench-actions"><button class="small-outline" id="exportProgressButton" type="button">↓ 진행 상태 백업</button><label for="importProgressFile" class="file-label">↑ 백업 가져오기</label><input id="importProgressFile" type="file" accept="application/json,.json" hidden /></div><p id="saveStatus" class="save-status" aria-live="polite">저장 상태 확인 중...</p><small>이 브라우저 안에 저장돼. 기기 간 자동 동기화는 지원하지 않으며, JSON 백업에는 녹음 파일이 포함되지 않아. 녹음은 학습 화면에서 개별 다운로드해 줘.</small></section><section class="study-guide"><div class="guide-heading"><span class="eyebrow eyebrow-accent">HOW TO STUDY</span><h2>IM3 목표 학습 흐름</h2></div><div class="guide-grid"><article><span class="guide-step">STEP 01</span><div class="guide-icon">👀</div><h3>한국어만 보고</h3><p>정답을 보기 전에 직접 영어 문장을 떠올려 봐.</p></article><article><span class="guide-step">STEP 02</span><div class="guide-icon">🎙</div><h3>소리 내어 말하고</h3><p>녹음해서 자연스럽게 말하는지 직접 확인해 봐.</p></article><article><span class="guide-step">STEP 03</span><div class="guide-icon">🔁</div><h3>다른 주제로 바꿔 봐</h3><p>외운 문장을 카페·음악·여행에 응용해 봐.</p></article></div></section></section>
+      <section class="app-page" id="progressView" data-page="progress" aria-labelledby="progressHeading" hidden>
+        <div class="page-heading"><div><span class="eyebrow eyebrow-accent">04 — PROGRESS</span><h1 id="progressHeading">내 학습 기록</h1><p>모든 문장을 이어 듣거나, 학습 내용을 백업해 둬.</p></div></div>
+        <section class="continuous-player" aria-labelledby="continuousHeading">
+          <div class="continuous-head"><div><span class="eyebrow eyebrow-accent">LISTEN & REPEAT</span><h2 id="continuousHeading">전체 문장 연속 듣기</h2><p>한국어 → 영어 순서로 읽어 줘. 제외한 문장은 빼고 내 문장도 포함해.</p></div><span class="continuous-count" id="continuousCounter">1 / 345</span></div>
+          <div class="continuous-track"><span id="continuousFill"></span></div>
+          <div class="continuous-sentence"><span id="continuousStage" class="continuous-stage">준비</span><p id="continuousKorean" class="continuous-ko"></p><p id="continuousEnglish" class="continuous-en"></p></div>
+          <div class="continuous-controls" role="group" aria-label="연속 듣기 재생 조작">
+            <button id="continuousPrev" class="continuous-skip" type="button" aria-label="이전 문장">⏮ <span>이전</span></button>
+            <button id="continuousToggle" class="continuous-main" type="button">▶ 전체 듣기 시작</button>
+            <button id="continuousNext" class="continuous-skip" type="button" aria-label="다음 문장"><span>다음</span> ⏭</button>
+            <button id="continuousStop" class="continuous-stop" type="button" aria-label="연속 듣기 종료" disabled>■ 종료</button>
+          </div>
+          <div class="continuous-options"><label class="continuous-repeat"><input id="continuousRepeat" type="checkbox" /> <span>🔁 전체 반복</span></label><label class="continuous-speed">속도 <select id="continuousSpeed" aria-label="연속 듣기 속도"><option value="0.85">느리게</option><option value="1" selected>보통</option><option value="1.15">빠르게</option></select></label></div>
+          <p id="continuousStatus" class="continuous-status" role="status" aria-live="polite">전체 듣기를 누르면 첫 문장부터 시작해.</p>
+          <audio id="continuousAudio" preload="none" hidden></audio>
+        </section>
+        <section class="stats" aria-label="학습 현황"><div class="stat"><span>학습 중인 카드</span><strong id="totalCount">—</strong><small>제외한 문장 제외</small></div><div class="stat"><span>외운 문장</span><strong id="masteredCount">0</strong><small>내가 말할 수 있는 문장</small></div><div class="stat"><span>다시 복습</span><strong id="reviewCount">0</strong><small>헷갈리는 문장</small></div><div class="stat stat-progress"><span>전체 진행률</span><strong id="progressPercent">0%</strong><div class="overall-progress"><span id="overallProgressFill"></span></div></div></section>
+        <section class="workbench-panel save-section progress-save"><div class="save-section-title"><span>오늘의 연습</span><strong><span id="todayCount">0</span>장 직접 답해 봄</strong></div><p>외운 카드, 복습 카드, 직접 추가한 문장과 마지막 학습 위치는 자동 저장돼.</p><div class="workbench-actions"><button class="small-outline" id="exportProgressButton" type="button">↓ 진행 상태 백업</button><label for="importProgressFile" class="file-label">↑ 백업 가져오기</label><input id="importProgressFile" type="file" accept="application/json,.json" hidden /></div><p id="saveStatus" class="save-status" aria-live="polite">저장 상태 확인 중...</p><small>이 브라우저 안에 저장돼. 기기 간 자동 동기화는 지원하지 않으며, JSON 백업에는 녹음 파일이 포함되지 않아. 녹음은 학습 화면에서 개별 다운로드해 줘.</small></section>
+        <section class="study-guide"><div class="guide-heading"><span class="eyebrow eyebrow-accent">HOW TO STUDY</span><h2>IM3 목표 학습 흐름</h2></div><div class="guide-grid"><article><span class="guide-step">STEP 01</span><div class="guide-icon">👀</div><h3>한국어만 보고</h3><p>정답을 보기 전에 직접 영어 문장을 떠올려 봐.</p></article><article><span class="guide-step">STEP 02</span><div class="guide-icon">🎙</div><h3>소리 내어 말하고</h3><p>녹음해서 자연스럽게 말하는지 직접 확인해 봐.</p></article><article><span class="guide-step">STEP 03</span><div class="guide-icon">🔁</div><h3>다른 주제로 바꿔 봐</h3><p>외운 문장을 카페·음악·여행에 응용해 봐.</p></article></div></section>
+      </section>
 
       <footer class="footer"><div>OPIc IM3 · 쉬운 문장부터 자연스럽게.<br />강의 원문 표현과 직접 작성한 응용 예문이며, 공식 기출 인증·등급 보장 자료는 아니야.</div><div>각 화면은 아래 메뉴에서 이동할 수 있어.</div></footer>
     </main>
@@ -1232,6 +1258,11 @@ window.OPIC_CARD_TOPIC_MAP = {
     known: new Set(old.known || []), review: new Set(old.review || []),
     saved: new Set(old.saved || []), hidden:new Set(old.hidden || []), custom:loadedCustom,
     voiceKey: typeof old.voiceKey === 'string' && old.voiceKey.length < 180 ? old.voiceKey : 'recorded',
+    listen: {
+      index:Number.isInteger(old.listen?.index) && old.listen.index >= 0 ? old.listen.index : 0,
+      repeat:old.listen?.repeat === true,
+      speed:[0.85,1,1.15].includes(Number(old.listen?.speed)) ? Number(old.listen.speed) : 1
+    },
     daily:old.daily && typeof old.daily === 'object' ? old.daily : {},
     lastCardId:typeof savedPosition.cardId === 'string' ? savedPosition.cardId : null,
     editingId:null, shuffledIds:null,manageFilter:'visible',manageQuery:'',manageLimit:20
@@ -1257,6 +1288,7 @@ window.OPIC_CARD_TOPIC_MAP = {
   let recordingUrl = null;
   let recordingLoadId = 0;
   let recordingDbPromise = null;
+  const continuous = {queue:[],index:state.listen.index,phase:'ko',status:'idle',token:0,notice:'',audioToken:-1,watchdog:null};
   const dateStamp = () => {
     const now = new Date();
     return `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')}`;
@@ -1276,6 +1308,7 @@ window.OPIC_CARD_TOPIC_MAP = {
     try {
       localStorage.setItem(storeKey, JSON.stringify({
         schema:2, known:[...state.known], review:[...state.review], saved:[...state.saved], voiceKey:state.voiceKey,
+        listen:{index:state.listen.index,repeat:state.listen.repeat,speed:state.listen.speed},
         hidden:[...state.hidden], custom:state.custom, daily:state.daily,
         position:{category:state.category,sourceFilter:state.sourceFilter,mode:state.mode,query:state.query,index:state.index,cardId:currentCard()?.id || null},
         updatedAt:new Date().toISOString()
@@ -1380,6 +1413,184 @@ window.OPIC_CARD_TOPIC_MAP = {
 
   function stopDeviceSpeech() {
     if (window.speechSynthesis?.cancel) window.speechSynthesis.cancel();
+  }
+
+  // 학습 기록 탭의 연속 듣기는 현재 주제/검색/섞기와 무관하게 원래 순서대로 재생합니다.
+  function renderContinuous() {
+    const queue = ['playing','paused'].includes(continuous.status) ? continuous.queue : availableCards();
+    const total = queue.length;
+    const index = total ? Math.min(continuous.index,total-1) : 0;
+    const card = queue[index];
+    $('continuousCounter').textContent = `${total ? index+1 : 0} / ${total}`;
+    $('continuousFill').style.width = `${total ? ((index+1)/total)*100 : 0}%`;
+    $('continuousKorean').textContent = card?.ko || '재생할 문장이 없어.';
+    $('continuousEnglish').textContent = card?.en || '';
+    const label = $('continuousStage');
+    label.dataset.lang = continuous.status === 'playing' ? continuous.phase : '';
+    label.textContent = continuous.status === 'playing' ? (continuous.phase === 'ko' ? '한국어 읽는 중' : '영어 읽는 중')
+      : continuous.status === 'paused' ? '일시정지' : continuous.status === 'done' ? '완료' : '준비';
+    $('continuousToggle').textContent = continuous.status === 'playing' ? '⏸ 일시정지' : continuous.status === 'paused' ? '▶ 이어 듣기' : '▶ 전체 듣기 시작';
+    $('continuousToggle').disabled = !total;
+    $('continuousStop').disabled = !['playing','paused'].includes(continuous.status);
+    $('continuousPrev').disabled = !total;
+    $('continuousNext').disabled = !total;
+    $('continuousRepeat').checked = state.listen.repeat;
+    $('continuousSpeed').value = String(state.listen.speed);
+    $('continuousStatus').textContent = continuous.notice || (continuous.status === 'playing'
+      ? `${index+1}번째 문장 · ${continuous.phase === 'ko' ? '한국어' : '영어'}를 듣고 있어.`
+      : continuous.status === 'paused' ? '잠시 멈췄어. 이어 듣기를 누르면 현재 언어부터 다시 들려줘.'
+      : continuous.status === 'done' ? '모든 문장을 들었어! 다시 시작하면 첫 문장부터 재생돼.'
+      : '전체 듣기를 누르면 한국어 → 영어 순서로 시작해. 위치와 반복 설정은 저장돼.');
+  }
+
+  function cancelContinuousMedia() {
+    continuous.token++;
+    continuous.audioToken=-1;
+    if (continuous.watchdog) clearTimeout(continuous.watchdog);
+    continuous.watchdog=null;
+    stopDeviceSpeech();
+    const audio=$('continuousAudio');
+    audio.pause();
+    try { audio.currentTime=0; } catch { /* 아직 로드되지 않은 음성 */ }
+  }
+
+  function pauseContinuous(message='') {
+    if (continuous.status !== 'playing') return;
+    cancelContinuousMedia();
+    continuous.status='paused';
+    continuous.notice=message;
+    renderContinuous();
+    persist();
+  }
+
+  function failContinuous(message) {
+    pauseContinuous(message);
+  }
+
+  function completeContinuousLanguage(token) {
+    if (token!==continuous.token || continuous.status!=='playing') return;
+    if (continuous.watchdog) clearTimeout(continuous.watchdog);
+    continuous.watchdog=null;
+    if (continuous.phase==='ko') {
+      continuous.phase='en';
+    } else if (continuous.index+1<continuous.queue.length) {
+      continuous.index++;
+      continuous.phase='ko';
+      state.listen.index=continuous.index;
+      persist();
+    } else if (state.listen.repeat) {
+      continuous.index=0;
+      continuous.phase='ko';
+      state.listen.index=0;
+      persist();
+    } else {
+      continuous.status='done';
+      continuous.phase='ko';
+      continuous.index=0;
+      state.listen.index=0;
+      continuous.notice='';
+      persist();renderContinuous();
+      return;
+    }
+    continuous.notice='';
+    playContinuousStage();
+  }
+
+  function speakContinuousStage(card,token,language) {
+    if (!window.speechSynthesis?.speak || typeof window.SpeechSynthesisUtterance!=='function') {
+      failContinuous('이 브라우저에서 음성 읽기를 지원하지 않아. 갤럭시 Chrome에서 열어 줘.');
+      return;
+    }
+    const utterance=new window.SpeechSynthesisUtterance(language==='ko'?card.ko:card.en);
+    const allVoices=window.speechSynthesis.getVoices?.() || [];
+    const preferred=language==='ko'
+      ? allVoices.find(voice=>/^ko(?:[-_]|$)/i.test(voice.lang||''))
+      : allVoices.find(voice=>`voice:${voice.voiceURI || voice.name}`===state.voiceKey) || allVoices.find(voice=>/^en(?:[-_]|$)/i.test(voice.lang||''));
+    if (preferred) utterance.voice=preferred;
+    utterance.lang=preferred?.lang || (language==='ko'?'ko-KR':'en-US');
+    utterance.rate=state.listen.speed;
+    utterance.onend=()=>completeContinuousLanguage(token);
+    utterance.onerror=()=>{if(token===continuous.token) failContinuous('음성 읽기가 멈췄어. 이어 듣기를 눌러 다시 시도해 줘.');};
+    try {
+      window.speechSynthesis.speak(utterance);
+      // 일부 Android 기기는 화면이 꺼지면 TTS 종료 이벤트를 전달하지 않을 수 있습니다.
+      continuous.watchdog=setTimeout(()=>{
+        if(token===continuous.token && continuous.status==='playing') failContinuous('음성이 멈춘 것 같아. 화면을 켠 뒤 이어 듣기를 눌러 줘.');
+      },60000);
+    } catch { failContinuous('기기 음성을 시작할 수 없어. Chrome의 음성 설정을 확인해 줘.'); }
+  }
+
+  function playContinuousStage() {
+    if (continuous.status!=='playing') return;
+    const card=continuous.queue[continuous.index];
+    if (!card) { continuous.status='done';renderContinuous();return; }
+    const token=continuous.token;
+    renderContinuous();
+    if (continuous.phase==='ko' || card.origin==='custom' || state.voiceKey!=='recorded') {
+      speakContinuousStage(card,token,continuous.phase);
+      return;
+    }
+    const audio=$('continuousAudio');
+    audio.pause();
+    audio.src=window.OPIC_OFFLINE_AUDIO?.[card.id] || new URL(`audio/${encodeURIComponent(card.id)}.mp3?v=lecture-2`,document.baseURI).href;
+    audio.playbackRate=state.listen.speed;
+    continuous.audioToken=token;
+    try {
+      const pending=audio.play();
+      if (pending?.catch) pending.catch(error=>{
+        if (token!==continuous.token || continuous.status!=='playing' || continuous.audioToken!==token) return;
+        continuous.audioToken=-1;
+        if (error?.name==='NotAllowedError') failContinuous('브라우저가 자동 재생을 막았어. 이어 듣기를 다시 눌러 줘.');
+        else speakContinuousStage(card,token,'en');
+      });
+    } catch { continuous.audioToken=-1;speakContinuousStage(card,token,'en'); }
+  }
+
+  function toggleContinuous() {
+    if (continuous.status==='playing') {pauseContinuous();return;}
+    if (!window.speechSynthesis?.speak || typeof window.SpeechSynthesisUtterance!=='function') {
+      continuous.notice='한국어 읽기를 지원하지 않는 브라우저야. 갤럭시 Chrome에서 열어 줘.';
+      renderContinuous();return;
+    }
+    if (continuous.status!=='paused') {
+      continuous.queue=availableCards();
+      if (!continuous.queue.length) {renderContinuous();return;}
+      if (continuous.status==='done') continuous.index=0;
+      continuous.index=Math.min(continuous.index,continuous.queue.length-1);
+      continuous.phase='ko';
+    }
+    // 개별 카드에서 재생 중이던 영어 음성을 먼저 중지합니다.
+    $('cardAudio').pause();
+    cancelContinuousMedia();
+    continuous.status='playing';
+    continuous.notice='';
+    state.listen.index=continuous.index;
+    persist();
+    playContinuousStage();
+  }
+
+  function skipContinuous(direction) {
+    const queue=['playing','paused'].includes(continuous.status)?continuous.queue:availableCards();
+    if (!queue.length) return;
+    const wasPlaying=continuous.status==='playing';
+    cancelContinuousMedia();
+    continuous.index=(continuous.index+direction+queue.length)%queue.length;
+    continuous.phase='ko';
+    continuous.notice='';
+    state.listen.index=continuous.index;
+    if (!wasPlaying) continuous.status='idle';
+    continuous.queue=queue;
+    persist();
+    if (wasPlaying) playContinuousStage(); else renderContinuous();
+  }
+
+  function stopContinuous() {
+    cancelContinuousMedia();
+    continuous.status='idle';
+    continuous.phase='ko';
+    continuous.notice='';
+    persist();
+    renderContinuous();
   }
 
   function renderCard() {
@@ -1683,6 +1894,7 @@ window.OPIC_CARD_TOPIC_MAP = {
 
   function showPage(page,changeUrl=true) {
     const target=['study','add','manage','progress'].includes(page)?page:'study';
+    if (target!=='progress' && continuous.status==='playing') pauseContinuous();
     for(const item of document.querySelectorAll('[data-page]')) item.hidden=item.dataset.page!==target;
     for(const link of document.querySelectorAll('[data-page-link]')) {
       const active=link.dataset.pageLink===target;
@@ -1691,7 +1903,7 @@ window.OPIC_CARD_TOPIC_MAP = {
     }
     if (changeUrl && window.location?.hash!==`#${target}`) window.history?.pushState({},'',`#${target}`);
     if (target==='manage') renderManagement();
-    if (target==='progress') updateStats();
+    if (target==='progress') {updateStats();renderContinuous();}
     window.scrollTo?.({top:0,behavior:'auto'});
   }
 
@@ -1720,12 +1932,20 @@ window.OPIC_CARD_TOPIC_MAP = {
       const data=JSON.parse(await file.text());
       if (!data || !Array.isArray(data.known) || !Array.isArray(data.review) || !Array.isArray(data.saved)) throw new Error('올바른 학습 백업 형식이 아니야.');
       if (!window.confirm('현재 이 브라우저의 학습 진행과 직접 추가한 문장을 백업 내용으로 바꿀까? (녹음은 그대로 유지돼.)')) return;
+      stopContinuous();
       state.custom=Array.isArray(data.custom)?[...new Map(data.custom.slice(0,1000).map(cleanCustom).filter(Boolean).map(x=>[x.id,x])).values()]:[];
       state.known=new Set(data.known.filter(x=>typeof x==='string'));
       state.review=new Set(data.review.filter(x=>typeof x==='string'));
       state.saved=new Set(data.saved.filter(x=>typeof x==='string'));
       state.hidden=new Set(Array.isArray(data.hidden)?data.hidden.filter(x=>typeof x==='string'):[]);
       state.daily=data.daily&&typeof data.daily==='object'&&Array.isArray(data.daily.ids)?{date:String(data.daily.date||''),ids:data.daily.ids.filter(x=>typeof x==='string').slice(0,2000)}:{};
+      if (data.listen && typeof data.listen==='object') {
+        state.listen.index=Number.isInteger(data.listen.index) && data.listen.index>=0 ? data.listen.index : 0;
+        state.listen.repeat=data.listen.repeat===true;
+        state.listen.speed=[0.85,1,1.15].includes(Number(data.listen.speed)) ? Number(data.listen.speed) : 1;
+      }
+      continuous.index=state.listen.index;
+      continuous.queue=[];
       rebuildCards();
       const position=data.position||{};
       state.category=categories.some(x=>x.id===position.category)?position.category:'music';
@@ -1743,7 +1963,7 @@ window.OPIC_CARD_TOPIC_MAP = {
       }
       state.revealed=false;state.shuffledIds=null;
       $('searchInput').value=state.query;
-      clearCustomForm();refresh();
+      clearCustomForm();refresh();renderContinuous();
       $('saveStatus').textContent='백업을 가져왔어. 현재 진행 상태를 복원했어.';
     } catch(error) {
       window.alert(`백업을 불러오지 못했어: ${error.message}`);
@@ -2007,6 +2227,7 @@ window.OPIC_CARD_TOPIC_MAP = {
   makeCategories();
   $('searchInput').value = state.query;
   refresh();
+  renderContinuous();
   setRecordingPhase('idle');
   $('openMobileLink').href=directStudyUrl();
   $('androidHelpButton').addEventListener('click',openAndroidHelp);
@@ -2131,6 +2352,33 @@ window.OPIC_CARD_TOPIC_MAP = {
   if (window.speechSynthesis?.addEventListener) {
     window.speechSynthesis.addEventListener('voiceschanged',()=>{if (deck.length) renderCard();});
   }
+  $('continuousToggle').addEventListener('click',toggleContinuous);
+  $('continuousPrev').addEventListener('click',()=>skipContinuous(-1));
+  $('continuousNext').addEventListener('click',()=>skipContinuous(1));
+  $('continuousStop').addEventListener('click',stopContinuous);
+  $('continuousRepeat').addEventListener('change',event=>{
+    state.listen.repeat=event.target.checked;
+    persist();renderContinuous();
+  });
+  $('continuousSpeed').addEventListener('change',event=>{
+    const speed=Number(event.target.value);
+    if (![0.85,1,1.15].includes(speed)) return;
+    state.listen.speed=speed;
+    $('continuousAudio').playbackRate=speed;
+    persist();renderContinuous();
+  });
+  $('continuousAudio').addEventListener('ended',()=>{
+    if (continuous.audioToken===continuous.token && continuous.status==='playing' && continuous.phase==='en') {
+      continuous.audioToken=-1;
+      completeContinuousLanguage(continuous.token);
+    }
+  });
+  $('continuousAudio').addEventListener('error',()=>{
+    if (continuous.audioToken!==continuous.token || continuous.status!=='playing') return;
+    continuous.audioToken=-1;
+    const card=continuous.queue[continuous.index];
+    if (card) speakContinuousStage(card,continuous.token,'en');
+  });
   $('modeTabs').addEventListener('click', event => {
     const button = event.target.closest('[data-mode]');
     if (!button) return;
