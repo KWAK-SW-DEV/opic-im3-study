@@ -317,6 +317,28 @@ body:has(#studyView:not([hidden])) .topbar,body:has(#studyView:not([hidden])) .f
 @media(max-width:640px){.study-notice-row{align-items:start}.study-notice-row .study-notice{font-size:10px}.show-all-cards{font-size:10px;padding:6px 8px}}
 @media(prefers-reduced-motion:reduce){.record-tool.recording{animation:none}}
 
+/* 복습 표시한 카드에서만 나타나는 날짜별 O/X 확인 영역 */
+.review-verification{display:grid;gap:9px;margin:10px 0 0;padding:13px 15px;border:1px solid #dae5ef;border-radius:13px;background:#f8fbff}
+.review-verification[hidden],.review-verification button[hidden]{display:none!important}
+.review-verify-top,.review-verify-bottom{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.review-verify-heading{display:flex;flex-wrap:wrap;align-items:center;gap:7px}
+.review-verify-heading strong{color:#3b506d;font-size:12px;font-weight:850}
+.review-verify-heading span{padding:4px 7px;border-radius:7px;background:#eaf0fb;color:#50649e;font-size:11px;font-weight:900;white-space:nowrap}
+.review-verify-actions{display:flex;gap:6px;flex-shrink:0}
+.review-verify-actions button{width:42px;height:35px;border-radius:9px;border:1px solid #c8d6e3;background:#fff;color:#577186;font-size:15px;font-weight:900;cursor:pointer}
+#reviewMarkO{border-color:#94c8a3;color:#247c49;background:#f0fbf3}
+#reviewMarkX{border-color:#dfb0b0;color:#a34e51;background:#fff3f3}
+#reviewMarkO[aria-pressed="true"]{color:#fff;background:#237849;border-color:#1a5e3a;box-shadow:0 0 0 2px #d6eadd}
+#reviewMarkX[aria-pressed="true"]{color:#fff;background:#aa484b;border-color:#8b373b;box-shadow:0 0 0 2px #f4dede}
+.review-verify-actions button:focus-visible,.review-verify-bottom button:focus-visible{outline:3px solid #a8b3e9;outline-offset:2px}
+.review-verify-days{display:flex;align-items:center;gap:5px}
+.review-verify-days span{min-width:37px;text-align:center;border:1px solid #dbe2ed;background:#fff;border-radius:7px;padding:5px 7px;color:#8392a8;font-size:10px;font-weight:850}
+.review-verify-days span.done{background:#e1f2e7;color:#227246;border-color:#acd4ba}
+.review-verify-bottom button{min-height:32px;padding:6px 11px;border:1px solid #2d8b5a;border-radius:8px;background:#237c4c;color:#fff;font-size:11px;font-weight:850;cursor:pointer}
+.review-verify-hint{margin:0;color:#7989a0;font-size:10px;line-height:1.5;word-break:keep-all}
+.review-verification.ready{background:#f3fbf6;border-color:#b5dfc2}
+@media(max-width:370px){.review-verification{padding:11px 10px}.review-verify-heading strong{font-size:11px}.review-verify-days span{min-width:32px;padding:5px}.review-verify-bottom button{font-size:10px;padding:6px 7px}}
+
 
 /* android.css */
 /* 갤럭시 Chrome 및 홈 화면 설치용 학습 화면 */
@@ -450,6 +472,11 @@ body:has(#studyView:not([hidden])) .topbar,body:has(#studyView:not([hidden])) .f
               <div class="card-source"><span id="sourceBadge" class="source-badge">핵심</span><span id="topicLabel">패턴 연습</span></div>
             </div>
             <details class="related-pattern" id="relatedPatternPanel" hidden><summary id="relatedPatternSummary">↔ 같은 패턴의 다른 주제 보기</summary><div id="relatedPatternContent"></div></details>
+            <section class="review-verification" id="reviewVerification" aria-label="3일 연속 복습 확인" hidden>
+              <div class="review-verify-top"><div class="review-verify-heading"><strong>3일 연속 암기 확인</strong><span id="reviewVerifyStatus" aria-live="polite">0 / 3일</span></div><div class="review-verify-actions" role="group" aria-label="오늘의 복습 결과"><button id="reviewMarkO" type="button" aria-label="오늘 외웠음 O" aria-pressed="false">O</button><button id="reviewMarkX" type="button" aria-label="오늘 헷갈렸음 X" aria-pressed="false">X</button></div></div>
+              <div class="review-verify-bottom"><div class="review-verify-days" id="reviewVerifyDays" aria-label="연속 암기 확인 횟수"><span>1일</span><span>2일</span><span>3일</span></div><button id="reviewCompleteButton" type="button" hidden>✓ 복습 완료 · 목록에서 빼기</button></div>
+              <p class="review-verify-hint" id="reviewVerifyHint" aria-live="polite">하루에 O 한 번만 인정돼. X를 누르면 0일부터 다시 시작해.</p>
+            </section>
             <div class="card-maintain" hidden><button type="button" id="editCardButton" hidden>문장 수정</button><button type="button" id="removeCardButton">학습 목록에서 제외</button></div>
             <div class="deck-nav"><button id="prevButton" type="button" class="nav-button">← 이전 카드</button><span id="sessionStatus">천천히 말해도 괜찮아</span><button id="nextButton" type="button" class="nav-button next-button">다음 카드 →</button></div>
           </div>
@@ -1605,6 +1632,24 @@ window.OPIC_CARD_TOPIC_MAP = {
   function readSaved() {
     try { return JSON.parse(localStorage.getItem(storeKey) || '{}'); } catch { return {}; }
   }
+  function dayOrdinal(date) {
+    if (typeof date!=='string' || !/^\d{4}-\d{2}-\d{2}$/.test(date)) return null;
+    const [year,month,day]=date.split('-').map(Number);
+    const millis=Date.UTC(year,month-1,day);
+    if (!Number.isFinite(millis) || new Date(millis).toISOString().slice(0,10)!==date) return null;
+    return Math.round(millis/86400000);
+  }
+  function cleanReviewChecks(raw) {
+    const cleaned=Object.create(null);
+    if (!raw || typeof raw!=='object' || Array.isArray(raw)) return cleaned;
+    for (const [id,row] of Object.entries(raw).slice(0,2000)) {
+      if (!/^(?:p\d{1,3}-(?:core|v\d+)|t\d{2}-e[123]|custom-[\w-]{5,90})$/.test(id) || !row || typeof row!=='object') continue;
+      if (dayOrdinal(row.lastDay)===null || !['O','X'].includes(row.lastResult)) continue;
+      const streak=row.lastResult==='X'?0:(Number.isInteger(row.streak)?Math.max(1,Math.min(3,row.streak)):1);
+      cleaned[id]={lastDay:row.lastDay,lastResult:row.lastResult,streak,ready:streak===3 && row.ready===true};
+    }
+    return cleaned;
+  }
   const old = readSaved();
   function cleanCustom(value) {
     if (!value || typeof value !== 'object' || typeof value.id !== 'string' || !/^custom-[\w-]{5,90}$/.test(value.id)) return null;
@@ -1629,6 +1674,7 @@ window.OPIC_CARD_TOPIC_MAP = {
     index:Number.isInteger(savedPosition.index) && savedPosition.index>=0 ? savedPosition.index : 0,
     revealed:false,
     known: new Set(old.known || []), review: new Set(old.review || []),
+    reviewChecks:cleanReviewChecks(old.reviewChecks),
     saved: new Set(old.saved || []), hidden:new Set(old.hidden || []), custom:loadedCustom,
     voiceKey: typeof old.voiceKey === 'string' && old.voiceKey.length < 180 ? old.voiceKey : 'recorded',
     listen: {
@@ -1681,6 +1727,39 @@ window.OPIC_CARD_TOPIC_MAP = {
     const now = new Date();
     return `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')}`;
   };
+  function reviewProgress(id) {
+    const check=state.reviewChecks[id];
+    if (!check) return {streak:0,ready:false,lastDay:'',lastResult:''};
+    const daysSince=dayOrdinal(dateStamp())-dayOrdinal(check.lastDay);
+    return {...check,streak:check.ready?3:(daysSince===0||daysSince===1?check.streak:0)};
+  }
+  function markReviewToday(id,result) {
+    if (!state.review.has(id) || !['O','X'].includes(result)) return;
+    const today=dateStamp();
+    const previous=state.reviewChecks[id];
+    if (previous?.lastDay===today && previous.lastResult===result) {
+      $('reviewVerifyHint').textContent=result==='O'?'오늘 O는 이미 기록했어. 내일 다시 확인해 줘.':'오늘 X로 이미 초기화했어.';
+      return;
+    }
+    if (result==='X') {
+      state.reviewChecks[id]={lastDay:today,lastResult:'X',streak:0,ready:false};
+    } else {
+      const dayDiff=previous?dayOrdinal(today)-dayOrdinal(previous.lastDay):null;
+      const carried=previous?.ready?3:(dayDiff===1?previous.streak:0);
+      const streak=Math.min(3,carried+1);
+      state.reviewChecks[id]={lastDay:today,lastResult:'O',streak,ready:previous?.ready===true||streak===3};
+    }
+    refresh();
+  }
+  function completeReview(id) {
+    if (!state.review.has(id) || !reviewProgress(id).ready) return false;
+    state.review.delete(id);
+    state.known.add(id);
+    state.revealed=false;
+    refresh();
+    $('studyNotice').textContent='3일 연속 암기 확인 완료! 이 문장을 복습 목록에서 빼고 “외웠어요”에 추가했어.';
+    return true;
+  }
   const availableCards = () => cards.filter(card => !state.hidden.has(card.id));
   const currentCard = () => deck[state.index] || null;
 
@@ -1693,7 +1772,7 @@ window.OPIC_CARD_TOPIC_MAP = {
   function persist() {
     try {
       localStorage.setItem(storeKey, JSON.stringify({
-        schema:2, visibilityFixV1:true, known:[...state.known], review:[...state.review], saved:[...state.saved], voiceKey:state.voiceKey,
+        schema:3, visibilityFixV1:true, known:[...state.known], review:[...state.review], reviewChecks:state.reviewChecks, saved:[...state.saved], voiceKey:state.voiceKey,
         listen:{index:state.listen.index,repeat:state.listen.repeat,speed:state.listen.speed,gapSeconds:state.listen.gapSeconds},
         hidden:[...state.hidden], custom:state.custom, daily:state.daily,templateView:state.templateView,
         position:{category:state.category,sourceFilter:state.sourceFilter,mode:state.mode,query:state.query,index:state.index,cardId:currentCard()?.id || null},
@@ -2082,6 +2161,29 @@ window.OPIC_CARD_TOPIC_MAP = {
       `<div class="related-pattern-row"><span>${escapeHtml(example.topic)} · ${escapeHtml(nameFor(example.category))}</span><p>${escapeHtml(example.ko)}</p><p>${escapeHtml(example.en)}</p></div>`).join('')}<button class="related-pattern-visit" type="button" data-template-open="${suggested.id}">템플릿 페이지에서 보기 ↗</button></div>`;
   }
 
+  function renderReviewVerification(card) {
+    const panel=$('reviewVerification');
+    const reviewing=!!card && state.review.has(card.id);
+    panel.hidden=!reviewing;
+    if (!reviewing) return;
+    const progress=reviewProgress(card.id);
+    const todayMarked=progress.lastDay===dateStamp()?progress.lastResult:null;
+    panel.classList.toggle('ready',progress.ready);
+    $('reviewVerifyStatus').textContent=progress.ready?'3 / 3일 · 완료 가능':`${progress.streak} / 3일`;
+    $('reviewVerifyDays').innerHTML=[1,2,3].map(day=>`<span class="${day<=progress.streak?'done':''}">${day}일</span>`).join('');
+    $('reviewVerifyDays').setAttribute('aria-label',`연속 암기 확인 ${progress.streak}일, 목표 3일`);
+    $('reviewMarkO').setAttribute('aria-pressed',String(todayMarked==='O'));
+    $('reviewMarkX').setAttribute('aria-pressed',String(todayMarked==='X'));
+    $('reviewCompleteButton').hidden=!progress.ready;
+    $('reviewVerifyHint').textContent=progress.ready
+      ? '3일 연속 확인했어. 복습 완료를 누르면 목록에서 빼고 “외웠어요”로 옮겨.'
+      : todayMarked==='X' ? '오늘 X로 기록했어. 연속 횟수는 0일부터 다시 시작해.'
+      : todayMarked==='O' ? '오늘 O 확인 완료! 다음 확인은 내일 해 줘.'
+      : progress.streak>0 ? '오늘도 외웠다면 O를 눌러 줘. 하루에 한 번씩만 인정돼.'
+      : progress.lastDay ? '연속 기록이 끊겼어. 오늘 O부터 다시 시작해 줘.'
+      : '하루에 O 한 번만 인정돼. X를 누르면 0일부터 다시 시작해.';
+  }
+
   function speakTemplateExample(id) {
     const card=templateCards.find(item=>item.id===id);
     if (!card || !window.speechSynthesis?.speak || typeof window.SpeechSynthesisUtterance!=='function') return;
@@ -2097,6 +2199,7 @@ window.OPIC_CARD_TOPIC_MAP = {
   function renderCard() {
     if (deck.length === 0) {
       $('deckArea').hidden = true;
+      $('reviewVerification').hidden=true;
       $('emptyState').hidden = false;
       $('emptyText').textContent = state.mode === 'review'
         ? '아직 복습 표시한 문장이 없어요. 헷갈리는 카드에서 “다시 볼래요”를 눌러 봐.'
@@ -2123,6 +2226,7 @@ window.OPIC_CARD_TOPIC_MAP = {
     }
     const known = state.known.has(card.id);
     const review = state.review.has(card.id);
+    const reviewReady = review && reviewProgress(card.id).ready;
     const saved = state.saved.has(card.id);
     const chapterName = nameFor(card.category);
     const originLabel = card.origin === 'lecture-exact' ? '강의 원문' : card.origin === 'lecture-adapted' ? '강의 응용' : card.origin === 'template' ? '만능 템플릿' : card.origin === 'custom' ? '직접 추가' : '자체 제작';
@@ -2157,12 +2261,12 @@ window.OPIC_CARD_TOPIC_MAP = {
     $('saveButton').setAttribute('aria-label', saved ? '저장 해제' : '카드 저장');
     $('masterButton').classList.toggle('selected', known);
     $('masterButton').setAttribute('aria-pressed', String(known));
-    $('masterButton').setAttribute('aria-label', known ? '외웠어요 표시 해제' : '외웠어요로 표시');
-    $('masterButton').title = known ? '외웠어요 ✓ (해제하려면 누르기)' : '외웠어요';
+    $('masterButton').setAttribute('aria-label', known ? '외웠어요 표시 해제' : review && !reviewReady ? '3일 연속 O 확인 후 외웠어요로 표시 가능' : '외웠어요로 표시');
+    $('masterButton').title = known ? '외웠어요 ✓ (해제하려면 누르기)' : review && !reviewReady ? '복습 문장은 3일 연속 O 확인 후 외웠어요로 옮길 수 있어' : '외웠어요';
     $('reviewButton').classList.toggle('selected', review);
     $('reviewButton').setAttribute('aria-pressed', String(review));
-    $('reviewButton').setAttribute('aria-label', review ? '다시 보기 표시 해제' : '다시 보기로 표시');
-    $('reviewButton').title = review ? '다시 보기 ✓ (해제하려면 누르기)' : '다시 보기';
+    $('reviewButton').setAttribute('aria-label', review ? reviewReady ? '다시 보기 표시 해제' : '3일 연속 O 확인 후 다시 보기 해제 가능' : '다시 보기로 표시');
+    $('reviewButton').title = review ? reviewReady ? '다시 보기 ✓ (해제하려면 누르기)' : '3일 연속 O 확인 후 복습 목록에서 뺄 수 있어' : '다시 보기';
     $('removeCardButton').textContent = card.origin === 'custom' ? '🗑 문장 삭제' : '× 학습 목록에서 제외';
     $('editCardButton').hidden = card.origin !== 'custom';
     $('recordingCardName').textContent = `현재 문장: ${card.ko}`;
@@ -2175,6 +2279,7 @@ window.OPIC_CARD_TOPIC_MAP = {
     $('flipCard').setAttribute('aria-expanded', String(state.revealed));
     $('flipCard').setAttribute('aria-label', state.revealed ? '클릭하여 영어 정답 숨기기' : '클릭하여 영어 정답 확인하기');
     $('sessionStatus').textContent = state.revealed ? '직접 말한 문장과 비교해 봐' : '천천히 말해도 괜찮아';
+    renderReviewVerification(card);
     renderRelatedTemplate(card);
   }
 
@@ -2348,6 +2453,7 @@ window.OPIC_CARD_TOPIC_MAP = {
       if (!window.confirm('이 문장을 삭제할까? 카드와 학습 체크가 사라지고, 저장된 녹음도 삭제돼.')) return;
       state.custom = state.custom.filter(x=>x.id!==card.id);
       state.known.delete(card.id);state.review.delete(card.id);state.saved.delete(card.id);
+      delete state.reviewChecks[card.id];
       state.daily.ids = Array.isArray(state.daily.ids) ? state.daily.ids.filter(id=>id!==card.id) : [];
       if (state.editingId===card.id) clearCustomForm();
       await deleteRecording(card.id).catch(()=>{});
@@ -2448,6 +2554,7 @@ window.OPIC_CARD_TOPIC_MAP = {
       state.custom=Array.isArray(data.custom)?[...new Map(data.custom.slice(0,1000).map(cleanCustom).filter(Boolean).map(x=>[x.id,x])).values()]:[];
       state.known=new Set(data.known.filter(x=>typeof x==='string'));
       state.review=new Set(data.review.filter(x=>typeof x==='string'));
+      state.reviewChecks=cleanReviewChecks(data.reviewChecks);
       state.saved=new Set(data.saved.filter(x=>typeof x==='string'));
       state.hidden=new Set(Array.isArray(data.hidden)?data.hidden.filter(x=>typeof x==='string'):[]);
       state.daily=data.daily&&typeof data.daily==='object'&&Array.isArray(data.daily.ids)?{date:String(data.daily.date||''),ids:data.daily.ids.filter(x=>typeof x==='string').slice(0,2000)}:{};
@@ -3006,16 +3113,35 @@ window.OPIC_CARD_TOPIC_MAP = {
   $('masterButton').addEventListener('click', () => {
     if (!deck.length) return;
     const id = deck[state.index].id;
+    if (state.review.has(id)) {
+      if (!completeReview(id)) $('reviewVerifyHint').textContent='3일 연속 O를 확인하면 복습에서 빼고 “외웠어요”로 옮길 수 있어.';
+      return;
+    }
     if (state.known.has(id)) state.known.delete(id);
-    else { state.known.add(id); state.review.delete(id); }
+    else state.known.add(id);
     persist(); refresh();
   });
   $('reviewButton').addEventListener('click', () => {
     if (!deck.length) return;
     const id = deck[state.index].id;
-    if (state.review.has(id)) state.review.delete(id);
-    else { state.review.add(id); state.known.delete(id); }
+    if (state.review.has(id)) {
+      if (!reviewProgress(id).ready) {
+        $('reviewVerifyHint').textContent='복습 목록에서 빼려면 날짜를 달리해 O를 3번 연속 체크해 줘.';
+        return;
+      }
+      state.review.delete(id);
+    } else {
+      state.review.add(id);
+      state.known.delete(id);
+      delete state.reviewChecks[id];
+    }
     persist(); refresh();
+  });
+  $('reviewMarkO').addEventListener('click',()=>{if (deck.length) markReviewToday(deck[state.index].id,'O');});
+  $('reviewMarkX').addEventListener('click',()=>{if (deck.length) markReviewToday(deck[state.index].id,'X');});
+  $('reviewCompleteButton').addEventListener('click',()=>{if (deck.length) completeReview(deck[state.index].id);});
+  document.addEventListener('visibilitychange',()=>{
+    if (!document.hidden && currentCard()) renderReviewVerification(currentCard());
   });
   $('prevButton').addEventListener('click', () => next(-1));
   $('nextButton').addEventListener('click', () => next(1));
