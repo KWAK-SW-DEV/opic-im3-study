@@ -25,6 +25,8 @@
   
   
   
+  
+  
 <style>
 html.opic-locked .app-shell{display:none!important}
 html:not(.opic-locked) .opic-entry-gate{display:none!important}
@@ -351,6 +353,24 @@ body:has(#studyView:not([hidden])) .topbar,body:has(#studyView:not([hidden])) .f
 }
 @media(max-width:360px){.android-help-dialog{padding:18px 16px}.android-help-actions{grid-template-columns:1fr}.card-voice-footer:has(#micHelpInline:not([hidden])){flex-wrap:wrap}}
 
+
+/* templates.css */
+/* 사용자 제공 만능 패턴: 모바일 우선 한 패턴씩 학습 */
+.template-total{display:inline-flex;align-items:center;flex:none;padding:9px 13px;border-radius:999px;border:1px solid #dbe2f9;background:#f0f3ff;color:#5267bb;font-size:12px;font-weight:850}
+.template-filter-bar{display:grid;grid-template-columns:minmax(130px,1fr) minmax(130px,1fr) minmax(185px,1.4fr);gap:10px;margin:0 0 12px}
+.template-filter-bar label,.template-jump label{display:flex;flex-direction:column;gap:6px;color:#73809d;font-size:11px;font-weight:800}
+.template-filter-bar select,.template-filter-bar input,.template-jump select{width:100%;height:43px;border:1px solid #dee4f0;border-radius:10px;padding:0 11px;background:#fff;color:#29395f;font-size:13px;min-width:0;outline-offset:2px}
+.template-jump{display:flex;align-items:flex-end;gap:10px;margin:0 0 14px}.template-jump label{white-space:nowrap}.template-jump select{flex:1;max-width:590px}.template-jump>span{margin-left:auto;padding:10px 0 7px;color:#6374ae;white-space:nowrap;font-size:13px;font-weight:850}
+.template-study-card{background:#fff;border:1px solid #e0e6f5;border-radius:20px;box-shadow:0 14px 35px rgba(45,60,99,.055);overflow:hidden;padding:22px 24px}
+.template-study-top{display:flex;align-items:center;justify-content:space-between;gap:10px}.template-study-top>span:last-child{color:#a0abc1;font-size:10px;font-weight:850;letter-spacing:.1em}.template-badge{display:inline-flex;align-items:center;border-radius:99px;background:#e9efff;color:#5164b9;padding:7px 11px;font-size:11px;font-weight:850}.template-badge.roleplay{background:#f0e9ff;color:#7560b5}.template-badge.unexpected{background:#fff1de;color:#916e35}
+.template-study-card h2{margin:20px 0 9px;color:#324bad;line-height:1.48;font-size:clamp(21px,2.6vw,27px);letter-spacing:-.025em;overflow-wrap:anywhere}.template-meaning{color:#3b4768;margin:0;font-size:14px;font-weight:720;line-height:1.65;word-break:keep-all}.template-note{border-radius:10px;background:#fffaec;border:1px solid #f2e8ca;padding:10px 12px;color:#866c36;font-size:11px;line-height:1.6;margin:14px 0 0}
+.template-examples-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin:23px 0 10px;padding-top:16px;border-top:1px solid #edf0f5}.template-examples-head strong{color:#44516f;font-size:13px}.template-examples-head span{color:#9ba5bb;font-size:10px}
+.template-examples{display:grid;gap:10px}.template-example{border:1px solid #e9edf7;border-radius:13px;background:#f9faff;padding:15px}.template-example-header{display:flex;align-items:center;justify-content:space-between;gap:7px}.template-example-tag{display:inline-flex;align-items:center;border-radius:7px;background:#e6ebff;color:#5367ad;font-size:11px;font-weight:800;padding:5px 8px}.template-example-tag.optional{background:#eceef3;color:#8390a5}.template-example-actions{display:flex;gap:6px}.template-example-actions button{border:1px solid #dce3f5;background:#fff;color:#5065bd;border-radius:8px;min-height:34px;padding:5px 9px;font-size:11px;font-weight:800;cursor:pointer}.template-example-ko{margin:13px 0 5px;color:#34405e;font-size:13px;line-height:1.65;font-weight:750;word-break:keep-all}.template-example-en{margin:0;color:#5266bd;font-size:14px;font-weight:780;line-height:1.6;overflow-wrap:anywhere}.template-example-optional{display:block;margin:7px 0 0;color:#9ca4b5;font-size:10px}
+.template-nav{display:flex;justify-content:space-between;gap:10px;margin-top:14px}.template-nav button{flex:1;min-height:45px;border-radius:11px;border:1px solid #d9e1f4;background:#fff;color:#566bb6;font-size:13px;font-weight:800}.template-nav button:last-child{background:#5269ce;border-color:#5269ce;color:#fff}.template-nav button:disabled{opacity:.35;cursor:not-allowed}.template-empty{padding:46px 20px;background:#fff;border:1px solid #e4e6f0;text-align:center;border-radius:15px;color:#808fa7;font-size:13px}.template-source-note{margin:14px 2px 65px;color:#939daf;font-size:11px;line-height:1.7}
+.related-pattern{background:#f8faff;border:1px solid #e4eafd;border-radius:12px;margin:13px 0 0;overflow:hidden}.related-pattern summary{list-style:none;cursor:pointer;padding:12px 14px;color:#4e64b4;font-weight:800;font-size:12px}.related-pattern summary::-webkit-details-marker{display:none}.related-pattern summary::after{content:'⌄';float:right}.related-pattern[open] summary::after{content:'⌃'}.related-pattern-content{padding:0 13px 13px}.related-pattern-title{color:#7b87a0;font-size:11px;margin:0 0 10px;line-height:1.5}.related-pattern-row{padding:10px 0;border-top:1px solid #e7ebf5}.related-pattern-row:first-of-type{border-top:0}.related-pattern-row span{font-size:10px;font-weight:850;color:#8392b5}.related-pattern-row p{font-size:12px;line-height:1.6;margin:5px 0;color:#3e4a68;word-break:keep-all}.related-pattern-row p:last-child{color:#5367c0;font-weight:770}.related-pattern-visit{margin-top:10px;border:1px solid #bfcbed;background:#fff;color:#5066bf;padding:9px 12px;border-radius:8px;font-size:11px;font-weight:800;cursor:pointer}
+@media(max-width:950px){.mobile-page-nav{grid-template-columns:repeat(5,minmax(0,1fr));padding-inline:7px}.mobile-page-nav a{min-width:0;font-size:10px}.mobile-page-nav a>span{font-size:19px}}
+@media(max-width:640px){.template-page-heading{display:block}.template-total{margin-top:10px}.template-filter-bar{grid-template-columns:1fr 1fr;gap:9px}.template-search-label{grid-column:1 / -1}.template-jump{align-items:center;flex-wrap:wrap}.template-jump label{width:100%}.template-jump select{max-width:none;flex:1}.template-jump>span{margin-left:0}.template-study-card{padding:18px 14px;border-radius:15px}.template-study-card h2{font-size:22px}.template-meaning{font-size:13px}.template-example{padding:12px}.template-example-ko{font-size:13px}.template-example-en{font-size:13px}.template-example-actions button{font-size:10px}.template-source-note{margin-bottom:88px}}
+
 </style>
 </head>
 <body>
@@ -398,6 +418,7 @@ body:has(#studyView:not([hidden])) .topbar,body:has(#studyView:not([hidden])) .f
       <span class="nav-title">메뉴</span>
       <nav class="page-nav" aria-label="학습 화면 이동">
         <a href="#study" data-page-link="study" class="active"><span>📚</span><b>학습하기</b><small>주제별 카드 · 녹음</small></a>
+        <a href="#templates" data-page-link="templates"><span>▦</span><b>만능 템플릿</b><small>패턴별 · 3가지 응용</small></a>
         <a href="#add" data-page-link="add"><span>✎</span><b>문장 추가</b><small>내 문장 · 기초 점검</small></a>
         <a href="#manage" data-page-link="manage"><span>☷</span><b>문장 관리</b><small>찾기 · 수정 · 제외</small></a>
         <a href="#progress" data-page-link="progress"><span>◉</span><b>학습 기록</b><small>진행률 · 백업</small></a>
@@ -413,7 +434,7 @@ body:has(#studyView:not([hidden])) .topbar,body:has(#studyView:not([hidden])) .f
         <div class="compact-study-heading"><div><span class="eyebrow eyebrow-accent">01 — STUDY</span><h1 id="studyHeading">문장 연습</h1></div><div class="study-heading-tools"><button class="compact-help" id="androidHelpButton" type="button" title="갤럭시 녹음 및 설치 방법" aria-label="갤럭시 녹음 및 설치 방법">?</button><button class="compact-shuffle" id="shuffleButton" type="button" title="카드 순서 섞기" aria-label="카드 순서 섞기">⇄</button></div></div>
         <section class="practice-section" id="practiceSection" aria-label="문장 플래시카드">
           <div class="compact-study-controls"><label class="topic-picker">학습 주제<select id="topicSelect" aria-label="학습 주제 선택"></select></label><div class="mode-tabs" id="modeTabs" role="group" aria-label="학습 방식"><button class="mode-tab active" data-mode="all" aria-pressed="true">전체</button><button class="mode-tab" data-mode="priority" aria-pressed="false">★ 우선</button><button class="mode-tab" data-mode="core" aria-pressed="false">핵심</button><button class="mode-tab" data-mode="variation" aria-pressed="false">응용</button><button class="mode-tab" data-mode="review" aria-pressed="false">복습 <span id="tabReviewCount">0</span></button><button class="mode-tab" data-mode="saved" aria-pressed="false">☆ 저장</button></div></div>
-          <details class="compact-advanced"><summary>⌕ 검색·출처 필터</summary><div class="study-search-row"><label class="search-box"><span aria-hidden="true">⌕</span><input type="search" id="searchInput" placeholder="문장 검색" aria-label="학습 문장 검색" /></label><label class="source-select-label">문장 출처<select id="sourceFilter" aria-label="문장 출처 필터"><option value="all">모든 출처</option><option value="lecture">첨부 강의 표현</option><option value="original">직접 제작 예문</option><option value="custom">내가 추가한 문장</option></select></label></div></details>
+          <details class="compact-advanced"><summary>⌕ 검색·출처 필터</summary><div class="study-search-row"><label class="search-box"><span aria-hidden="true">⌕</span><input type="search" id="searchInput" placeholder="문장 검색" aria-label="학습 문장 검색" /></label><label class="source-select-label">문장 출처<select id="sourceFilter" aria-label="문장 출처 필터"><option value="all">모든 출처</option><option value="lecture">첨부 강의 표현</option><option value="original">직접 제작 예문</option><option value="template">만능 템플릿 예문</option><option value="custom">내가 추가한 문장</option></select></label></div></details>
           <div class="study-notice-row"><p class="study-notice" id="studyNotice" aria-live="polite"></p><button type="button" id="showAllCardsButton" class="show-all-cards">전체 문장 보기 ↗</button></div>
           <div id="deckArea" class="deck-area"><div class="deck-topline"><div class="deck-tag" id="deckTag">문장 학습</div><div class="deck-counter"><span id="cardNumber">01</span> / <span id="filteredTotal">00</span></div></div><div class="deck-progress"><span id="deckProgressFill"></span></div>
             <div class="flip-card" id="flipCard" role="button" tabindex="0" aria-label="카드를 누르면 영어 정답이 표시됩니다" aria-expanded="false">
@@ -428,11 +449,33 @@ body:has(#studyView:not([hidden])) .topbar,body:has(#studyView:not([hidden])) .f
               <div class="card-voice-footer" data-no-flip="true"><span id="recordStatus" role="status" aria-live="polite"></span><button id="micHelpInline" class="mic-help-inline" type="button" hidden>Chrome에서 여는 방법 ↗</button><span id="recordPlaybackRow" hidden><audio id="recordPlayback" preload="none" aria-label="내 녹음 다시 듣기"></audio><a id="recordDownload" class="record-download" aria-label="녹음 파일 다운로드" title="녹음 파일 다운로드">↓ 저장</a></span></div>
               <div class="card-source"><span id="sourceBadge" class="source-badge">핵심</span><span id="topicLabel">패턴 연습</span></div>
             </div>
+            <details class="related-pattern" id="relatedPatternPanel" hidden><summary id="relatedPatternSummary">↔ 같은 패턴의 다른 주제 보기</summary><div id="relatedPatternContent"></div></details>
             <div class="card-maintain" hidden><button type="button" id="editCardButton" hidden>문장 수정</button><button type="button" id="removeCardButton">학습 목록에서 제외</button></div>
             <div class="deck-nav"><button id="prevButton" type="button" class="nav-button">← 이전 카드</button><span id="sessionStatus">천천히 말해도 괜찮아</span><button id="nextButton" type="button" class="nav-button next-button">다음 카드 →</button></div>
           </div>
           <div class="empty-state" id="emptyState" hidden><span>☻</span><h3>이 주제에 해당하는 문장이 없어</h3><p id="emptyText">다른 주제 또는 출처 필터를 선택해 봐.</p><button type="button" id="resetFilterButton" class="primary-btn">음악 문장으로 돌아가기 ↗</button></div>
         </section>
+      </section>
+
+      <section class="app-page" id="templatesView" data-page="templates" aria-labelledby="templatesHeading" hidden>
+        <div class="page-heading template-page-heading"><div><span class="eyebrow eyebrow-accent">02 — MASTER PATTERNS</span><h1 id="templatesHeading">만능 템플릿</h1><p>한 개의 말하기 틀을 익히고, 서로 다른 세 주제에 바로 응용해 봐.</p></div><span class="template-total" id="templateTotal">71개 패턴 · 213개 예문</span></div>
+        <div class="template-filter-bar">
+          <label>유형<select id="templateGroup" aria-label="템플릿 유형"><option value="all">전체 유형</option><option value="selected">선택 주제</option><option value="unexpected">돌발 주제</option><option value="roleplay">롤플레이</option></select></label>
+          <label>주제<select id="templateTopic" aria-label="템플릿 주제"><option value="all">모든 주제</option></select></label>
+          <label class="template-search-label">검색<input id="templateSearch" type="search" placeholder="한글·영어·주제 검색" aria-label="템플릿 검색" /></label>
+        </div>
+        <div class="template-jump"><label for="templatePicker">패턴 바로 선택</label><select id="templatePicker" aria-label="학습할 템플릿 선택"></select><span id="templateCounter" aria-live="polite">1 / 71</span></div>
+        <article id="templateStudyCard" class="template-study-card">
+          <div class="template-study-top"><span class="template-badge" id="templateTypeLabel">선택 주제</span><span id="templateNumber">PATTERN 01</span></div>
+          <h2 id="templatePattern">I really enjoy [~] in my free time.</h2>
+          <p id="templateKorean" class="template-meaning"></p>
+          <p id="templateNote" class="template-note" hidden></p>
+          <div class="template-examples-head"><strong>같은 틀 · 주제별 예문 3개</strong><span>한국어 → 영어</span></div>
+          <div id="templateExamples" class="template-examples"></div>
+        </article>
+        <div class="template-nav"><button id="templatePrev" type="button">← 이전 패턴</button><button id="templateNext" type="button">다음 패턴 →</button></div>
+        <p id="templateEmpty" class="template-empty" hidden>해당하는 템플릿이 없어. 검색어나 필터를 바꿔 봐.</p>
+        <p class="template-source-note">출처: 사용자가 제공한 강지완오픽TV 이미지 71장. 일부 예문의 어색한 표현은 IM3 말하기에 맞게 다듬었고, 서베이 밖의 예시는 ‘선택 외 참고’로 구분했어. 공식 OPIc 기출 인증 문장은 아니야.</p>
       </section>
 
       <section class="app-page" id="addView" data-page="add" aria-labelledby="addHeading" hidden><div class="page-heading"><div><span class="eyebrow eyebrow-accent">02 — CREATE</span><h1 id="addHeading">나만의 문장 추가</h1><p>직접 만든 문장을 카드에 넣고 여러 주제로 응용해 봐.</p></div></div><section class="workbench-panel full-form" id="customPanel"><div class="workbench-title"><span class="workbench-icon">✎</span><div><span class="eyebrow eyebrow-accent">MY SENTENCES</span><h3>문장 작성</h3></div><span class="workbench-count"><span id="customCount">0</span>개 추가됨</span></div><p class="workbench-description">한국어와 영어를 입력해 카드를 만들어. <b>실제 말할 상황에 맞는 주제</b>를 직접 선택할 수 있어.</p>
@@ -465,7 +508,7 @@ body:has(#studyView:not([hidden])) .topbar,body:has(#studyView:not([hidden])) .f
 
       <footer class="footer"><div>OPIc IM3 · 쉬운 문장부터 자연스럽게.<br />강의 원문 표현과 직접 작성한 응용 예문이며, 공식 기출 인증·등급 보장 자료는 아니야.</div><div>각 화면은 아래 메뉴에서 이동할 수 있어.</div></footer>
     </main>
-    <nav class="mobile-page-nav" aria-label="모바일 화면 이동"><a href="#study" data-page-link="study" class="active"><span>📚</span>학습</a><a href="#add" data-page-link="add"><span>✎</span>추가</a><a href="#manage" data-page-link="manage"><span>☷</span>관리</a><a href="#progress" data-page-link="progress"><span>◉</span>기록</a></nav>
+    <nav class="mobile-page-nav" aria-label="모바일 화면 이동"><a href="#study" data-page-link="study" class="active"><span>📚</span>학습</a><a href="#templates" data-page-link="templates"><span>▦</span>템플릿</a><a href="#add" data-page-link="add"><span>✎</span>추가</a><a href="#manage" data-page-link="manage"><span>☷</span>관리</a><a href="#progress" data-page-link="progress"><span>◉</span>기록</a></nav>
   </div>
   <dialog class="android-help-dialog" id="androidHelpDialog" aria-labelledby="androidHelpHeading">
     <div class="android-help-top"><span aria-hidden="true">🎙</span><button type="button" id="androidHelpClose" aria-label="안내 닫기">×</button></div>
@@ -1219,12 +1262,328 @@ window.OPIC_CARD_TOPIC_MAP = {
 
 </script>
 <script>
+/* templates-data.js */
+/*
+ * 사용자가 업로드한 '오픽템플릿.zip' (강지완오픽TV 화면 캡처 71장)에서 정리.
+ * 2026-11-16: 이미지 번호 1~71의 템플릿과 각 3개 주제별 예시를 그룹으로 연결.
+ * 한국어는 학습용으로 자연스럽게 옮겼으며, note가 있는 어색한 원문은 말하기에 맞게 다듬음.
+ * 강의 제공 예시이며 공식 OPIc 기출 인증 문장 또는 등급 보장 자료가 아닙니다.
+ * 필드: [카테고리, 예시 주제, 한국어 문장, 영어 문장]
+ */
+(() => {
+  const T=(n,pattern,korean,examples,note='')=>({
+    id:`t${String(n).padStart(2,'0')}`,number:n,
+    group:n<=24?'selected':n<=44?'unexpected':'roleplay',
+    pattern,korean,note,
+    examples:examples.map(([category,topic,ko,en],index)=>({id:`t${String(n).padStart(2,'0')}-e${index+1}`,category,topic,ko,en}))
+  });
+  window.OPIC_TEMPLATES=[
+    T(1,'I really enjoy [~] in my free time.','나는 자유 시간에 ~하는 걸 정말 좋아해.',[
+      ['music','음악','나는 자유 시간에 음악을 듣는 걸 정말 좋아해.','I really enjoy listening to music in my free time.'],
+      ['cafe','카페','나는 자유 시간에 카페에 가는 걸 정말 좋아해.','I really enjoy going to cafes in my free time.'],
+      ['optional','헬스장','나는 자유 시간에 헬스장에서 운동하는 걸 정말 좋아해.','I really enjoy working out at the gym in my free time.']]),
+    T(2,'One of my favorite activities is [~].','내가 가장 좋아하는 활동 중 하나는 ~야.',[
+      ['movie','영화','내가 좋아하는 활동 중 하나는 영화 보기야.','One of my favorite activities is watching movies.'],
+      ['optional','등산','내가 좋아하는 활동 중 하나는 등산이야.','One of my favorite activities is going hiking.'],
+      ['park','공원','내가 좋아하는 활동 중 하나는 공원에서 걷기야.','One of my favorite activities is walking in the park.']]),
+    T(3,'I usually [~] when I have free time.','나는 시간이 나면 보통 ~해.',[
+      ['music','음악','시간이 나면 보통 음악을 들어.','I usually listen to music when I have free time.'],
+      ['cafe','카페','시간이 나면 보통 카페에 가.','I usually go to a cafe when I have free time.'],
+      ['staycation','집 휴가','시간이 나면 보통 집에서 쉬어.','I usually stay home and relax when I have free time.']]),
+    T(4,'I often [~] on weekends.','나는 주말에 자주 ~해.',[
+      ['domestic','국내 여행','나는 주말에 국내 여행을 자주 해.','I often travel domestically on weekends.'],
+      ['cafe','카페','나는 주말에 카페에 자주 가.','I often visit cafes on weekends.'],
+      ['optional','등산','나는 주말에 등산을 자주 해.','I often go hiking on weekends.']]),
+    T(5,'Sometimes I [~] with my friends.','가끔 친구들과 ~해.',[
+      ['movie','영화','가끔 친구들과 영화를 봐.','Sometimes I watch movies with my friends.'],
+      ['cafe','카페','가끔 친구들과 카페에 가.','Sometimes I go to cafes with my friends.'],
+      ['domestic','여행','가끔 친구들과 여행을 가.','Sometimes I travel with my friends.']]),
+    T(6,'Most of the time I [~] alone.','대부분의 경우 나는 혼자 ~해.',[
+      ['music','음악','나는 대부분 혼자 음악을 들어.','Most of the time I listen to music alone.'],
+      ['movie','영화','나는 대부분 혼자 영화를 봐.','Most of the time I watch movies alone.'],
+      ['park','공원','나는 대부분 혼자 공원을 걸어.','Most of the time I walk in the park alone.']]),
+    T(7,'I especially like [~] because it helps me relax.','~하면 마음이 편해져서 특히 좋아해.',[
+      ['music','음악','음악을 들으면 마음이 편해져서 특히 좋아해.','I especially like listening to music because it helps me relax.'],
+      ['optional','등산','등산하면 마음이 편해져서 특히 좋아해.','I especially like going hiking because it helps me relax.'],
+      ['cafe','카페','카페에 가면 마음이 편해져서 특히 좋아해.','I especially like going to cafes because it helps me relax.']]),
+    T(8,"It's a great way to [~].",'그건 ~하기에 좋은 방법이야.',[
+      ['general','건강','그건 건강을 유지하는 좋은 방법이야.',"It's a great way to stay healthy."],
+      ['general','스트레스','그건 스트레스를 푸는 좋은 방법이야.',"It's a great way to relieve stress."],
+      ['general','휴식','그건 쉬기에 좋은 방법이야.',"It's a great way to relax."]]),
+    T(9,'It makes me feel [~].','그렇게 하면 ~한 기분이 들어.',[
+      ['music','휴식','그렇게 하면 마음이 편해져.','It makes me feel relaxed.'],
+      ['optional','운동','그렇게 하면 활력이 생겨.','It makes me feel energetic.'],
+      ['walk','산책','그렇게 하면 상쾌한 기분이 들어.','It makes me feel refreshed.']]),
+    T(10,'There is a great place near my house where I [~].','집 근처에 내가 ~하는 좋은 장소가 있어.',[
+      ['cafe','카페','집 근처에 커피를 마시며 쉴 수 있는 좋은 곳이 있어.','There is a great place near my house where I can relax with a cup of coffee.'],
+      ['park','공원','집 근처에 산책할 수 있는 좋은 곳이 있어.','There is a great place near my house where I can take a walk.'],
+      ['optional','헬스장','집 근처에 운동할 수 있는 좋은 곳이 있어.','There is a great place near my house where I can work out.']],
+      '원본의 “where I go to a cafe”는 장소 설명이 어색해서 자연스럽게 수정했어.'),
+    T(11,'[~] is located not far from where I live.','~은 내가 사는 곳에서 멀지 않아.',[
+      ['cafe','카페','그 카페는 내가 사는 곳에서 멀지 않아.','The cafe is located not far from where I live.'],
+      ['park','공원','그 공원은 내가 사는 곳에서 멀지 않아.','The park is located not far from where I live.'],
+      ['optional','헬스장','그 헬스장은 내가 사는 곳에서 멀지 않아.','The gym is located not far from where I live.']]),
+    T(12,'I still remember when I [~].','나는 ~했던 때를 아직도 기억해.',[
+      ['domestic','부산 여행','부산에 여행 갔을 때가 아직도 기억나.','I still remember when I traveled to Busan.'],
+      ['optional','등산','등산 갔을 때가 아직도 기억나.','I still remember when I went hiking.'],
+      ['cafe','특별한 카페','독특한 카페에 갔던 때가 아직도 기억나.','I still remember when I visited a unique cafe.']],
+      '원본 “I remember one memorable experience when I...”는 remember와 memorable이 겹쳐 짧게 다듬었어.'),
+    T(13,'Something interesting happened when I [~].','내가 ~했을 때 재미있는 일이 있었어.',[
+      ['domestic','제주 여행','제주도 여행 중에 재미있는 일이 있었어.','Something interesting happened when I traveled to Jeju Island.'],
+      ['optional','등산','산에서 등산할 때 재미있는 일이 있었어.','Something interesting happened when I went hiking in the mountains.'],
+      ['cafe','특별한 카페','독특한 카페에 갔을 때 재미있는 일이 있었어.','Something interesting happened when I visited a unique cafe.']]),
+    T(14,'One of my most memorable moments was when I [~].','가장 기억에 남는 순간 중 하나는 ~했을 때야.',[
+      ['domestic','친구와 여행','친구들과 여행했을 때가 정말 기억에 남아.','One of my most memorable moments was when I traveled with my friends.'],
+      ['optional','등산','산 정상에 올랐을 때가 정말 기억에 남아.','One of my most memorable moments was when I reached the top of the mountain.'],
+      ['movie','영화','좋은 영화를 봤을 때가 정말 기억에 남아.','One of my most memorable moments was when I watched a great movie.']],
+      '원본 “It was one of the most memorable moments when I...”를 말하기 편한 문장으로 고쳤어.'),
+    T(15,'However, I once had a problem when I [~].','그런데 한 번은 ~하다가 문제가 생겼어.',[
+      ['overseas','해외 여행','그런데 한 번은 해외여행 중 문제가 생겼어.','However, I once had a problem when I traveled abroad.'],
+      ['cafe','카페 주문','그런데 한 번은 카페에서 커피를 주문하다가 문제가 생겼어.','However, I once had a problem when I ordered coffee at a cafe.'],
+      ['optional','등산','그런데 한 번은 등산하다가 문제가 생겼어.','However, I once had a problem when I went hiking.']]),
+    T(16,'Something unexpected happened when I [~].','~했을 때 예상치 못한 일이 있었어.',[
+      ['domestic','부산 여행','부산 여행 중 예상치 못한 일이 있었어.','Something unexpected happened when I traveled to Busan.'],
+      ['movie','영화관','영화관에서 영화를 볼 때 예상치 못한 일이 있었어.','Something unexpected happened when I watched a movie at the theater.'],
+      ['cafe','카페','카페에 갔을 때 예상치 못한 일이 있었어.','Something unexpected happened when I visited a cafe.']]),
+    T(17,'Compared to the past, people [~] much more these days.','과거보다 요즘 사람들은 ~을 훨씬 더 많이 해.',[
+      ['music','온라인 음악','예전보다 요즘은 온라인으로 음악을 훨씬 많이 들어.','Compared to the past, people listen to music online much more these days.'],
+      ['cafe','카페','예전보다 요즘은 카페에 훨씬 많이 가.','Compared to the past, people go to cafes much more these days.'],
+      ['overseas','해외 여행','예전보다 요즘은 해외여행을 훨씬 많이 가.','Compared to the past, people travel abroad much more these days.']]),
+    T(18,'These days more people enjoy [~].','요즘은 ~을 즐기는 사람이 더 많아.',[
+      ['optional','등산','요즘은 등산을 즐기는 사람이 더 많아.','These days more people enjoy going hiking.'],
+      ['optional','운동','요즘은 운동을 즐기는 사람이 더 많아.','These days more people enjoy working out.'],
+      ['cafe','카페','요즘은 카페에 가는 걸 즐기는 사람이 더 많아.','These days more people enjoy going to cafes.']]),
+    T(19,"That's why I enjoy [~] so much.",'그래서 나는 ~하는 걸 정말 좋아해.',[
+      ['music','음악','그래서 나는 음악 듣는 걸 정말 좋아해.',"That's why I enjoy listening to music so much."],
+      ['optional','등산','그래서 나는 등산하는 걸 정말 좋아해.',"That's why I enjoy hiking so much."],
+      ['domestic','여행','그래서 나는 여행하는 걸 정말 좋아해.',"That's why I enjoy traveling so much."]]),
+    T(20,"That's why [~] has become an important part of my life.",'그래서 ~은 내 삶의 중요한 부분이 됐어.',[
+      ['optional','운동','그래서 운동은 내 삶의 중요한 부분이 됐어.',"That's why working out has become an important part of my life."],
+      ['music','음악','그래서 음악 듣는 것은 내 삶의 중요한 부분이 됐어.',"That's why listening to music has become an important part of my life."],
+      ['cafe','카페','그래서 카페에 가는 건 내 삶의 중요한 부분이 됐어.',"That's why going to cafes has become an important part of my life."]]),
+    T(21,"I don't [~] as often as before.",'나는 예전만큼 자주 ~하지는 않아.',[
+      ['movie','영화','나는 예전만큼 자주 영화를 보지는 않아.',"I don't watch movies as often as before."],
+      ['cafe','카페','나는 예전만큼 자주 카페에 가지는 않아.',"I don't go to cafes as often as before."],
+      ['noExercise','헬스장','나는 예전만큼 자주 헬스장에 가지는 않아.',"I don't go to the gym as often as before."]]),
+    T(22,'But I still enjoy [~] whenever I have the chance.','하지만 기회가 있을 때마다 여전히 ~하는 걸 즐겨.',[
+      ['domestic','여행','하지만 기회가 있을 때마다 여전히 여행을 즐겨.','But I still enjoy traveling whenever I have the chance.'],
+      ['optional','등산','하지만 기회가 있을 때마다 여전히 등산을 즐겨.','But I still enjoy hiking whenever I have the chance.'],
+      ['movie','영화','하지만 기회가 있을 때마다 여전히 영화 보기를 즐겨.','But I still enjoy watching movies whenever I have the chance.']]),
+    T(23,'Overall, I really enjoy [~].','전반적으로 나는 ~하는 걸 정말 좋아해.',[
+      ['music','음악','나는 음악 듣는 걸 정말 좋아해.','Overall, I really enjoy listening to music.'],
+      ['cafe','카페','나는 카페에 가는 걸 정말 좋아해.','Overall, I really enjoy going to cafes.'],
+      ['domestic','여행','나는 여행하는 걸 정말 좋아해.','Overall, I really enjoy traveling.']]),
+    T(24,'For me, [~] is a great way to relax.','나에게 ~은 쉬기에 좋은 방법이야.',[
+      ['music','음악','나에게 음악 듣기는 쉬기에 좋은 방법이야.','For me, listening to music is a great way to relax.'],
+      ['cafe','카페','나에게 카페에 가는 건 쉬기에 좋은 방법이야.','For me, going to cafes is a great way to relax.'],
+      ['park','공원','나에게 공원에서 걷기는 쉬기에 좋은 방법이야.','For me, walking in the park is a great way to relax.']]),
+    T(25,'These days people talk a lot about [~].','요즘 사람들은 ~에 대해 많이 이야기해.',[
+      ['optional','기술','요즘 사람들은 기술에 대해 많이 이야기해.','These days people talk a lot about technology.'],
+      ['optional','재활용','요즘 사람들은 재활용에 대해 많이 이야기해.','These days people talk a lot about recycling.'],
+      ['optional','스마트폰','요즘 사람들은 스마트폰에 대해 많이 이야기해.','These days people talk a lot about smartphones.']]),
+    T(26,'I think [~] is very important in our lives.','나는 ~이 우리 삶에 매우 중요하다고 생각해.',[
+      ['optional','재활용','나는 재활용이 우리 삶에 매우 중요하다고 생각해.','I think recycling is very important in our lives.'],
+      ['optional','기술','나는 기술이 우리 삶에 매우 중요하다고 생각해.','I think technology is very important in our lives.'],
+      ['optional','직장 문화','나는 직장 문화가 매우 중요하다고 생각해.','I think workplace culture is very important.']]),
+    T(27,'Many people use [~] in their daily lives.','많은 사람들이 일상에서 ~을 사용해.',[
+      ['optional','스마트폰','많은 사람들이 일상에서 스마트폰을 사용해.','Many people use smartphones in their daily lives.'],
+      ['optional','기술','많은 사람들이 일상에서 기술을 활용해.','Many people use technology in their daily lives.'],
+      ['optional','인터넷','많은 사람들이 일상에서 인터넷을 사용해.','Many people use the internet in their daily lives.']]),
+    T(28,'One advantage of [~] is convenience.','~의 장점 하나는 편리하다는 거야.',[
+      ['optional','스마트폰','스마트폰의 장점 하나는 편리함이야.','One advantage of smartphones is convenience.'],
+      ['optional','기술','기술의 장점 하나는 편리함이야.','One advantage of technology is convenience.'],
+      ['overseas','호텔','호텔의 장점 하나는 편리함이야.','One advantage of hotels is convenience.']]),
+    T(29,'However, [~] also has some disadvantages.','하지만 ~에는 단점도 있어.',[
+      ['optional','스마트폰','하지만 스마트폰에도 단점이 있어.','However, smartphones also have some disadvantages.'],
+      ['optional','기술','하지만 기술에도 단점이 있어.','However, technology also has some disadvantages.'],
+      ['optional','산업 발전','하지만 산업 발전에도 단점이 있어.','However, industrial development also has disadvantages.']]),
+    T(30,'One example of [~] is [~].','~의 한 가지 예는 ~야.',[
+      ['optional','기술','기술의 한 가지 예는 인공지능이야.','One example of technology is artificial intelligence.'],
+      ['optional','재활용','재활용의 한 가지 예는 플라스틱 재활용이야.','One example of recycling is plastic recycling.'],
+      ['optional','산업','산업의 한 가지 예는 자동차 산업이야.','One example of industry is the automobile industry.']]),
+    T(31,'Another example of [~] is [~].','~의 또 다른 예는 ~야.',[
+      ['optional','기술','기술의 또 다른 예는 스마트폰이야.','Another example of technology is smartphones.'],
+      ['optional','재활용','재활용의 또 다른 예는 종이 재활용이야.','Another example of recycling is paper recycling.'],
+      ['optional','산업','산업의 또 다른 예는 전자 산업이야.','Another example of industry is the electronics industry.']]),
+    T(32,'Compared to the past, [~] has changed a lot.','과거에 비해 ~은 많이 바뀌었어.',[
+      ['optional','기술','과거에 비해 기술은 많이 바뀌었어.','Compared to the past, technology has changed a lot.'],
+      ['optional','스마트폰','과거에 비해 스마트폰은 많이 바뀌었어.','Compared to the past, smartphones have changed a lot.'],
+      ['optional','산업','과거에 비해 산업은 많이 바뀌었어.','Compared to the past, industry has changed a lot.']]),
+    T(33,'Because of [~], our lives have become more convenient.','~ 덕분에 우리 삶이 더 편리해졌어.',[
+      ['optional','기술','기술 덕분에 우리 삶이 더 편리해졌어.','Because of technology, our lives have become more convenient.'],
+      ['optional','스마트폰','스마트폰 덕분에 우리 삶이 더 편리해졌어.','Because of smartphones, our lives have become more convenient.'],
+      ['optional','인터넷','인터넷 덕분에 우리 삶이 더 편리해졌어.','Because of the internet, our lives have become more convenient.']]),
+    T(34,'However, some people worry about [~].','하지만 어떤 사람들은 ~을 걱정해.',[
+      ['optional','기술 중독','하지만 어떤 사람들은 기술 중독을 걱정해.','However, some people worry about technology addiction.'],
+      ['optional','스마트폰 중독','하지만 어떤 사람들은 스마트폰 중독을 걱정해.','However, some people worry about smartphone addiction.'],
+      ['optional','환경 문제','하지만 어떤 사람들은 환경 문제를 걱정해.','However, some people worry about environmental problems.']]),
+    T(35,'I remember an experience related to [~].','나는 ~와 관련된 경험이 기억나.',[
+      ['overseas','호텔','나는 호텔에 묵었던 경험이 기억나.','I remember an experience related to staying at a hotel.'],
+      ['optional','미용실','나는 미용실에 갔던 경험이 기억나.','I remember an experience related to going to a hair salon.'],
+      ['optional','직장','나는 사무실에서 일했던 경험이 기억나.','I remember an experience related to working in an office.']]),
+    T(36,'Something unexpected happened when I [~].','~했을 때 예상치 못한 일이 있었어.',[
+      ['overseas','호텔','호텔에 묵었을 때 예상치 못한 일이 있었어.','Something unexpected happened when I stayed at a hotel.'],
+      ['optional','미용실','머리를 자르러 갔을 때 예상치 못한 일이 있었어.','Something unexpected happened when I got a haircut.'],
+      ['optional','첫 직장','첫 직장에서 예상치 못한 일이 있었어.','Something unexpected happened at my first job.']],
+      '원본 “when I experienced a hotel stay/a haircut”는 어색해서 stayed/got으로 고쳤어.'),
+    T(37,"At first, I didn't know how to handle [~].",'처음에는 ~을 어떻게 해결할지 몰랐어.',[
+      ['optional','직장 문제','처음에는 직장 문제를 어떻게 해결할지 몰랐어.',"At first, I didn't know how to handle the problem at work."],
+      ['overseas','예약 문제','처음에는 예약 문제를 어떻게 해결할지 몰랐어.',"At first, I didn't know how to handle the reservation issue."],
+      ['optional','휴대폰 문제','처음에는 휴대폰 문제를 어떻게 해결할지 몰랐어.',"At first, I didn't know how to handle the phone problem."]]),
+    T(38,'But eventually, I found a solution for [~].','하지만 결국 ~에 대한 해결책을 찾았어.',[
+      ['optional','직장 문제','하지만 결국 직장 문제의 해결책을 찾았어.','But eventually, I found a solution for the problem at work.'],
+      ['overseas','예약 문제','하지만 결국 예약 문제의 해결책을 찾았어.','But eventually, I found a solution for the reservation issue.'],
+      ['optional','휴대폰 문제','하지만 결국 휴대폰 문제의 해결책을 찾았어.','But eventually, I found a solution for the phone problem.']]),
+    T(39,'In the end, everything worked out well with [~].','결국 ~은 잘 해결됐어.',[
+      ['optional','직장 문제','결국 직장 문제는 잘 해결됐어.','In the end, everything worked out well with the work issue.'],
+      ['overseas','예약 문제','결국 예약은 잘 해결됐어.','In the end, everything worked out well with the reservation.'],
+      ['optional','휴대폰 문제','결국 휴대폰 문제는 잘 해결됐어.','In the end, everything worked out well with the phone issue.']]),
+    T(40,'Because of that experience, I learned [~].','그 경험 덕분에 ~을 배웠어.',[
+      ['optional','팀워크','그 경험 덕분에 팀워크의 중요성을 배웠어.','Because of that experience, I learned the importance of teamwork.'],
+      ['overseas','계획','그 경험 덕분에 계획의 중요성을 배웠어.','Because of that experience, I learned the importance of planning.'],
+      ['optional','기술의 한계','그 경험 덕분에 기술의 한계를 배웠어.','Because of that experience, I learned the limits of technology.']]),
+    T(41,'In the future, I think [~] will become more common.','앞으로 ~이 더 보편화될 것 같아.',[
+      ['optional','인공지능','앞으로 인공지능이 더 보편화될 것 같아.','In the future, I think AI technology will become more common.'],
+      ['optional','스마트폰','앞으로 스마트폰이 더 보편화될 것 같아.','In the future, I think smartphones will become more common.'],
+      ['optional','자동화','앞으로 자동화가 더 보편화될 것 같아.','In the future, I think automation will become more common.']]),
+    T(42,'More people will probably use [~] in the future.','앞으로 더 많은 사람이 ~을 사용할 거야.',[
+      ['optional','인공지능','앞으로 더 많은 사람이 인공지능을 사용할 거야.','More people will probably use AI in the future.'],
+      ['optional','스마트폰','앞으로 더 많은 사람이 스마트폰을 사용할 거야.','More people will probably use smartphones in the future.'],
+      ['optional','재활용 시스템','앞으로 더 많은 사람이 재활용 시스템을 사용할 거야.','More people will probably use recycling systems in the future.']]),
+    T(43,'I believe [~] will continue to grow.','나는 ~이 계속 성장할 거라고 믿어.',[
+      ['optional','기술','나는 기술이 계속 발전할 거라고 믿어.','I believe technology will continue to grow.'],
+      ['optional','재활용','나는 재활용 시스템이 계속 성장할 거라고 믿어.','I believe recycling systems will continue to grow.'],
+      ['optional','산업 혁신','나는 산업 혁신이 계속 발전할 거라고 믿어.','I believe industrial innovation will continue to grow.']]),
+    T(44,"That's why [~] is important in modern society.",'그래서 ~은 현대 사회에서 중요해.',[
+      ['optional','기술','그래서 기술은 현대 사회에서 중요해.',"That's why technology is important in modern society."],
+      ['optional','재활용','그래서 재활용은 현대 사회에서 중요해.',"That's why recycling is important in modern society."],
+      ['optional','산업','그래서 산업은 현대 사회에서 중요해.',"That's why industry is important in modern society."]]),
+    T(45,"Hi, I'm calling because I have a question about [~].",'안녕하세요, ~에 대해 질문이 있어서 전화했어요.',[
+      ['music','콘서트 표','안녕하세요, 콘서트 표에 대해 질문이 있어서 전화했어요.',"Hi, I'm calling because I have a question about concert tickets."],
+      ['overseas','여행 예약','안녕하세요, 여행 예약에 대해 질문이 있어서 전화했어요.',"Hi, I'm calling because I have a question about a travel reservation."],
+      ['optional','휴대폰 수리','안녕하세요, 휴대폰 수리에 대해 질문이 있어서 전화했어요.',"Hi, I'm calling because I have a question about phone repair."]]),
+    T(46,"I'd like to ask about [~].",'~에 대해 문의드리고 싶어요.',[
+      ['music','공연 일정','공연 일정에 대해 문의드리고 싶어요.',"I'd like to ask about the concert schedule."],
+      ['overseas','여행 상품','여행 상품에 대해 문의드리고 싶어요.',"I'd like to ask about tour packages."],
+      ['home','가구 배송','가구 배송에 대해 문의드리고 싶어요.',"I'd like to ask about furniture delivery."]]),
+    T(47,'Could you give me some information about [~]?','~에 대해 몇 가지 알려 주실 수 있나요?',[
+      ['overseas','투어','투어에 대해 몇 가지 알려 주실 수 있나요?','Could you give me some information about the tour?'],
+      ['music','공연','공연에 대해 몇 가지 알려 주실 수 있나요?','Could you give me some information about the concert?'],
+      ['optional','휴대폰 요금제','휴대폰 요금제에 대해 몇 가지 알려 주실 수 있나요?','Could you give me some information about phone plans?']]),
+    T(48,"I'd like to make a reservation for [~].",'~을 예약하고 싶어요.',[
+      ['music','콘서트','콘서트 표 두 장을 예약하고 싶어요.',"I'd like to book two tickets for the concert."],
+      ['overseas','투어','투어를 예약하고 싶어요.',"I'd like to make a reservation for a tour."],
+      ['optional','등산 투어','등산 투어를 예약하고 싶어요.',"I'd like to make a reservation for a hiking tour."]],
+      '콘서트 표는 make a reservation for tickets보다 book tickets가 자연스러워 첫 예시를 다듬었어.'),
+    T(49,"I'd like to change my reservation for [~].",'~ 예약을 변경하고 싶어요.',[
+      ['overseas','투어','투어 예약을 변경하고 싶어요.',"I'd like to change my reservation for the tour."],
+      ['music','콘서트','콘서트 예약을 변경하고 싶어요.',"I'd like to change my reservation for the concert."],
+      ['overseas','호텔','호텔 예약을 변경하고 싶어요.',"I'd like to change my reservation for the hotel."]]),
+    T(50,'I need to cancel my reservation for [~].','~ 예약을 취소해야 해요.',[
+      ['overseas','투어','투어 예약을 취소해야 해요.','I need to cancel my reservation for the tour.'],
+      ['music','콘서트','콘서트 예약을 취소해야 해요.','I need to cancel my reservation for the concert.'],
+      ['overseas','호텔','호텔 예약을 취소해야 해요.','I need to cancel my reservation for the hotel.']]),
+    T(51,"I'd like to confirm my reservation for [~].",'~ 예약을 확인하고 싶어요.',[
+      ['overseas','호텔','호텔 예약을 확인하고 싶어요.',"I'd like to confirm my reservation for the hotel."],
+      ['music','콘서트','콘서트 예약을 확인하고 싶어요.',"I'd like to confirm my reservation for the concert."],
+      ['overseas','투어','투어 예약을 확인하고 싶어요.',"I'd like to confirm my reservation for the tour."]]),
+    T(52,'I was wondering if [~] is/are available.','~을 이용할 수 있는지 궁금해요.',[
+      ['music','남은 표','아직 남은 표가 있는지 궁금해요.','I was wondering if tickets are available.'],
+      ['overseas','투어','그 투어를 예약할 수 있는지 궁금해요.','I was wondering if the tour is available.'],
+      ['optional','수리 서비스','수리 서비스를 받을 수 있는지 궁금해요.','I was wondering if repair service is available.']],
+      'tickets처럼 복수 명사에는 are, tour처럼 단수 명사에는 is를 써야 해.'),
+    T(53,'Is it possible to change [~]?','~을 변경할 수 있을까요?',[
+      ['overseas','투어 날짜','투어 날짜를 바꿀 수 있을까요?','Is it possible to change the tour date?'],
+      ['music','공연 날짜','공연 날짜를 바꿀 수 있을까요?','Is it possible to change the concert date?'],
+      ['optional','수리 시간','수리 시간을 바꿀 수 있을까요?','Is it possible to change the repair time?']]),
+    T(54,'Could I make a reservation for [~] tomorrow?','내일 ~을 예약할 수 있을까요?',[
+      ['overseas','투어','내일 투어를 예약할 수 있을까요?','Could I make a reservation for the tour tomorrow?'],
+      ['music','공연 표','내일 공연 표를 예약할 수 있을까요?','Could I book tickets for tomorrow?'],
+      ['optional','배송','내일 배송 일정을 예약할 수 있을까요?','Could I schedule a delivery for tomorrow?']],
+      'tickets/delivery는 book tickets, schedule a delivery가 더 자연스러워 조정했어.'),
+    T(55,'What time does [~] start?','~은 몇 시에 시작해요?',[
+      ['music','공연','공연은 몇 시에 시작하나요?','What time does the concert start?'],
+      ['overseas','투어','투어는 몇 시에 시작하나요?','What time does the tour start?'],
+      ['optional','행사','행사는 몇 시에 시작하나요?','What time does the event start?']]),
+    T(56,'How much does [~] cost?','~은 얼마인가요?',[
+      ['music','공연 표','공연 표는 얼마인가요?','How much does the concert ticket cost?'],
+      ['overseas','투어','투어는 얼마인가요?','How much does the tour cost?'],
+      ['optional','수리','수리 비용은 얼마인가요?','How much does the repair cost?']]),
+    T(57,'Do you have any recommendations for [~]?','~에 대해 추천해 주실 것이 있나요?',[
+      ['overseas','여행지','추천할 만한 여행지가 있나요?','Do you have any recommendations for travel destinations?'],
+      ['music','공연','추천할 만한 공연이 있나요?','Do you have any recommendations for concerts?'],
+      ['optional','스마트폰','추천할 만한 스마트폰이 있나요?','Do you have any recommendations for smartphones?']]),
+    T(58,'Could you recommend [~]?','~을 추천해 주실 수 있나요?',[
+      ['music','공연','공연을 하나 추천해 주실 수 있나요?','Could you recommend a concert?'],
+      ['overseas','여행지','여행지를 하나 추천해 주실 수 있나요?','Could you recommend a travel destination?'],
+      ['optional','스마트폰','스마트폰을 하나 추천해 주실 수 있나요?','Could you recommend a smartphone?']]),
+    T(59,'What would you recommend for [~]?','~에게 무엇을 추천하시겠어요?',[
+      ['overseas','관광객','관광객에게 무엇을 추천하시겠어요?','What would you recommend for tourists?'],
+      ['optional','초보자','초보자에게 무엇을 추천하시겠어요?','What would you recommend for beginners?'],
+      ['optional','새 사용자','새 사용자에게 무엇을 추천하시겠어요?','What would you recommend for new users?']]),
+    T(60,'I have a problem with [~].','~에 문제가 있어요.',[
+      ['overseas','여행 예약','여행 예약에 문제가 있어요.','I have a problem with my reservation.'],
+      ['music','공연 표','공연 표에 문제가 있어요.','I have a problem with my ticket.'],
+      ['overseas','호텔 예약','호텔 예약에 문제가 있어요.','I have a problem with my booking.']]),
+    T(61,'Something went wrong with [~].','~에 문제가 생겼어요.',[
+      ['overseas','투어 예약','투어 예약에 문제가 생겼어요.','Something went wrong with my tour booking.'],
+      ['music','공연 표 예약','공연 표 예약에 문제가 생겼어요.','Something went wrong with my ticket booking.'],
+      ['overseas','호텔 예약','호텔 예약에 문제가 생겼어요.','Something went wrong with my hotel booking.']]),
+    T(62,'Could you help me with [~]?','~을 도와주실 수 있나요?',[
+      ['overseas','예약 문제','예약 문제를 해결하는 걸 도와주실 수 있나요?','Could you help me with my reservation issue?'],
+      ['music','공연 표 문제','공연 표 문제를 도와주실 수 있나요?','Could you help me with my ticket problem?'],
+      ['overseas','호텔 예약 문제','호텔 예약 문제를 도와주실 수 있나요?','Could you help me with my booking problem?']]),
+    T(63,"I'm not sure what to do about [~].",'~에 대해 어떻게 해야 할지 모르겠어요.',[
+      ['overseas','예약 문제','예약 문제를 어떻게 해야 할지 모르겠어요.',"I'm not sure what to do about my reservation."],
+      ['music','공연 표','공연 표 문제를 어떻게 해야 할지 모르겠어요.',"I'm not sure what to do about my ticket."],
+      ['overseas','호텔 예약','호텔 예약을 어떻게 해야 할지 모르겠어요.',"I'm not sure what to do about my booking."]]),
+    T(64,'Could you explain the details of [~]?','~의 자세한 내용을 설명해 주실 수 있나요?',[
+      ['overseas','투어','투어의 자세한 내용을 설명해 주실 수 있나요?','Could you explain the details of the tour?'],
+      ['music','공연','공연의 자세한 내용을 설명해 주실 수 있나요?','Could you explain the details of the concert?'],
+      ['optional','수리 서비스','수리 서비스의 자세한 내용을 설명해 주실 수 있나요?','Could you explain the details of the repair service?']]),
+    T(65,'That sounds good for [~].','그건 ~에 좋을 것 같아요.',[
+      ['overseas','투어','그건 투어에 좋을 것 같아요.','That sounds good for the tour.'],
+      ['music','공연 표','그건 공연 표에 좋을 것 같아요.','That sounds good for the tickets.'],
+      ['optional','휴대폰 요금제','그건 휴대폰 요금제에 좋을 것 같아요.','That sounds good for the phone plan.']],
+      '대화에서는 상황에 따라 간단히 “That sounds good to me.”라고 해도 더 자연스러워.'),
+    T(66,'That would be great for [~].','그건 ~에 좋겠어요.',[
+      ['overseas','투어 예약','그건 투어 예약에 좋겠어요.','That would be great for the tour reservation.'],
+      ['music','공연 표','그건 공연 표에 좋겠어요.','That would be great for the concert tickets.'],
+      ['optional','수리 예약','그건 수리 예약에 좋겠어요.','That would be great for the repair appointment.']],
+      '원하는 제안을 받아들이는 답변으로는 “That would be great. Thank you!”도 유용해.'),
+    T(67,'I really appreciate your help with [~].','~을 도와주셔서 정말 감사해요.',[
+      ['overseas','예약','예약을 도와주셔서 정말 감사해요.','I really appreciate your help with my reservation.'],
+      ['music','공연 표 문제','공연 표 문제를 도와주셔서 정말 감사해요.','I really appreciate your help with the ticket issue.'],
+      ['optional','휴대폰 문제','휴대폰 문제를 도와주셔서 정말 감사해요.','I really appreciate your help with my phone problem.']]),
+    T(68,'That really helped with [~].','그게 ~을 해결하는 데 정말 도움이 됐어요.',[
+      ['overseas','예약 문제','그게 예약 문제를 해결하는 데 정말 도움이 됐어요.','That really helped with my reservation problem.'],
+      ['music','공연 표 문제','그게 공연 표 문제를 해결하는 데 정말 도움이 됐어요.','That really helped with my ticket issue.'],
+      ['overseas','호텔 예약 문제','그게 호텔 예약 문제를 해결하는 데 정말 도움이 됐어요.','That really helped with my booking problem.']]),
+    T(69,'Now I understand [~] better.','이제 ~을 더 잘 이해했어요.',[
+      ['overseas','투어 절차','이제 투어 절차를 더 잘 이해했어요.','Now I understand the tour process better.'],
+      ['music','공연 표 시스템','이제 표 예매 시스템을 더 잘 이해했어요.','Now I understand the ticket system better.'],
+      ['optional','수리 절차','이제 수리 절차를 더 잘 이해했어요.','Now I understand the repair process better.']]),
+    T(70,"I'm glad we solved [~].",'~을 해결해서 다행이에요.',[
+      ['overseas','예약 문제','예약 문제를 해결해서 다행이에요.',"I'm glad we solved the reservation problem."],
+      ['music','공연 표 문제','공연 표 문제를 해결해서 다행이에요.',"I'm glad we solved the ticket issue."],
+      ['overseas','호텔 예약 문제','호텔 예약 문제를 해결해서 다행이에요.',"I'm glad we solved the booking problem."]]),
+    T(71,'Thanks again for helping with [~].','~을 도와주셔서 다시 한번 감사해요.',[
+      ['overseas','예약','예약을 도와주셔서 다시 한번 감사해요.','Thanks again for helping with my reservation.'],
+      ['music','공연 표','공연 표 문제를 도와주셔서 다시 한번 감사해요.','Thanks again for helping with my ticket.'],
+      ['optional','휴대폰 문제','휴대폰 문제를 도와주셔서 다시 한번 감사해요.','Thanks again for helping with my phone issue.']])
+  ];
+})();
+
+</script>
+<script>
 /* app.js */
 (() => {
   const categories = window.OPIC_CATEGORIES || [];
   const surveyTopicMap = window.OPIC_SURVEY_TOPIC_MAP || {};
   const contentMap = window.OPIC_CARD_TOPIC_MAP || {};
   const patterns = window.OPIC_PATTERNS || [];
+  const templates = window.OPIC_TEMPLATES || [];
+  const templateById = new Map(templates.map(template=>[template.id,template]));
   const allowedTopics = new Set(categories.map(category=>category.id));
   const roleplayPattern = pattern => ['roleplay','question'].includes(pattern.cat) || (Number(pattern.id.slice(1))>=94 && Number(pattern.id.slice(1))<=113);
   const topicFor = (pattern,index) => contentMap[pattern.id]?.[index] || surveyTopicMap[pattern.surveyTopic] || 'general';
@@ -1235,6 +1594,13 @@ window.OPIC_CARD_TOPIC_MAP = {
       id: `${pattern.id}-v${index + 1}`, category:topicFor(pattern,index+1), topics:tagsFor(pattern,topicFor(pattern,index+1)), kind: 'variation', topic, surveyTopic:pattern.surveyTopic || null, priority:false, origin:pattern.origin ? 'lecture-adapted' : 'original', source:pattern.source || '', fit:pattern.fit || 'survey', ko, en
     }))
   ]);
+  const templateCards = templates.flatMap(template=>template.examples.map(example=>({
+    id:example.id,category:example.category,
+    topics:[...new Set([example.category,...(template.group==='roleplay'?['roleplay']:[])])],
+    kind:'variation',topic:example.topic,surveyTopic:null,priority:false,origin:'template',
+    source:`만능패턴 ${template.number} · 사용자 제공 이미지`,fit:example.category==='optional'?'optional':'survey',
+    patternId:template.id,ko:example.ko,en:example.en
+  })));
   const storeKey = 'opic-im3-playbook-v1';
   function readSaved() {
     try { return JSON.parse(localStorage.getItem(storeKey) || '{}'); } catch { return {}; }
@@ -1254,10 +1620,10 @@ window.OPIC_CARD_TOPIC_MAP = {
   }
   const loadedCustom = Array.isArray(old.custom) ? old.custom.slice(0,1000).map(cleanCustom).filter(Boolean) : [];
   const savedPosition = old.position && typeof old.position === 'object' ? old.position : {};
-  let cards = [...builtInCards, ...loadedCustom];
+  let cards = [...builtInCards, ...templateCards, ...loadedCustom];
   const state = {
     category:typeof savedPosition.category === 'string' && allowedTopics.has(savedPosition.category) ? savedPosition.category : 'music',
-    sourceFilter:['all','lecture','original','custom'].includes(savedPosition.sourceFilter) ? savedPosition.sourceFilter : 'all',
+    sourceFilter:['all','lecture','original','template','custom'].includes(savedPosition.sourceFilter) ? savedPosition.sourceFilter : 'all',
     mode:typeof savedPosition.mode === 'string' && ['all','priority','core','variation','review','saved'].includes(savedPosition.mode) ? savedPosition.mode : 'all',
     query:typeof savedPosition.query === 'string' ? savedPosition.query.slice(0,120) : '',
     index:Number.isInteger(savedPosition.index) && savedPosition.index>=0 ? savedPosition.index : 0,
@@ -1270,6 +1636,12 @@ window.OPIC_CARD_TOPIC_MAP = {
       repeat:old.listen?.repeat === true,
       speed:[0.85,1,1.15].includes(Number(old.listen?.speed)) ? Number(old.listen.speed) : 1,
       gapSeconds:Number.isInteger(Number(old.listen?.gapSeconds)) && Number(old.listen?.gapSeconds)>=0 && Number(old.listen?.gapSeconds)<=30 ? Number(old.listen.gapSeconds) : 0
+    },
+    templateView:{
+      group:['all','selected','unexpected','roleplay'].includes(old.templateView?.group)?old.templateView.group:'all',
+      topic:typeof old.templateView?.topic==='string'&&allowedTopics.has(old.templateView.topic)?old.templateView.topic:'all',
+      query:typeof old.templateView?.query==='string'?old.templateView.query.slice(0,120):'',
+      index:Number.isInteger(old.templateView?.index)&&old.templateView.index>=0?old.templateView.index:0
     },
     daily:old.daily && typeof old.daily === 'object' ? old.daily : {},
     lastCardId:typeof savedPosition.cardId === 'string' ? savedPosition.cardId : null,
@@ -1313,7 +1685,7 @@ window.OPIC_CARD_TOPIC_MAP = {
   const currentCard = () => deck[state.index] || null;
 
   function rebuildCards() {
-    cards = [...builtInCards, ...state.custom];
+    cards = [...builtInCards, ...templateCards, ...state.custom];
     // 데이터 목록이 바뀌더라도 암기·복습·저장·제외 기록은 자동 삭제하지 않습니다.
     // 명시적인 카드 삭제만 해당 기록을 제거할 수 있습니다.
   }
@@ -1323,7 +1695,7 @@ window.OPIC_CARD_TOPIC_MAP = {
       localStorage.setItem(storeKey, JSON.stringify({
         schema:2, visibilityFixV1:true, known:[...state.known], review:[...state.review], saved:[...state.saved], voiceKey:state.voiceKey,
         listen:{index:state.listen.index,repeat:state.listen.repeat,speed:state.listen.speed,gapSeconds:state.listen.gapSeconds},
-        hidden:[...state.hidden], custom:state.custom, daily:state.daily,
+        hidden:[...state.hidden], custom:state.custom, daily:state.daily,templateView:state.templateView,
         position:{category:state.category,sourceFilter:state.sourceFilter,mode:state.mode,query:state.query,index:state.index,cardId:currentCard()?.id || null},
         updatedAt:new Date().toISOString()
       }));
@@ -1336,7 +1708,7 @@ window.OPIC_CARD_TOPIC_MAP = {
   }
 
   function renderCategories() {
-    const countBasis=availableCards().filter(card=>state.sourceFilter==='all' || (state.sourceFilter==='lecture'&&card.origin.startsWith('lecture-')) || (state.sourceFilter==='original'&&card.origin==='original') || (state.sourceFilter==='custom'&&card.origin==='custom'));
+    const countBasis=availableCards().filter(card=>state.sourceFilter==='all' || (state.sourceFilter==='lecture'&&card.origin.startsWith('lecture-')) || (state.sourceFilter==='original'&&card.origin==='original') || (state.sourceFilter==='template'&&card.origin==='template') || (state.sourceFilter==='custom'&&card.origin==='custom'));
     $('topicSelect').innerHTML = ['focus','survey','extra'].map(group=>{
       const options=categories.filter(cat=>cat.group===group).map(cat=>{
         const count=cat.id==='all'?countBasis.length:countBasis.filter(card=>card.topics.includes(cat.id)).length;
@@ -1364,6 +1736,7 @@ window.OPIC_CARD_TOPIC_MAP = {
       if (state.category !== 'all' && !card.topics.includes(state.category)) return false;
       if (state.sourceFilter === 'lecture' && !card.origin.startsWith('lecture-')) return false;
       if (state.sourceFilter === 'original' && card.origin !== 'original') return false;
+      if (state.sourceFilter === 'template' && card.origin !== 'template') return false;
       if (state.sourceFilter === 'custom' && card.origin !== 'custom') return false;
       if (state.mode === 'priority' && !card.priority) return false;
       if (state.mode === 'core' && card.kind !== 'core') return false;
@@ -1413,7 +1786,7 @@ window.OPIC_CARD_TOPIC_MAP = {
   }
 
   function renderVoiceChoices(card) {
-    const choices = card.origin === 'custom' ? [] : [['recorded','원본 음성 (MP3)']];
+    const choices = ['custom','template'].includes(card.origin) ? [] : [['recorded','원본 음성 (MP3)']];
     if (window.speechSynthesis) {
       choices.push(['device','기기 기본 영어']);
       for (const voice of englishVoices()) {
@@ -1423,7 +1796,7 @@ window.OPIC_CARD_TOPIC_MAP = {
     }
     const select = $('voiceSelect');
     select.innerHTML = choices.map(([value,label]) => `<option value="${escapeHtml(value)}">${escapeHtml(label)}</option>`).join('');
-    const preferred = card.origin === 'custom' && state.voiceKey === 'recorded' ? 'device' : state.voiceKey;
+    const preferred = ['custom','template'].includes(card.origin) && state.voiceKey === 'recorded' ? 'device' : state.voiceKey;
     const actual = choices.some(([value]) => value === preferred) ? preferred : (choices[0]?.[0] || 'device');
     select.value = actual;
     select.disabled = choices.length < 2;
@@ -1570,7 +1943,7 @@ window.OPIC_CARD_TOPIC_MAP = {
     if (!card) { continuous.status='done';renderContinuous();return; }
     const token=continuous.token;
     renderContinuous();
-    if (continuous.phase==='ko' || card.origin==='custom' || state.voiceKey!=='recorded') {
+    if (continuous.phase==='ko' || ['custom','template'].includes(card.origin) || state.voiceKey!=='recorded') {
       speakContinuousStage(card,token,continuous.phase);
       return;
     }
@@ -1637,6 +2010,90 @@ window.OPIC_CARD_TOPIC_MAP = {
     renderContinuous();
   }
 
+  const templateGroupNames={selected:'선택 주제',unexpected:'돌발 주제',roleplay:'롤플레이'};
+  const normalizedEnglish=value=>value.toLocaleLowerCase().replace(/[^a-z0-9]+/g,' ').trim();
+  function filteredTemplates() {
+    const {group,topic,query}=state.templateView;
+    const needle=query.trim().toLocaleLowerCase();
+    return templates.filter(template=>{
+      if (group!=='all' && template.group!==group) return false;
+      if (topic!=='all' && !template.examples.some(example=>example.category===topic)) return false;
+      if (!needle) return true;
+      return [template.pattern,template.korean,...template.examples.flatMap(ex=>[ex.en,ex.ko,ex.topic,nameFor(ex.category)])]
+        .some(value=>value.toLocaleLowerCase().includes(needle));
+    });
+  }
+
+  function renderTemplates() {
+    const filtered=filteredTemplates();
+    state.templateView.index=Math.max(0,Math.min(state.templateView.index,Math.max(0,filtered.length-1)));
+    const template=filtered[state.templateView.index];
+    $('templateGroup').value=state.templateView.group;
+    $('templateTopic').value=state.templateView.topic;
+    $('templatePicker').innerHTML=filtered.map(item=>
+      `<option value="${item.id}">${item.number}. ${escapeHtml(item.pattern)}</option>`).join('');
+    $('templatePicker').disabled=!filtered.length;
+    $('templatePicker').value=template?.id||'';
+    $('templateCounter').textContent=filtered.length?`${state.templateView.index+1} / ${filtered.length}`:'0 / 0';
+    $('templateTotal').textContent=`${templates.length}개 패턴 · ${templateCards.length}개 예문`;
+    $('templateStudyCard').hidden=!template;
+    $('templateEmpty').hidden=!!template;
+    $('templatePrev').disabled=!template || state.templateView.index===0;
+    $('templateNext').disabled=!template || state.templateView.index===filtered.length-1;
+    if (!template) return;
+    $('templateTypeLabel').textContent=templateGroupNames[template.group];
+    $('templateTypeLabel').className=`template-badge ${template.group}`;
+    $('templateNumber').textContent=`PATTERN ${String(template.number).padStart(2,'0')}`;
+    $('templatePattern').textContent=template.pattern;
+    $('templateKorean').textContent=template.korean;
+    $('templateNote').hidden=!template.note;
+    $('templateNote').textContent=template.note?`💡 ${template.note}`:'';
+    $('templateExamples').innerHTML=template.examples.map(example=>{
+      const hidden=state.hidden.has(example.id);
+      return `<section class="template-example"><div class="template-example-header"><span class="template-example-tag ${example.category==='optional'?'optional':''}">${escapeHtml(nameFor(example.category))} · ${escapeHtml(example.topic)}</span><div class="template-example-actions"><button type="button" data-template-action="speak" data-card-id="${example.id}" aria-label="${escapeHtml(example.topic)} 영어 듣기">▶ 듣기</button><button type="button" data-template-action="practice" data-card-id="${example.id}" ${hidden?'disabled':''}>${hidden?'학습에서 제외됨':'카드 연습 ↗'}</button></div></div><p class="template-example-ko">${escapeHtml(example.ko)}</p><p class="template-example-en">${escapeHtml(example.en)}</p>${example.category==='optional'?'<small class="template-example-optional">현재 서베이 밖의 참고 예문</small>':''}</section>`;
+    }).join('');
+  }
+
+  function openTemplateById(id) {
+    const index=templates.findIndex(template=>template.id===id);
+    if(index<0) return;
+    state.templateView={group:'all',topic:'all',query:'',index};
+    $('templateSearch').value='';
+    renderTemplates();
+    persist();
+    showPage('templates');
+  }
+
+  function renderRelatedTemplate(card) {
+    const panel=$('relatedPatternPanel');
+    const normalized=normalizedEnglish(card.en);
+    const exact=card.patternId ? templateById.get(card.patternId)
+      : templates.find(template=>template.examples.some(example=>normalizedEnglish(example.en)===normalized));
+    // 기존 문장에 똑같은 틀이 없을 때는 같은 카테고리의 응용 예시를 추천하되, 동일 패턴이라고 표시하지 않습니다.
+    const suggested=exact || templates.find(template=>template.group==='selected' && template.examples.some(example=>example.category===card.category));
+    if (!suggested) {panel.hidden=true;panel.open=false;return;}
+    if (panel.dataset.cardId!==card.id) {panel.open=false;panel.dataset.cardId=card.id;}
+    panel.hidden=false;
+    $('relatedPatternSummary').textContent=exact
+      ? `↔ 만능패턴 ${suggested.number} · 다른 주제 예문 보기`
+      : '↔ 이 주제에 응용할 만능 템플릿 보기';
+    const examples=suggested.examples.filter(example=>example.id!==card.id);
+    $('relatedPatternContent').innerHTML=`<div class="related-pattern-content"><p class="related-pattern-title">${exact?'같은 문장 틀의 다른 주제 예문':'이 카드와 연결해 연습할 수 있는 추천 틀'}: ${escapeHtml(suggested.pattern)}</p>${examples.map(example=>
+      `<div class="related-pattern-row"><span>${escapeHtml(example.topic)} · ${escapeHtml(nameFor(example.category))}</span><p>${escapeHtml(example.ko)}</p><p>${escapeHtml(example.en)}</p></div>`).join('')}<button class="related-pattern-visit" type="button" data-template-open="${suggested.id}">템플릿 페이지에서 보기 ↗</button></div>`;
+  }
+
+  function speakTemplateExample(id) {
+    const card=templateCards.find(item=>item.id===id);
+    if (!card || !window.speechSynthesis?.speak || typeof window.SpeechSynthesisUtterance!=='function') return;
+    stopDeviceSpeech();
+    const speech=new window.SpeechSynthesisUtterance(card.en);
+    const preferred=englishVoices().find(voice=>`voice:${voice.voiceURI || voice.name}`===state.voiceKey) || englishVoices()[0];
+    if (preferred) speech.voice=preferred;
+    speech.lang=preferred?.lang||'en-US';
+    speech.rate=1;
+    window.speechSynthesis.speak(speech);
+  }
+
   function renderCard() {
     if (deck.length === 0) {
       $('deckArea').hidden = true;
@@ -1668,13 +2125,13 @@ window.OPIC_CARD_TOPIC_MAP = {
     const review = state.review.has(card.id);
     const saved = state.saved.has(card.id);
     const chapterName = nameFor(card.category);
-    const originLabel = card.origin === 'lecture-exact' ? '강의 원문' : card.origin === 'lecture-adapted' ? '강의 응용' : card.origin === 'custom' ? '직접 추가' : '자체 제작';
+    const originLabel = card.origin === 'lecture-exact' ? '강의 원문' : card.origin === 'lecture-adapted' ? '강의 응용' : card.origin === 'template' ? '만능 템플릿' : card.origin === 'custom' ? '직접 추가' : '자체 제작';
     $('deckTag').textContent = `${chapterName} · ${card.priority ? '★ 우선 암기' : originLabel}${card.fit === 'optional' ? ' · 참고용' : ''}`;
     $('cardCategory').textContent = chapterName;
     $('koreanSentence').textContent = card.ko;
     $('englishSentence').textContent = card.en;
     const audioPlayer = $('cardAudio');
-    if (card.origin === 'custom') {
+    if (['custom','template'].includes(card.origin)) {
       audioPlayer.pause();
       audioPlayer.dataset.cardId = '';
     } else if (audioPlayer.dataset.cardId !== card.id) {
@@ -1684,7 +2141,7 @@ window.OPIC_CARD_TOPIC_MAP = {
       audioPlayer.load();
     }
     const voiceChoice = renderVoiceChoices(card);
-    const playRecording = card.origin !== 'custom' && voiceChoice === 'recorded';
+    const playRecording = !['custom','template'].includes(card.origin) && voiceChoice === 'recorded';
     audioPlayer.hidden = !playRecording;
     $('customVoiceButton').hidden = playRecording;
     $('cardNumber').textContent = String(state.index+1).padStart(2,'0');
@@ -1718,6 +2175,7 @@ window.OPIC_CARD_TOPIC_MAP = {
     $('flipCard').setAttribute('aria-expanded', String(state.revealed));
     $('flipCard').setAttribute('aria-label', state.revealed ? '클릭하여 영어 정답 숨기기' : '클릭하여 영어 정답 확인하기');
     $('sessionStatus').textContent = state.revealed ? '직접 말한 문장과 비교해 봐' : '천천히 말해도 괜찮아';
+    renderRelatedTemplate(card);
   }
 
   function refresh() {
@@ -1921,7 +2379,7 @@ window.OPIC_CARD_TOPIC_MAP = {
     $('manageList').innerHTML=found.slice(0,state.manageLimit).map(card=>{
       const hidden=state.hidden.has(card.id);
       const isCustom=card.origin==='custom';
-      const source=isCustom?'직접 추가':card.origin.startsWith('lecture-')?'강의 표현':'학습 예문';
+      const source=isCustom?'직접 추가':card.origin==='template'?'만능 템플릿':card.origin.startsWith('lecture-')?'강의 표현':'학습 예문';
       const actions=isCustom
         ? `<button type="button" data-manage-action="edit" data-card-id="${card.id}">수정</button><button class="danger" type="button" data-manage-action="delete" data-card-id="${card.id}">삭제</button>`
         : `<button type="button" data-manage-action="${hidden?'restore':'exclude'}" data-card-id="${card.id}">${hidden?'복원':'학습에서 제외'}</button>`;
@@ -1946,7 +2404,7 @@ window.OPIC_CARD_TOPIC_MAP = {
   }
 
   function showPage(page,changeUrl=true) {
-    const target=['study','add','manage','progress'].includes(page)?page:'study';
+    const target=['study','templates','add','manage','progress'].includes(page)?page:'study';
     if (target!=='progress' && continuous.status==='playing') pauseContinuous();
     for(const item of document.querySelectorAll('[data-page]')) item.hidden=item.dataset.page!==target;
     for(const link of document.querySelectorAll('[data-page-link]')) {
@@ -1956,6 +2414,7 @@ window.OPIC_CARD_TOPIC_MAP = {
     }
     if (changeUrl && window.location?.hash!==`#${target}`) window.history?.pushState({},'',`#${target}`);
     if (target==='manage') renderManagement();
+    if (target==='templates') renderTemplates();
     if (target==='progress') {updateStats();renderContinuous();}
     window.scrollTo?.({top:0,behavior:'auto'});
   }
@@ -1998,12 +2457,18 @@ window.OPIC_CARD_TOPIC_MAP = {
         state.listen.speed=[0.85,1,1.15].includes(Number(data.listen.speed)) ? Number(data.listen.speed) : 1;
         state.listen.gapSeconds=Number.isInteger(Number(data.listen.gapSeconds)) && Number(data.listen.gapSeconds)>=0 && Number(data.listen.gapSeconds)<=30 ? Number(data.listen.gapSeconds) : 0;
       }
+      if (data.templateView && typeof data.templateView==='object') {
+        state.templateView.group=['all','selected','unexpected','roleplay'].includes(data.templateView.group)?data.templateView.group:'all';
+        state.templateView.topic=allowedTopics.has(data.templateView.topic)?data.templateView.topic:'all';
+        state.templateView.query=typeof data.templateView.query==='string'?data.templateView.query.slice(0,120):'';
+        state.templateView.index=Number.isInteger(data.templateView.index)&&data.templateView.index>=0?data.templateView.index:0;
+      }
       continuous.index=state.listen.index;
       continuous.queue=[];
       rebuildCards();
       const position=data.position||{};
       state.category=categories.some(x=>x.id===position.category)?position.category:'music';
-      state.sourceFilter=['all','lecture','original','custom'].includes(position.sourceFilter)?position.sourceFilter:'all';
+      state.sourceFilter=['all','lecture','original','template','custom'].includes(position.sourceFilter)?position.sourceFilter:'all';
       state.mode=['all','priority','core','variation','review','saved'].includes(position.mode)?position.mode:'all';
       state.query=typeof position.query==='string'?position.query.slice(0,120):'';
       state.index=Number.isInteger(position.index)&&position.index>=0?position.index:0;
@@ -2017,7 +2482,9 @@ window.OPIC_CARD_TOPIC_MAP = {
       }
       state.revealed=false;state.shuffledIds=null;
       $('searchInput').value=state.query;
+      $('templateSearch').value=state.templateView.query;
       clearCustomForm();refresh();renderContinuous();
+      renderTemplates();
       $('saveStatus').textContent='백업을 가져왔어. 현재 진행 상태를 복원했어.';
     } catch(error) {
       window.alert(`백업을 불러오지 못했어: ${error.message}`);
@@ -2279,6 +2746,12 @@ window.OPIC_CARD_TOPIC_MAP = {
     $('sessionStatus').textContent=chosen ? `${chosen.name} 음성으로 읽어 주는 중...` : '기기 영어 음성으로 읽어 주는 중...';
   }
   makeCategories();
+  const templateTopics=new Set(templateCards.map(card=>card.category));
+  $('templateTopic').innerHTML='<option value="all">모든 주제</option>'+categories
+    .filter(category=>category.id!=='all'&&templateTopics.has(category.id))
+    .map(category=>`<option value="${category.id}">${escapeHtml(category.name)}</option>`).join('');
+  $('templateSearch').value=state.templateView.query;
+  renderTemplates();
   $('searchInput').value = state.query;
   refresh();
   renderContinuous();
@@ -2322,6 +2795,40 @@ window.OPIC_CARD_TOPIC_MAP = {
       event.preventDefault();
       showPage(link.dataset.pageLink);
     });
+  });
+  $('templateGroup').addEventListener('change',event=>{
+    state.templateView.group=event.target.value;state.templateView.index=0;
+    renderTemplates();persist();
+  });
+  $('templateTopic').addEventListener('change',event=>{
+    state.templateView.topic=event.target.value;state.templateView.index=0;
+    renderTemplates();persist();
+  });
+  $('templateSearch').addEventListener('input',event=>{
+    state.templateView.query=event.target.value.slice(0,120);state.templateView.index=0;
+    renderTemplates();persist();
+  });
+  $('templatePicker').addEventListener('change',event=>{
+    const index=filteredTemplates().findIndex(template=>template.id===event.target.value);
+    if (index<0) return;
+    state.templateView.index=index;renderTemplates();persist();
+  });
+  $('templatePrev').addEventListener('click',()=>{
+    state.templateView.index=Math.max(0,state.templateView.index-1);renderTemplates();persist();
+  });
+  $('templateNext').addEventListener('click',()=>{
+    state.templateView.index=Math.max(0,Math.min(filteredTemplates().length-1,state.templateView.index+1));
+    renderTemplates();persist();
+  });
+  $('templateExamples').addEventListener('click',event=>{
+    const button=event.target.closest('[data-template-action]');
+    if(!button) return;
+    if(button.dataset.templateAction==='speak') speakTemplateExample(button.dataset.cardId);
+    if(button.dataset.templateAction==='practice') openCardById(button.dataset.cardId);
+  });
+  $('relatedPatternContent').addEventListener('click',event=>{
+    const button=event.target.closest('[data-template-open]');
+    if(button) openTemplateById(button.dataset.templateOpen);
   });
   window.addEventListener?.('popstate',()=>showPage(window.location?.hash?.slice(1)||'study',false));
   window.addEventListener?.('hashchange',()=>showPage(window.location?.hash?.slice(1)||'study',false));
