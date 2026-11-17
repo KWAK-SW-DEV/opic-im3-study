@@ -215,6 +215,10 @@ html:not(.opic-locked) .opic-entry-gate{display:none!important}
 .continuous-controls{display:grid;grid-template-columns:auto 1fr auto auto;gap:9px;margin-top:16px}.continuous-controls button{min-height:45px;border-radius:11px;font-size:12px;font-weight:850;cursor:pointer}.continuous-main{padding:10px 15px;border:1px solid #4c60b9;background:#5267cc;color:#fff;box-shadow:0 5px 15px rgba(70,91,184,.14)}.continuous-skip,.continuous-stop{padding:9px 13px;border:1px solid #d9e0f0;background:#fff;color:#566892}.continuous-stop{color:#9a5b67;border-color:#eddfe0}.continuous-controls button:disabled{opacity:.42;cursor:not-allowed}.continuous-controls button:focus-visible,.continuous-options select:focus-visible,.continuous-options input:focus-visible{outline:3px solid #9dacfb;outline-offset:2px}
 .continuous-options{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:15px}.continuous-repeat{display:inline-flex;align-items:center;gap:8px;color:#566582;font-size:13px;font-weight:850;cursor:pointer}.continuous-repeat input{width:17px;height:17px;accent-color:#5368d0}.continuous-timing{display:flex;align-items:center;flex-wrap:wrap;gap:11px 15px}.continuous-speed,.continuous-gap{display:inline-flex;align-items:center;gap:7px;color:#71809a;font-size:12px;font-weight:800;white-space:nowrap}.continuous-speed select,.continuous-gap input{min-height:38px;padding:8px;border:1px solid #dde3f0;border-radius:8px;background:#fff;color:#4b5f94;font-size:13px}.continuous-gap input{width:63px;text-align:center;font-variant-numeric:tabular-nums}.continuous-hint{margin:10px 0 0;color:#8591a5;font-size:11px;line-height:1.6}.continuous-status{margin:11px 0 0;min-height:18px;color:#697a99;font-size:12px;line-height:1.5}
 .review-listener{border-color:#c9e5dc;background:linear-gradient(155deg,#fff 60%,#f0faf6)}.review-listener .continuous-head .eyebrow{color:#23836a}.review-listener .continuous-count{color:#24816b}.review-listener .continuous-track>span{background:#31a487}.review-listener .continuous-main{background:#258b75;border-color:#1f7968;box-shadow:0 5px 15px rgba(25,122,98,.12)}.review-listen-options{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:14px}.review-listen-options>span{color:#81908b;font-size:11px}.review-listen-empty{margin:12px 0 0;padding:13px 15px;border-radius:10px;background:#f3faf7;color:#527565;font-size:12px;line-height:1.6}.review-listen-empty[hidden]{display:none}
+.continuous-loop-settings{display:flex;align-items:center;flex-wrap:wrap;gap:10px 15px}
+.continuous-loop-count input:disabled{opacity:.45;background:#eef0f4}
+.review-listen-options{flex-wrap:wrap;align-items:flex-start;gap:12px 20px}
+.review-listen-options .continuous-timing{justify-content:flex-end}
 .footer{margin-top:60px}
 @media(max-width:1200px){.page-heading{align-items:start}.page-quick-actions{justify-content:flex-start}}
 @media(max-width:950px){.sidebar{display:none}.app-shell{display:block}.main-content{padding:0 20px 94px}.topbar{padding:20px 0 14px}.mobile-page-nav{display:grid;grid-template-columns:repeat(4,1fr);position:fixed;left:0;right:0;bottom:0;z-index:80;padding:8px 12px max(9px,env(safe-area-inset-bottom));border-top:1px solid #e3e7f0;box-shadow:0 -9px 25px rgba(40,50,88,.06);background:rgba(255,255,255,.98)}.mobile-page-nav a{display:grid;justify-items:center;gap:4px;text-align:center;text-decoration:none;border-radius:9px;color:#939cb1;padding:6px 0;font-size:10px;font-weight:850}.mobile-page-nav a>span{font-size:20px;line-height:1.3}.mobile-page-nav a.active{color:#4f63c1;background:#f0f3ff}.page-heading{margin:16px 0 22px}.page-heading h1{font-size:30px}.page-heading p{font-size:11px}.topic-panel{padding:17px 15px}.topic-chip-row{flex-wrap:nowrap;overflow-x:auto;padding-bottom:3px;scrollbar-width:thin}.topic-chip-row .category-button{flex:none}.topic-panel-heading{display:block}.topic-panel-heading>span{display:block;margin-top:4px}.practice-section .toolbar{display:block}.study-search-row{margin-top:11px}}
@@ -558,7 +562,7 @@ body:has(#studyView:not([hidden])) .topbar,body:has(#studyView:not([hidden])) .f
             <button id="continuousNext" class="continuous-skip" type="button" aria-label="다음 문장"><span>다음</span> ⏭</button>
             <button id="continuousStop" class="continuous-stop" type="button" aria-label="연속 듣기 종료" disabled>■ 종료</button>
           </div>
-          <div class="continuous-options"><label class="continuous-repeat"><input id="continuousRepeat" type="checkbox" /> <span>🔁 전체 반복</span></label><div class="continuous-timing"><label class="continuous-speed">읽기 속도 <select id="continuousSpeed" aria-label="연속 듣기 속도"><option value="0.85">느리게</option><option value="1" selected>보통</option><option value="1.15">빠르게</option></select></label><label class="continuous-gap">기본 간격 <input id="continuousGapSeconds" type="number" min="0" max="30" step="1" inputmode="numeric" aria-label="한국어와 영어, 다음 문장 사이 간격 초" value="0" /><span>초</span></label><label class="continuous-gap continuous-repeat-gap">영어 반복 간격 <input id="continuousRepeatGapSeconds" type="number" min="0" max="30" step="1" inputmode="numeric" aria-label="영어 세 번 반복하는 사이 간격 초" value="2" /><span>초</span></label></div></div>
+          <div class="continuous-options"><div class="continuous-loop-settings"><label class="continuous-repeat"><input id="continuousRepeat" type="checkbox" /> <span>♾ 무한 반복</span></label><label class="continuous-gap continuous-loop-count">목록 재생 횟수 <input id="continuousLoopCount" type="number" min="1" max="99" step="1" inputmode="numeric" aria-label="전체 문장 목록 재생 횟수" value="1" /><span>회</span></label></div><div class="continuous-timing"><label class="continuous-speed">읽기 속도 <select id="continuousSpeed" aria-label="연속 듣기 속도"><option value="0.85">느리게</option><option value="1" selected>보통</option><option value="1.15">빠르게</option></select></label><label class="continuous-gap">기본 간격 <input id="continuousGapSeconds" type="number" min="0" max="30" step="1" inputmode="numeric" aria-label="전체 듣기 한국어와 영어, 다음 문장 사이 간격 초" value="0" /><span>초</span></label><label class="continuous-gap continuous-repeat-gap">영어 반복 간격 <input id="continuousRepeatGapSeconds" type="number" min="0" max="30" step="1" inputmode="numeric" aria-label="전체 듣기 영어 세 번 반복하는 사이 간격 초" value="2" /><span>초</span></label></div></div>
           <p class="continuous-hint">한국어 1번 → 영어 3번 → 다음 문장. 영어 반복 사이는 기본 2초이고, 기본 간격은 한국어→영어 및 다음 문장으로 넘어갈 때 적용돼.</p>
           <p id="continuousStatus" class="continuous-status" role="status" aria-live="polite">전체 듣기를 누르면 첫 문장부터 시작해.</p>
           <audio id="continuousAudio" preload="none" hidden></audio>
@@ -574,7 +578,8 @@ body:has(#studyView:not([hidden])) .topbar,body:has(#studyView:not([hidden])) .f
             <button id="reviewListenNext" class="continuous-skip" type="button" aria-label="다음 복습 문장"><span>다음</span> ⏭</button>
             <button id="reviewListenStop" class="continuous-stop" type="button" aria-label="복습 듣기 종료" disabled>■ 종료</button>
           </div>
-          <div class="review-listen-options"><label class="continuous-repeat"><input id="reviewListenRepeat" type="checkbox" checked /> <span>🔁 복습 목록 반복</span></label><span>읽기 속도·간격은 위 설정과 동일해.</span></div>
+          <div class="review-listen-options"><div class="continuous-loop-settings"><label class="continuous-repeat"><input id="reviewListenRepeat" type="checkbox" checked /> <span>♾ 무한 반복</span></label><label class="continuous-gap continuous-loop-count">목록 재생 횟수 <input id="reviewListenLoopCount" type="number" min="1" max="99" step="1" inputmode="numeric" aria-label="복습 문장 목록 재생 횟수" value="1" disabled /><span>회</span></label></div><div class="continuous-timing"><label class="continuous-gap">기본 간격 <input id="reviewListenGapSeconds" type="number" min="0" max="30" step="1" inputmode="numeric" aria-label="복습 듣기 한국어와 영어, 다음 문장 사이 간격 초" value="0" /><span>초</span></label><label class="continuous-gap continuous-repeat-gap">영어 반복 간격 <input id="reviewListenRepeatGapSeconds" type="number" min="0" max="30" step="1" inputmode="numeric" aria-label="복습 듣기 영어 세 번 반복하는 사이 간격 초" value="2" /><span>초</span></label></div></div>
+          <p class="continuous-hint">복습 듣기의 두 간격은 위의 전체 듣기와 따로 저장돼. ‘무한 반복’을 해제하면 목록을 몇 번 재생할지 정할 수 있어. 문장당 영어 3번은 그대로야.</p>
           <p id="reviewListenStatus" class="continuous-status" role="status" aria-live="polite">복습 듣기를 누르면 체크한 문장만 반복해서 읽어 줘.</p>
         </section>
         <section class="stats" aria-label="학습 현황"><div class="stat"><span>학습 중인 카드</span><strong id="totalCount">—</strong><small>제외한 문장 제외</small></div><div class="stat"><span>외운 문장</span><strong id="masteredCount">0</strong><small>내가 말할 수 있는 문장</small></div><div class="stat"><span>다시 복습</span><strong id="reviewCount">0</strong><small>헷갈리는 문장</small></div><div class="stat stat-progress"><span>전체 진행률</span><strong id="progressPercent">0%</strong><div class="overall-progress"><span id="overallProgressFill"></span></div></div></section>
@@ -1772,9 +1777,13 @@ window.OPIC_CARD_TOPIC_MAP = {
       reviewIndex:Number.isInteger(old.listen?.reviewIndex) && old.listen.reviewIndex >= 0 ? old.listen.reviewIndex : 0,
       repeat:old.listen?.repeat === true,
       reviewRepeat:old.listen?.reviewRepeat !== false,
+      repeatCount:Number.isInteger(Number(old.listen?.repeatCount)) && Number(old.listen?.repeatCount)>=1 && Number(old.listen?.repeatCount)<=99 ? Number(old.listen.repeatCount) : 1,
+      reviewRepeatCount:Number.isInteger(Number(old.listen?.reviewRepeatCount)) && Number(old.listen?.reviewRepeatCount)>=1 && Number(old.listen?.reviewRepeatCount)<=99 ? Number(old.listen.reviewRepeatCount) : 1,
       speed:[0.85,1,1.15].includes(Number(old.listen?.speed)) ? Number(old.listen.speed) : 1,
       gapSeconds:Number.isInteger(Number(old.listen?.gapSeconds)) && Number(old.listen?.gapSeconds)>=0 && Number(old.listen?.gapSeconds)<=30 ? Number(old.listen.gapSeconds) : 0,
-      repeatGapSeconds:Number.isInteger(Number(old.listen?.repeatGapSeconds)) && Number(old.listen?.repeatGapSeconds)>=0 && Number(old.listen?.repeatGapSeconds)<=30 ? Number(old.listen.repeatGapSeconds) : 2
+      repeatGapSeconds:Number.isInteger(Number(old.listen?.repeatGapSeconds)) && Number(old.listen?.repeatGapSeconds)>=0 && Number(old.listen?.repeatGapSeconds)<=30 ? Number(old.listen.repeatGapSeconds) : 2,
+      reviewGapSeconds:Number.isInteger(Number(old.listen?.reviewGapSeconds)) && Number(old.listen?.reviewGapSeconds)>=0 && Number(old.listen?.reviewGapSeconds)<=30 ? Number(old.listen.reviewGapSeconds) : (Number.isInteger(Number(old.listen?.gapSeconds)) && Number(old.listen?.gapSeconds)>=0 && Number(old.listen?.gapSeconds)<=30 ? Number(old.listen.gapSeconds) : 0),
+      reviewRepeatGapSeconds:Number.isInteger(Number(old.listen?.reviewRepeatGapSeconds)) && Number(old.listen?.reviewRepeatGapSeconds)>=0 && Number(old.listen?.reviewRepeatGapSeconds)<=30 ? Number(old.listen.reviewRepeatGapSeconds) : (Number.isInteger(Number(old.listen?.repeatGapSeconds)) && Number(old.listen?.repeatGapSeconds)>=0 && Number(old.listen?.repeatGapSeconds)<=30 ? Number(old.listen.repeatGapSeconds) : 2)
     },
     templateView:{
       group:['all','selected','unexpected','roleplay'].includes(old.templateView?.group)?old.templateView.group:'all',
@@ -1815,7 +1824,7 @@ window.OPIC_CARD_TOPIC_MAP = {
   let recordingUrl = null;
   let recordingLoadId = 0;
   let recordingDbPromise = null;
-  const continuous = {playlist:'all',queue:[],index:state.listen.index,phase:'ko',englishPass:0,status:'idle',token:0,notice:'',audioToken:-1,watchdog:null,delayTimer:null,waiting:false,recoverOnVisible:false};
+  const continuous = {playlist:'all',queue:[],index:state.listen.index,round:1,phase:'ko',englishPass:0,status:'idle',token:0,notice:'',audioToken:-1,watchdog:null,delayTimer:null,waiting:false,recoverOnVisible:false};
   const dateStamp = () => {
     const now = new Date();
     return `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')}`;
@@ -1866,7 +1875,7 @@ window.OPIC_CARD_TOPIC_MAP = {
     try {
       localStorage.setItem(storeKey, JSON.stringify({
         schema:4, visibilityFixV1:true, known:[...state.known], review:[...state.review], reviewChecks:state.reviewChecks,overrides:state.overrides,saved:[...state.saved], voiceKey:state.voiceKey,
-        listen:{index:state.listen.index,reviewIndex:state.listen.reviewIndex,repeat:state.listen.repeat,reviewRepeat:state.listen.reviewRepeat,speed:state.listen.speed,gapSeconds:state.listen.gapSeconds,repeatGapSeconds:state.listen.repeatGapSeconds},
+        listen:{index:state.listen.index,reviewIndex:state.listen.reviewIndex,repeat:state.listen.repeat,reviewRepeat:state.listen.reviewRepeat,repeatCount:state.listen.repeatCount,reviewRepeatCount:state.listen.reviewRepeatCount,speed:state.listen.speed,gapSeconds:state.listen.gapSeconds,repeatGapSeconds:state.listen.repeatGapSeconds,reviewGapSeconds:state.listen.reviewGapSeconds,reviewRepeatGapSeconds:state.listen.reviewRepeatGapSeconds},
         hidden:[...state.hidden], custom:state.custom, daily:state.daily,templateView:state.templateView,
         position:{category:state.category,sourceFilter:state.sourceFilter,mode:state.mode,query:state.query,index:state.index,cardId:currentCard()?.id || null},
         updatedAt:new Date().toISOString()
@@ -2004,6 +2013,15 @@ window.OPIC_CARD_TOPIC_MAP = {
     return continuous.playlist==='review'?state.listen.reviewRepeat:state.listen.repeat;
   }
 
+  function playlistCount(playlist=continuous.playlist) {
+    return playlist==='review'?state.listen.reviewRepeatCount:state.listen.repeatCount;
+  }
+
+  function playlistGapSeconds(englishRepeat) {
+    if (continuous.playlist==='review') return englishRepeat?state.listen.reviewRepeatGapSeconds:state.listen.reviewGapSeconds;
+    return englishRepeat?state.listen.repeatGapSeconds:state.listen.gapSeconds;
+  }
+
   function renderPlaylist(playlist) {
     const prefix=playlist==='review'?'reviewListen':'continuous';
     const active=continuous.playlist===playlist && ['playing','paused'].includes(continuous.status);
@@ -2033,7 +2051,7 @@ window.OPIC_CARD_TOPIC_MAP = {
     $(`${prefix}Status`).textContent = status==='idle' && continuous.playlist!==playlist && ['playing','paused'].includes(continuous.status)
       ? '다른 목록을 듣는 중이야. 여기를 시작하면 그 재생은 멈춰.'
       : status==='playing' && continuous.notice ? continuous.notice
-      : status==='playing' ? `${index+1}번째 문장 · ${continuous.phase==='ko'?'한국어':`영어 ${continuous.englishPass}/3회`}를 듣고 있어.`
+      : status==='playing' ? `${playlistRepeats()?`${continuous.round}회차 · 무한 반복`:`${continuous.round}/${playlistCount()}회차`} · ${index+1}번째 문장 · ${continuous.phase==='ko'?'한국어':`영어 ${continuous.englishPass}/3회`}를 듣고 있어.`
       : status==='paused' ? '잠시 멈췄어. 이어 듣기를 누르면 현재 언어부터 다시 들려줘.'
       : status==='done' ? (playlist==='review'?'복습 목록을 모두 들었어. 다시 시작할 수 있어.':'모든 문장을 들었어! 다시 시작하면 첫 문장부터 재생돼.')
       : playlist==='review' ? (total?'복습 문장을 계속 반복할 수 있어.':'복습 카드에서 ↺ 다시 보기를 체크해 줘.')
@@ -2045,10 +2063,16 @@ window.OPIC_CARD_TOPIC_MAP = {
     renderPlaylist('review');
     $('continuousRepeat').checked = state.listen.repeat;
     $('reviewListenRepeat').checked = state.listen.reviewRepeat;
+    $('continuousLoopCount').disabled=state.listen.repeat;
+    $('reviewListenLoopCount').disabled=state.listen.reviewRepeat;
     $('continuousSpeed').value = String(state.listen.speed);
     // 재생 중 문장 전환으로 다시 렌더링되더라도 사용자가 입력하고 있는 숫자는 덮어쓰지 않습니다.
     if (document.activeElement!==$('continuousGapSeconds')) $('continuousGapSeconds').value = String(state.listen.gapSeconds);
     if (document.activeElement!==$('continuousRepeatGapSeconds')) $('continuousRepeatGapSeconds').value = String(state.listen.repeatGapSeconds);
+    if (document.activeElement!==$('reviewListenGapSeconds')) $('reviewListenGapSeconds').value = String(state.listen.reviewGapSeconds);
+    if (document.activeElement!==$('reviewListenRepeatGapSeconds')) $('reviewListenRepeatGapSeconds').value = String(state.listen.reviewRepeatGapSeconds);
+    if (document.activeElement!==$('continuousLoopCount')) $('continuousLoopCount').value = String(state.listen.repeatCount);
+    if (document.activeElement!==$('reviewListenLoopCount')) $('reviewListenLoopCount').value = String(state.listen.reviewRepeatCount);
     renderFloatingListener();
     updateMediaSession();
   }
@@ -2062,7 +2086,7 @@ window.OPIC_CARD_TOPIC_MAP = {
     $('floatingListener').hidden=!active || controlVisible;
     if (!active) return;
     const card=continuous.queue[continuous.index];
-    $('floatingListenerTitle').textContent=`${continuous.playlist==='review'?'복습':'전체'} 듣기 · ${continuous.index+1}/${continuous.queue.length}`;
+    $('floatingListenerTitle').textContent=`${continuous.playlist==='review'?'복습':'전체'} 듣기 · ${continuous.round}회차 · ${continuous.index+1}/${continuous.queue.length}`;
     $('floatingListenerText').textContent=card?.ko || '';
     $('floatingListenerToggle').textContent=continuous.status==='playing'?'⏸':'▶';
     $('floatingListenerToggle').setAttribute('aria-label',continuous.status==='playing'?'일시정지':'이어 듣기');
@@ -2139,7 +2163,8 @@ window.OPIC_CARD_TOPIC_MAP = {
       continuous.englishPass=0;
       storePlaylistIndex();
       persist();
-    } else if (playlistRepeats()) {
+    } else if (playlistRepeats() || continuous.round<playlistCount()) {
+      continuous.round++;
       continuous.index=0;
       continuous.phase='ko';
       continuous.englishPass=0;
@@ -2150,6 +2175,7 @@ window.OPIC_CARD_TOPIC_MAP = {
       continuous.phase='ko';
       continuous.englishPass=0;
       continuous.index=0;
+      continuous.round=1;
       storePlaylistIndex();
       continuous.notice='';
       persist();renderContinuous();
@@ -2162,7 +2188,7 @@ window.OPIC_CARD_TOPIC_MAP = {
   function playOrWaitContinuous() {
     if (continuous.status!=='playing') return;
     const englishRepeat=continuous.phase==='en' && continuous.englishPass>1;
-    const seconds=englishRepeat?state.listen.repeatGapSeconds:state.listen.gapSeconds;
+    const seconds=playlistGapSeconds(englishRepeat);
     if (!seconds) {continuous.waiting=false;playContinuousStage();return;}
     continuous.waiting=true;
     continuous.notice=englishRepeat
@@ -2245,6 +2271,7 @@ window.OPIC_CARD_TOPIC_MAP = {
     continuous.playlist=playlist;
     continuous.queue=[];
     continuous.index=playlistIndex(playlist);
+    continuous.round=1;
     continuous.phase='ko';
     continuous.englishPass=0;
     continuous.status='idle';
@@ -2261,6 +2288,7 @@ window.OPIC_CARD_TOPIC_MAP = {
     continuous.index=retainedIndex>=0?retainedIndex:0;
     continuous.phase='ko';
     continuous.englishPass=0;
+    continuous.round=1;
     continuous.status='idle';
     continuous.notice='복습 목록이 변경되어 선택된 문장으로 다시 준비했어.';
     storePlaylistIndex();
@@ -2280,6 +2308,7 @@ window.OPIC_CARD_TOPIC_MAP = {
       if (!continuous.queue.length) {renderContinuous();return;}
       if (continuous.status==='done') continuous.index=0;
       continuous.index=Math.min(continuous.index,continuous.queue.length-1);
+      continuous.round=1;
       continuous.phase='ko';
       continuous.englishPass=0;
     }
@@ -2307,6 +2336,7 @@ window.OPIC_CARD_TOPIC_MAP = {
     continuous.notice='';
     storePlaylistIndex();
     if (!wasPlaying) continuous.status='idle';
+    if (!wasPlaying) continuous.round=1;
     continuous.queue=queue;
     persist();
     if (wasPlaying) playContinuousStage(); else renderContinuous();
@@ -2316,6 +2346,7 @@ window.OPIC_CARD_TOPIC_MAP = {
     if (continuous.playlist!==playlist) return;
     cancelContinuousMedia();
     continuous.status='idle';
+    continuous.round=1;
     continuous.recoverOnVisible=false;
     continuous.phase='ko';
     continuous.englishPass=0;
@@ -2877,9 +2908,13 @@ window.OPIC_CARD_TOPIC_MAP = {
         state.listen.reviewIndex=Number.isInteger(data.listen.reviewIndex) && data.listen.reviewIndex>=0 ? data.listen.reviewIndex : 0;
         state.listen.repeat=data.listen.repeat===true;
         state.listen.reviewRepeat=data.listen.reviewRepeat!==false;
+        state.listen.repeatCount=Number.isInteger(Number(data.listen.repeatCount)) && Number(data.listen.repeatCount)>=1 && Number(data.listen.repeatCount)<=99 ? Number(data.listen.repeatCount) : 1;
+        state.listen.reviewRepeatCount=Number.isInteger(Number(data.listen.reviewRepeatCount)) && Number(data.listen.reviewRepeatCount)>=1 && Number(data.listen.reviewRepeatCount)<=99 ? Number(data.listen.reviewRepeatCount) : 1;
         state.listen.speed=[0.85,1,1.15].includes(Number(data.listen.speed)) ? Number(data.listen.speed) : 1;
         state.listen.gapSeconds=Number.isInteger(Number(data.listen.gapSeconds)) && Number(data.listen.gapSeconds)>=0 && Number(data.listen.gapSeconds)<=30 ? Number(data.listen.gapSeconds) : 0;
         state.listen.repeatGapSeconds=Number.isInteger(Number(data.listen.repeatGapSeconds)) && Number(data.listen.repeatGapSeconds)>=0 && Number(data.listen.repeatGapSeconds)<=30 ? Number(data.listen.repeatGapSeconds) : 2;
+        state.listen.reviewGapSeconds=Number.isInteger(Number(data.listen.reviewGapSeconds)) && Number(data.listen.reviewGapSeconds)>=0 && Number(data.listen.reviewGapSeconds)<=30 ? Number(data.listen.reviewGapSeconds) : state.listen.gapSeconds;
+        state.listen.reviewRepeatGapSeconds=Number.isInteger(Number(data.listen.reviewRepeatGapSeconds)) && Number(data.listen.reviewRepeatGapSeconds)>=0 && Number(data.listen.reviewRepeatGapSeconds)<=30 ? Number(data.listen.reviewRepeatGapSeconds) : state.listen.repeatGapSeconds;
       }
       if (data.templateView && typeof data.templateView==='object') {
         state.templateView.group=['all','selected','unexpected','roleplay'].includes(data.templateView.group)?data.templateView.group:'all';
@@ -3378,46 +3413,47 @@ window.OPIC_CARD_TOPIC_MAP = {
     $('continuousAudio').playbackRate=speed;
     persist();renderContinuous();
   });
-  $('continuousGapSeconds').addEventListener('change',event=>{
-    const seconds=Number(event.target.value);
-    if (event.target.value.trim()==='' || !Number.isInteger(seconds) || seconds<0 || seconds>30) {
-      continuous.notice='읽기 간격은 0~30초 사이의 정수로 입력해 줘.';
-      event.target.value=String(state.listen.gapSeconds);
-      renderContinuous();return;
-    }
-    state.listen.gapSeconds=seconds;
-    persist();
-    if (continuous.waiting && continuous.status==='playing' && !(continuous.phase==='en' && continuous.englishPass>1)) {
-      if (continuous.delayTimer) clearTimeout(continuous.delayTimer);
-      continuous.delayTimer=null;
-      continuous.waiting=false;
-      continuous.notice='';
-      playOrWaitContinuous();
-    } else {
-      continuous.notice='';
-      renderContinuous();
-    }
-  });
-  $('continuousRepeatGapSeconds').addEventListener('change',event=>{
-    const seconds=Number(event.target.value);
-    if (event.target.value.trim()==='' || !Number.isInteger(seconds) || seconds<0 || seconds>30) {
-      continuous.notice='영어 반복 간격은 0~30초 사이의 정수로 입력해 줘.';
-      event.target.value=String(state.listen.repeatGapSeconds);
-      renderContinuous();return;
-    }
-    state.listen.repeatGapSeconds=seconds;
-    persist();
-    if (continuous.waiting && continuous.status==='playing' && continuous.phase==='en' && continuous.englishPass>1) {
-      if (continuous.delayTimer) clearTimeout(continuous.delayTimer);
-      continuous.delayTimer=null;
-      continuous.waiting=false;
-      continuous.notice='';
-      playOrWaitContinuous();
-    } else {
-      continuous.notice='';
-      renderContinuous();
-    }
-  });
+  function setLoopCountInput(id,key) {
+    $(id).addEventListener('change',event=>{
+      const value=event.target.value.trim();
+      const count=Number(value);
+      if (!value || !Number.isInteger(count) || count<1 || count>99) {
+        event.target.value=String(state.listen[key]);
+        return;
+      }
+      state.listen[key]=count;
+      persist();renderContinuous();
+    });
+  }
+  setLoopCountInput('continuousLoopCount','repeatCount');
+  setLoopCountInput('reviewListenLoopCount','reviewRepeatCount');
+  function setGapInput(id,key,playlist,englishRepeat) {
+    $(id).addEventListener('change',event=>{
+      const value=event.target.value.trim();
+      const seconds=Number(value);
+      if (!value || !Number.isInteger(seconds) || seconds<0 || seconds>30) {
+        event.target.value=String(state.listen[key]);
+        return;
+      }
+      state.listen[key]=seconds;
+      persist();
+      const waitingForEnglishRepeat=continuous.phase==='en' && continuous.englishPass>1;
+      if (continuous.playlist===playlist && continuous.waiting && continuous.status==='playing' && englishRepeat===waitingForEnglishRepeat) {
+        if (continuous.delayTimer) clearTimeout(continuous.delayTimer);
+        continuous.delayTimer=null;
+        continuous.waiting=false;
+        continuous.notice='';
+        playOrWaitContinuous();
+      } else {
+        continuous.notice='';
+        renderContinuous();
+      }
+    });
+  }
+  setGapInput('continuousGapSeconds','gapSeconds','all',false);
+  setGapInput('continuousRepeatGapSeconds','repeatGapSeconds','all',true);
+  setGapInput('reviewListenGapSeconds','reviewGapSeconds','review',false);
+  setGapInput('reviewListenRepeatGapSeconds','reviewRepeatGapSeconds','review',true);
   $('continuousAudio').addEventListener('ended',()=>{
     if (continuous.audioToken===continuous.token && continuous.status==='playing' && continuous.phase==='en') {
       continuous.audioToken=-1;
