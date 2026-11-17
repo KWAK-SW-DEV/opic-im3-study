@@ -317,7 +317,13 @@ body:has(#studyView:not([hidden])) .topbar,body:has(#studyView:not([hidden])) .f
 @media(max-width:640px){.study-notice-row{align-items:start}.study-notice-row .study-notice{font-size:10px}.show-all-cards{font-size:10px;padding:6px 8px}}
 @media(prefers-reduced-motion:reduce){.record-tool.recording{animation:none}}
 
-/* 복습 표시한 카드에서만 나타나는 날짜별 O/X 확인 영역 */
+/* 학습 카드의 간결한 문장 수정 버튼 */
+.card-micro-actions{display:flex;align-items:center;gap:6px}
+.card-edit-button{display:grid;place-items:center;width:32px;height:32px;border:1px solid #d8e0f3;border-radius:9px;background:#f3f6ff;color:#5d70ac;font-size:17px;font-weight:850}
+.card-edit-button:hover{background:#e5ecff;border-color:#b2c1eb}
+.card-edit-button:focus-visible{outline:3px solid #9ca9ff;outline-offset:2px}
+
+/* 복습 중인 카드의 3일 O/X 기록 */
 .review-verification{display:grid;gap:9px;margin:10px 0 0;padding:13px 15px;border:1px solid #dae5ef;border-radius:13px;background:#f8fbff}
 .review-verification[hidden],.review-verification button[hidden]{display:none!important}
 .review-verify-top,.review-verify-bottom{display:flex;align-items:center;justify-content:space-between;gap:10px}
@@ -338,6 +344,27 @@ body:has(#studyView:not([hidden])) .topbar,body:has(#studyView:not([hidden])) .f
 .review-verify-hint{margin:0;color:#7989a0;font-size:10px;line-height:1.5;word-break:keep-all}
 .review-verification.ready{background:#f3fbf6;border-color:#b5dfc2}
 @media(max-width:370px){.review-verification{padding:11px 10px}.review-verify-heading strong{font-size:11px}.review-verify-days span{min-width:32px;padding:5px}.review-verify-bottom button{font-size:10px;padding:6px 7px}}
+
+/* 모바일에서도 한 화면에 들어오는 문장 수정 팝업 */
+.sentence-edit-dialog{width:min(510px,calc(100vw - 24px));max-height:calc(100dvh - 26px);overflow:auto;padding:22px;border:1px solid #dfe5f2;border-radius:18px;background:#fff;color:#354564;box-shadow:0 25px 90px rgba(27,42,84,.27)}
+.sentence-edit-dialog::backdrop{background:rgba(19,31,59,.58)}
+.sentence-edit-dialog:not([open]){display:none}
+.sentence-edit-top{display:flex;align-items:start;justify-content:space-between;gap:12px}
+.sentence-edit-top h2{margin:5px 0 0;font-size:23px;letter-spacing:-.04em;color:#273957}
+.sentence-edit-top button{width:34px;height:34px;flex:none;border:0;border-radius:9px;background:#f1f3f8;color:#6e7e99;font-size:24px}
+.sentence-edit-guide{margin:13px 0 18px;color:#70809d;font-size:12px;line-height:1.7;word-break:keep-all}
+.sentence-edit-dialog label{display:flex;flex-direction:column;gap:7px;margin:0 0 13px;font-size:12px;font-weight:800;color:#5a6a88}
+.sentence-edit-dialog textarea,.sentence-edit-dialog select{width:100%;border:1px solid #d9e0ee;border-radius:11px;background:#fbfcff;color:#2a3b60;padding:11px 12px;font-size:14px;line-height:1.6;resize:vertical;min-width:0}
+.sentence-edit-dialog select{height:43px;padding:0 11px}
+.sentence-edit-dialog textarea:focus-visible,.sentence-edit-dialog select:focus-visible{outline:3px solid #aebcf0;outline-offset:1px}
+.sentence-edit-feedback{min-height:16px;margin:4px 0 11px;font-size:11px;line-height:1.5;color:#6880aa}
+.sentence-edit-feedback.warning{color:#b36453}
+.sentence-edit-actions{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:8px}
+.sentence-edit-actions button{padding:10px 13px;min-height:41px;border-radius:10px;border:1px solid #d5deef;background:#fff;color:#55658a;font-size:12px;font-weight:850}
+.sentence-edit-actions .sentence-edit-submit{border-color:#5368ce;background:#5368ce;color:#fff}
+.sentence-edit-actions .sentence-restore-button{margin-right:auto;color:#99703b;background:#fff9ef;border-color:#efdbb7}
+.sentence-edit-actions button[hidden]{display:none!important}
+@media(max-width:420px){.sentence-edit-dialog{padding:17px}.sentence-edit-top h2{font-size:20px}.sentence-edit-actions .sentence-restore-button{width:100%;margin-right:0}.sentence-edit-actions button:not(.sentence-restore-button){flex:1}}
 
 
 /* android.css */
@@ -460,7 +487,7 @@ body:has(#studyView:not([hidden])) .topbar,body:has(#studyView:not([hidden])) .f
           <div class="study-notice-row"><p class="study-notice" id="studyNotice" aria-live="polite"></p><button type="button" id="showAllCardsButton" class="show-all-cards">전체 문장 보기 ↗</button></div>
           <div id="deckArea" class="deck-area"><div class="deck-topline"><div class="deck-tag" id="deckTag">문장 학습</div><div class="deck-counter"><span id="cardNumber">01</span> / <span id="filteredTotal">00</span></div></div><div class="deck-progress"><span id="deckProgressFill"></span></div>
             <div class="flip-card" id="flipCard" role="button" tabindex="0" aria-label="카드를 누르면 영어 정답이 표시됩니다" aria-expanded="false">
-              <div class="card-micro"><span id="cardCategory">음악</span><button id="saveButton" class="save-button" type="button" aria-label="카드 저장" title="카드 저장">☆</button></div>
+              <div class="card-micro"><span id="cardCategory">음악</span><div class="card-micro-actions"><button id="editCardButton" class="card-edit-button" type="button" aria-label="현재 문장 수정" title="한글·영어 문장 직접 수정">✎</button><button id="saveButton" class="save-button" type="button" aria-label="카드 저장" title="카드 저장">☆</button></div></div>
               <p id="koreanSentence" class="korean-sentence">나는 음악 듣는 걸 좋아해.</p>
               <div class="answer-area" id="answerArea" aria-live="polite"><div class="answer-divider"></div><span class="card-caption answer-caption">ENGLISH · 정답</span><p id="englishSentence" class="english-sentence"></p><div class="audio-row"><audio id="cardAudio" controls preload="none" aria-label="현재 영어 문장 발음 듣기"></audio><button type="button" class="small-outline" id="customVoiceButton" hidden>▶ 읽기</button><label class="voice-picker"><span class="sr-only">읽어주는 목소리 선택</span><select id="voiceSelect" aria-label="읽어주는 목소리 선택"><option value="recorded">원본 음성</option><option value="device">기기 기본 영어 음성</option></select></label></div></div>
               <div class="card-prompt" id="cardPrompt"><span class="prompt-circle">↗</span> 정답 보기</div>
@@ -472,12 +499,8 @@ body:has(#studyView:not([hidden])) .topbar,body:has(#studyView:not([hidden])) .f
               <div class="card-source"><span id="sourceBadge" class="source-badge">핵심</span><span id="topicLabel">패턴 연습</span></div>
             </div>
             <details class="related-pattern" id="relatedPatternPanel" hidden><summary id="relatedPatternSummary">↔ 같은 패턴의 다른 주제 보기</summary><div id="relatedPatternContent"></div></details>
-            <section class="review-verification" id="reviewVerification" aria-label="3일 연속 복습 확인" hidden>
-              <div class="review-verify-top"><div class="review-verify-heading"><strong>3일 연속 암기 확인</strong><span id="reviewVerifyStatus" aria-live="polite">0 / 3일</span></div><div class="review-verify-actions" role="group" aria-label="오늘의 복습 결과"><button id="reviewMarkO" type="button" aria-label="오늘 외웠음 O" aria-pressed="false">O</button><button id="reviewMarkX" type="button" aria-label="오늘 헷갈렸음 X" aria-pressed="false">X</button></div></div>
-              <div class="review-verify-bottom"><div class="review-verify-days" id="reviewVerifyDays" aria-label="연속 암기 확인 횟수"><span>1일</span><span>2일</span><span>3일</span></div><button id="reviewCompleteButton" type="button" hidden>✓ 복습 완료 · 목록에서 빼기</button></div>
-              <p class="review-verify-hint" id="reviewVerifyHint" aria-live="polite">하루에 O 한 번만 인정돼. X를 누르면 0일부터 다시 시작해.</p>
-            </section>
-            <div class="card-maintain" hidden><button type="button" id="editCardButton" hidden>문장 수정</button><button type="button" id="removeCardButton">학습 목록에서 제외</button></div>
+            <section class="review-verification" id="reviewVerification" aria-label="3일 연속 복습 확인" hidden><div class="review-verify-top"><div class="review-verify-heading"><strong>3일 연속 암기 확인</strong><span id="reviewVerifyStatus" aria-live="polite">0 / 3일</span></div><div class="review-verify-actions" role="group" aria-label="오늘의 복습 결과"><button id="reviewMarkO" type="button" aria-label="오늘 외웠음 O" aria-pressed="false">O</button><button id="reviewMarkX" type="button" aria-label="오늘 헷갈렸음 X" aria-pressed="false">X</button></div></div><div class="review-verify-bottom"><div class="review-verify-days" id="reviewVerifyDays" aria-label="연속 암기 확인 횟수"><span>1일</span><span>2일</span><span>3일</span></div><button id="reviewCompleteButton" type="button" hidden>✓ 복습 완료 · 목록에서 빼기</button></div><p class="review-verify-hint" id="reviewVerifyHint" aria-live="polite">하루에 O 한 번만 인정돼. X를 누르면 0일부터 다시 시작해.</p></section>
+            <div class="card-maintain" hidden><button type="button" id="removeCardButton">학습 목록에서 제외</button></div>
             <div class="deck-nav"><button id="prevButton" type="button" class="nav-button">← 이전 카드</button><span id="sessionStatus">천천히 말해도 괜찮아</span><button id="nextButton" type="button" class="nav-button next-button">다음 카드 →</button></div>
           </div>
           <div class="empty-state" id="emptyState" hidden><span>☻</span><h3>이 주제에 해당하는 문장이 없어</h3><p id="emptyText">다른 주제 또는 출처 필터를 선택해 봐.</p><button type="button" id="resetFilterButton" class="primary-btn">음악 문장으로 돌아가기 ↗</button></div>
@@ -514,7 +537,7 @@ body:has(#studyView:not([hidden])) .topbar,body:has(#studyView:not([hidden])) .f
       <section class="app-page" id="progressView" data-page="progress" aria-labelledby="progressHeading" hidden>
         <div class="page-heading"><div><span class="eyebrow eyebrow-accent">04 — PROGRESS</span><h1 id="progressHeading">내 학습 기록</h1><p>모든 문장을 이어 듣거나, 학습 내용을 백업해 둬.</p></div></div>
         <section class="continuous-player" aria-labelledby="continuousHeading">
-          <div class="continuous-head"><div><span class="eyebrow eyebrow-accent">LISTEN & REPEAT</span><h2 id="continuousHeading">전체 문장 연속 듣기</h2><p>한국어 → 영어 순서로 읽어 줘. 제외한 문장은 빼고 내 문장도 포함해.</p></div><span class="continuous-count" id="continuousCounter">1 / 345</span></div>
+          <div class="continuous-head"><div><span class="eyebrow eyebrow-accent">LISTEN & REPEAT</span><h2 id="continuousHeading">전체 문장 연속 듣기</h2><p>한국어 1번 → 영어 3번. 제외한 문장은 빼고 내 문장도 포함해.</p></div><span class="continuous-count" id="continuousCounter">1 / 345</span></div>
           <div class="continuous-track"><span id="continuousFill"></span></div>
           <div class="continuous-sentence"><span id="continuousStage" class="continuous-stage">준비</span><p id="continuousKorean" class="continuous-ko"></p><p id="continuousEnglish" class="continuous-en"></p></div>
           <div class="continuous-controls" role="group" aria-label="연속 듣기 재생 조작">
@@ -523,8 +546,8 @@ body:has(#studyView:not([hidden])) .topbar,body:has(#studyView:not([hidden])) .f
             <button id="continuousNext" class="continuous-skip" type="button" aria-label="다음 문장"><span>다음</span> ⏭</button>
             <button id="continuousStop" class="continuous-stop" type="button" aria-label="연속 듣기 종료" disabled>■ 종료</button>
           </div>
-          <div class="continuous-options"><label class="continuous-repeat"><input id="continuousRepeat" type="checkbox" /> <span>🔁 전체 반복</span></label><div class="continuous-timing"><label class="continuous-speed">읽기 속도 <select id="continuousSpeed" aria-label="연속 듣기 속도"><option value="0.85">느리게</option><option value="1" selected>보통</option><option value="1.15">빠르게</option></select></label><label class="continuous-gap">읽기 간격 <input id="continuousGapSeconds" type="number" min="0" max="30" step="1" inputmode="numeric" aria-label="연속 듣기 음성 간격 초" value="0" /><span>초</span></label></div></div>
-          <p class="continuous-hint">한국어 → 영어, 영어 → 다음 문장 사이에 쉬는 시간을 넣어 줘. 0초는 바로 이어 읽어.</p>
+          <div class="continuous-options"><label class="continuous-repeat"><input id="continuousRepeat" type="checkbox" /> <span>🔁 전체 반복</span></label><div class="continuous-timing"><label class="continuous-speed">읽기 속도 <select id="continuousSpeed" aria-label="연속 듣기 속도"><option value="0.85">느리게</option><option value="1" selected>보통</option><option value="1.15">빠르게</option></select></label><label class="continuous-gap">기본 간격 <input id="continuousGapSeconds" type="number" min="0" max="30" step="1" inputmode="numeric" aria-label="한국어와 영어, 다음 문장 사이 간격 초" value="0" /><span>초</span></label><label class="continuous-gap continuous-repeat-gap">영어 반복 간격 <input id="continuousRepeatGapSeconds" type="number" min="0" max="30" step="1" inputmode="numeric" aria-label="영어 세 번 반복하는 사이 간격 초" value="2" /><span>초</span></label></div></div>
+          <p class="continuous-hint">한국어 1번 → 영어 3번 → 다음 문장. 영어 반복 사이는 기본 2초이고, 기본 간격은 한국어→영어 및 다음 문장으로 넘어갈 때 적용돼.</p>
           <p id="continuousStatus" class="continuous-status" role="status" aria-live="polite">전체 듣기를 누르면 첫 문장부터 시작해.</p>
           <audio id="continuousAudio" preload="none" hidden></audio>
         </section>
@@ -537,6 +560,17 @@ body:has(#studyView:not([hidden])) .topbar,body:has(#studyView:not([hidden])) .f
     </main>
     <nav class="mobile-page-nav" aria-label="모바일 화면 이동"><a href="#study" data-page-link="study" class="active"><span>📚</span>학습</a><a href="#templates" data-page-link="templates"><span>▦</span>템플릿</a><a href="#add" data-page-link="add"><span>✎</span>추가</a><a href="#manage" data-page-link="manage"><span>☷</span>관리</a><a href="#progress" data-page-link="progress"><span>◉</span>기록</a></nav>
   </div>
+  <dialog class="sentence-edit-dialog" id="sentenceEditDialog" aria-labelledby="sentenceEditHeading">
+    <form id="sentenceEditForm">
+      <div class="sentence-edit-top"><div><span class="eyebrow eyebrow-accent">MY CORRECTION</span><h2 id="sentenceEditHeading">문장 직접 수정</h2></div><button type="button" id="sentenceEditClose" aria-label="수정 창 닫기">×</button></div>
+      <p class="sentence-edit-guide">틀린 번역이나 영어를 고쳐 줘. 수정해도 기존 암기·복습·녹음 기록은 그대로 연결돼.</p>
+      <label>한국어 문장<textarea id="sentenceEditKorean" rows="3" maxlength="240" required></textarea></label>
+      <label>영어 문장<textarea id="sentenceEditEnglish" rows="3" maxlength="350" spellcheck="true" required></textarea></label>
+      <label>학습 주제<select id="sentenceEditCategory" required></select></label>
+      <p id="sentenceEditFeedback" class="sentence-edit-feedback" aria-live="polite"></p>
+      <div class="sentence-edit-actions"><button type="button" id="sentenceEditRestore" class="sentence-restore-button" hidden>↺ 원문 복구</button><button type="button" id="sentenceEditCancel">취소</button><button type="submit" class="sentence-edit-submit">✓ 수정 저장</button></div>
+    </form>
+  </dialog>
   <dialog class="android-help-dialog" id="androidHelpDialog" aria-labelledby="androidHelpHeading">
     <div class="android-help-top"><span aria-hidden="true">🎙</span><button type="button" id="androidHelpClose" aria-label="안내 닫기">×</button></div>
     <h2 id="androidHelpHeading">갤럭시에서 녹음하기</h2>
@@ -860,7 +894,7 @@ window.OPIC_PATTERNS.push(
   },
   {
     id:'p59',cat:'survey',surveyTopic:'movie',
-    ko:'영화가 정말 좋으면 다시 보고 싶어.',en:'When a movie is really good, I want to watch it again.',
+    ko:'정말 좋아하는 영화는 다시 보고 싶어져.',en:'When I really like a movie, I want to watch it again.',
     variations:[['감정','좋은 영화를 보면 기분이 좋아져.','I feel happy after watching a good movie.'],['기억','그 영화는 이야기가 좋아서 아직도 기억나.','I still remember that movie because I liked the story.']]
   },
   {
@@ -1628,6 +1662,8 @@ window.OPIC_CARD_TOPIC_MAP = {
     source:`만능패턴 ${template.number} · 사용자 제공 이미지`,fit:example.category==='optional'?'optional':'survey',
     patternId:template.id,ko:example.ko,en:example.en
   })));
+  const baseCards=[...builtInCards,...templateCards];
+  const baseCardById=new Map(baseCards.map(card=>[card.id,card]));
   const storeKey = 'opic-im3-playbook-v1';
   function readSaved() {
     try { return JSON.parse(localStorage.getItem(storeKey) || '{}'); } catch { return {}; }
@@ -1650,6 +1686,28 @@ window.OPIC_CARD_TOPIC_MAP = {
     }
     return cleaned;
   }
+  function cleanOverrides(raw) {
+    const cleaned=Object.create(null);
+    if (!raw || typeof raw!=='object' || Array.isArray(raw)) return cleaned;
+    for (const [id,row] of Object.entries(raw).slice(0,1000)) {
+      const base=baseCardById.get(id);
+      if (!base || !row || typeof row!=='object') continue;
+      const ko=typeof row.ko==='string'?row.ko.trim().slice(0,240):'';
+      const en=typeof row.en==='string'?row.en.trim().slice(0,350):'';
+      if (!ko || !en || !/[a-z]/i.test(en)) continue;
+      const category=allowedTopics.has(row.category)&&row.category!=='all'?row.category:base.category;
+      const topic=typeof row.topic==='string'&&row.topic.trim()?row.topic.trim().slice(0,40):base.topic;
+      if (ko!==base.ko || en!==base.en || category!==base.category || topic!==base.topic) cleaned[id]={ko,en,category,topic};
+    }
+    return cleaned;
+  }
+  function applyOverride(base,overrides) {
+    const correction=overrides[base.id];
+    if (!correction) return base;
+    const category=correction.category;
+    const topics=[...new Set([category,...base.topics.filter(topic=>topic!==base.category)])];
+    return {...base,...correction,topics,fit:category==='optional'?'optional':base.fit==='optional'?'survey':base.fit};
+  }
   const old = readSaved();
   function cleanCustom(value) {
     if (!value || typeof value !== 'object' || typeof value.id !== 'string' || !/^custom-[\w-]{5,90}$/.test(value.id)) return null;
@@ -1664,8 +1722,9 @@ window.OPIC_CARD_TOPIC_MAP = {
     return {id:value.id,category:selectedCategory,topics:[selectedCategory],kind:'core',topic,surveyTopic:null,priority:false,origin:'custom',source:'',fit:'survey',ko,en};
   }
   const loadedCustom = Array.isArray(old.custom) ? old.custom.slice(0,1000).map(cleanCustom).filter(Boolean) : [];
+  const loadedOverrides=cleanOverrides(old.overrides);
   const savedPosition = old.position && typeof old.position === 'object' ? old.position : {};
-  let cards = [...builtInCards, ...templateCards, ...loadedCustom];
+  let cards = [...baseCards.map(card=>applyOverride(card,loadedOverrides)),...loadedCustom];
   const state = {
     category:typeof savedPosition.category === 'string' && allowedTopics.has(savedPosition.category) ? savedPosition.category : 'music',
     sourceFilter:['all','lecture','original','template','custom'].includes(savedPosition.sourceFilter) ? savedPosition.sourceFilter : 'all',
@@ -1674,14 +1733,15 @@ window.OPIC_CARD_TOPIC_MAP = {
     index:Number.isInteger(savedPosition.index) && savedPosition.index>=0 ? savedPosition.index : 0,
     revealed:false,
     known: new Set(old.known || []), review: new Set(old.review || []),
-    reviewChecks:cleanReviewChecks(old.reviewChecks),
+    reviewChecks:cleanReviewChecks(old.reviewChecks),overrides:loadedOverrides,
     saved: new Set(old.saved || []), hidden:new Set(old.hidden || []), custom:loadedCustom,
     voiceKey: typeof old.voiceKey === 'string' && old.voiceKey.length < 180 ? old.voiceKey : 'recorded',
     listen: {
       index:Number.isInteger(old.listen?.index) && old.listen.index >= 0 ? old.listen.index : 0,
       repeat:old.listen?.repeat === true,
       speed:[0.85,1,1.15].includes(Number(old.listen?.speed)) ? Number(old.listen.speed) : 1,
-      gapSeconds:Number.isInteger(Number(old.listen?.gapSeconds)) && Number(old.listen?.gapSeconds)>=0 && Number(old.listen?.gapSeconds)<=30 ? Number(old.listen.gapSeconds) : 0
+      gapSeconds:Number.isInteger(Number(old.listen?.gapSeconds)) && Number(old.listen?.gapSeconds)>=0 && Number(old.listen?.gapSeconds)<=30 ? Number(old.listen.gapSeconds) : 0,
+      repeatGapSeconds:Number.isInteger(Number(old.listen?.repeatGapSeconds)) && Number(old.listen?.repeatGapSeconds)>=0 && Number(old.listen?.repeatGapSeconds)<=30 ? Number(old.listen.repeatGapSeconds) : 2
     },
     templateView:{
       group:['all','selected','unexpected','roleplay'].includes(old.templateView?.group)?old.templateView.group:'all',
@@ -1691,7 +1751,7 @@ window.OPIC_CARD_TOPIC_MAP = {
     },
     daily:old.daily && typeof old.daily === 'object' ? old.daily : {},
     lastCardId:typeof savedPosition.cardId === 'string' ? savedPosition.cardId : null,
-    editingId:null, shuffledIds:null,manageFilter:'visible',manageQuery:'',manageLimit:20
+    editingId:null, editingBuiltInId:null,shuffledIds:null,manageFilter:'visible',manageQuery:'',manageLimit:20
   };
   // 이전 백업에서 한 카드가 두 상태에 모두 들어 있었더라도 하나로 정리합니다.
   for (const id of state.known) state.review.delete(id);
@@ -1722,7 +1782,7 @@ window.OPIC_CARD_TOPIC_MAP = {
   let recordingUrl = null;
   let recordingLoadId = 0;
   let recordingDbPromise = null;
-  const continuous = {queue:[],index:state.listen.index,phase:'ko',status:'idle',token:0,notice:'',audioToken:-1,watchdog:null,delayTimer:null,waiting:false};
+  const continuous = {queue:[],index:state.listen.index,phase:'ko',englishPass:0,status:'idle',token:0,notice:'',audioToken:-1,watchdog:null,delayTimer:null,waiting:false};
   const dateStamp = () => {
     const now = new Date();
     return `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')}`;
@@ -1764,7 +1824,7 @@ window.OPIC_CARD_TOPIC_MAP = {
   const currentCard = () => deck[state.index] || null;
 
   function rebuildCards() {
-    cards = [...builtInCards, ...templateCards, ...state.custom];
+    cards = [...baseCards.map(card=>applyOverride(card,state.overrides)),...state.custom];
     // 데이터 목록이 바뀌더라도 암기·복습·저장·제외 기록은 자동 삭제하지 않습니다.
     // 명시적인 카드 삭제만 해당 기록을 제거할 수 있습니다.
   }
@@ -1772,8 +1832,8 @@ window.OPIC_CARD_TOPIC_MAP = {
   function persist() {
     try {
       localStorage.setItem(storeKey, JSON.stringify({
-        schema:3, visibilityFixV1:true, known:[...state.known], review:[...state.review], reviewChecks:state.reviewChecks, saved:[...state.saved], voiceKey:state.voiceKey,
-        listen:{index:state.listen.index,repeat:state.listen.repeat,speed:state.listen.speed,gapSeconds:state.listen.gapSeconds},
+        schema:4, visibilityFixV1:true, known:[...state.known], review:[...state.review], reviewChecks:state.reviewChecks,overrides:state.overrides,saved:[...state.saved], voiceKey:state.voiceKey,
+        listen:{index:state.listen.index,repeat:state.listen.repeat,speed:state.listen.speed,gapSeconds:state.listen.gapSeconds,repeatGapSeconds:state.listen.repeatGapSeconds},
         hidden:[...state.hidden], custom:state.custom, daily:state.daily,templateView:state.templateView,
         position:{category:state.category,sourceFilter:state.sourceFilter,mode:state.mode,query:state.query,index:state.index,cardId:currentCard()?.id || null},
         updatedAt:new Date().toISOString()
@@ -1864,8 +1924,14 @@ window.OPIC_CARD_TOPIC_MAP = {
     } catch { return []; }
   }
 
+  // 사용자가 영어 원문을 고쳤거나 기본 영어 문장 자체가 바뀐 카드에는 옛 MP3를 재생하지 않습니다.
+  function needsDeviceEnglish(card) {
+    return ['custom','template'].includes(card.origin) || card.id==='p59-core' ||
+      (!!state.overrides[card.id] && card.en!==baseCardById.get(card.id)?.en);
+  }
+
   function renderVoiceChoices(card) {
-    const choices = ['custom','template'].includes(card.origin) ? [] : [['recorded','원본 음성 (MP3)']];
+    const choices = needsDeviceEnglish(card) ? [] : [['recorded','원본 음성 (MP3)']];
     if (window.speechSynthesis) {
       choices.push(['device','기기 기본 영어']);
       for (const voice of englishVoices()) {
@@ -1875,7 +1941,7 @@ window.OPIC_CARD_TOPIC_MAP = {
     }
     const select = $('voiceSelect');
     select.innerHTML = choices.map(([value,label]) => `<option value="${escapeHtml(value)}">${escapeHtml(label)}</option>`).join('');
-    const preferred = ['custom','template'].includes(card.origin) && state.voiceKey === 'recorded' ? 'device' : state.voiceKey;
+    const preferred = needsDeviceEnglish(card) && state.voiceKey === 'recorded' ? 'device' : state.voiceKey;
     const actual = choices.some(([value]) => value === preferred) ? preferred : (choices[0]?.[0] || 'device');
     select.value = actual;
     select.disabled = choices.length < 2;
@@ -1899,7 +1965,7 @@ window.OPIC_CARD_TOPIC_MAP = {
     const label = $('continuousStage');
     label.dataset.lang = continuous.status === 'playing' && !continuous.waiting ? continuous.phase : '';
     label.textContent = continuous.status === 'playing' && continuous.waiting ? '잠시 대기 중'
-      : continuous.status === 'playing' ? (continuous.phase === 'ko' ? '한국어 읽는 중' : '영어 읽는 중')
+      : continuous.status === 'playing' ? (continuous.phase === 'ko' ? '한국어 읽는 중' : `영어 ${continuous.englishPass}/3회 읽는 중`)
       : continuous.status === 'paused' ? '일시정지' : continuous.status === 'done' ? '완료' : '준비';
     $('continuousToggle').textContent = continuous.status === 'playing' ? '⏸ 일시정지' : continuous.status === 'paused' ? '▶ 이어 듣기' : '▶ 전체 듣기 시작';
     $('continuousToggle').disabled = !total;
@@ -1910,11 +1976,12 @@ window.OPIC_CARD_TOPIC_MAP = {
     $('continuousSpeed').value = String(state.listen.speed);
     // 재생 중 문장 전환으로 다시 렌더링되더라도 사용자가 입력하고 있는 숫자는 덮어쓰지 않습니다.
     if (document.activeElement!==$('continuousGapSeconds')) $('continuousGapSeconds').value = String(state.listen.gapSeconds);
+    if (document.activeElement!==$('continuousRepeatGapSeconds')) $('continuousRepeatGapSeconds').value = String(state.listen.repeatGapSeconds);
     $('continuousStatus').textContent = continuous.notice || (continuous.status === 'playing'
-      ? `${index+1}번째 문장 · ${continuous.phase === 'ko' ? '한국어' : '영어'}를 듣고 있어.`
+      ? `${index+1}번째 문장 · ${continuous.phase === 'ko' ? '한국어' : `영어 ${continuous.englishPass}/3회`}를 듣고 있어.`
       : continuous.status === 'paused' ? '잠시 멈췄어. 이어 듣기를 누르면 현재 언어부터 다시 들려줘.'
       : continuous.status === 'done' ? '모든 문장을 들었어! 다시 시작하면 첫 문장부터 재생돼.'
-      : '전체 듣기를 누르면 한국어 → 영어 순서로 시작해. 위치와 반복 설정은 저장돼.');
+      : '전체 듣기를 누르면 한국어 1번 → 영어 3번 순서로 시작해. 위치와 반복 설정은 저장돼.');
   }
 
   function cancelContinuousMedia() {
@@ -1950,19 +2017,25 @@ window.OPIC_CARD_TOPIC_MAP = {
     continuous.watchdog=null;
     if (continuous.phase==='ko') {
       continuous.phase='en';
+      continuous.englishPass=1;
+    } else if (continuous.englishPass<3) {
+      continuous.englishPass++;
     } else if (continuous.index+1<continuous.queue.length) {
       continuous.index++;
       continuous.phase='ko';
+      continuous.englishPass=0;
       state.listen.index=continuous.index;
       persist();
     } else if (state.listen.repeat) {
       continuous.index=0;
       continuous.phase='ko';
+      continuous.englishPass=0;
       state.listen.index=0;
       persist();
     } else {
       continuous.status='done';
       continuous.phase='ko';
+      continuous.englishPass=0;
       continuous.index=0;
       state.listen.index=0;
       continuous.notice='';
@@ -1975,10 +2048,13 @@ window.OPIC_CARD_TOPIC_MAP = {
 
   function playOrWaitContinuous() {
     if (continuous.status!=='playing') return;
-    const seconds=state.listen.gapSeconds;
+    const englishRepeat=continuous.phase==='en' && continuous.englishPass>1;
+    const seconds=englishRepeat?state.listen.repeatGapSeconds:state.listen.gapSeconds;
     if (!seconds) {continuous.waiting=false;playContinuousStage();return;}
     continuous.waiting=true;
-    continuous.notice=continuous.phase==='en'
+    continuous.notice=englishRepeat
+      ? `영어 ${continuous.englishPass}/3회 반복 전 ${seconds}초 쉬고 있어.`
+      : continuous.phase==='en'
       ? `한국어 다음 영어를 읽기까지 ${seconds}초 쉬고 있어.`
       : `다음 문장을 읽기까지 ${seconds}초 쉬고 있어.`;
     renderContinuous();
@@ -2022,7 +2098,7 @@ window.OPIC_CARD_TOPIC_MAP = {
     if (!card) { continuous.status='done';renderContinuous();return; }
     const token=continuous.token;
     renderContinuous();
-    if (continuous.phase==='ko' || ['custom','template'].includes(card.origin) || state.voiceKey!=='recorded') {
+    if (continuous.phase==='ko' || needsDeviceEnglish(card) || state.voiceKey!=='recorded') {
       speakContinuousStage(card,token,continuous.phase);
       return;
     }
@@ -2054,6 +2130,7 @@ window.OPIC_CARD_TOPIC_MAP = {
       if (continuous.status==='done') continuous.index=0;
       continuous.index=Math.min(continuous.index,continuous.queue.length-1);
       continuous.phase='ko';
+      continuous.englishPass=0;
     }
     // 개별 카드에서 재생 중이던 영어 음성을 먼저 중지합니다.
     $('cardAudio').pause();
@@ -2072,6 +2149,7 @@ window.OPIC_CARD_TOPIC_MAP = {
     cancelContinuousMedia();
     continuous.index=(continuous.index+direction+queue.length)%queue.length;
     continuous.phase='ko';
+    continuous.englishPass=0;
     continuous.notice='';
     state.listen.index=continuous.index;
     if (!wasPlaying) continuous.status='idle';
@@ -2084,6 +2162,7 @@ window.OPIC_CARD_TOPIC_MAP = {
     cancelContinuousMedia();
     continuous.status='idle';
     continuous.phase='ko';
+    continuous.englishPass=0;
     continuous.notice='';
     persist();
     renderContinuous();
@@ -2235,7 +2314,7 @@ window.OPIC_CARD_TOPIC_MAP = {
     $('koreanSentence').textContent = card.ko;
     $('englishSentence').textContent = card.en;
     const audioPlayer = $('cardAudio');
-    if (['custom','template'].includes(card.origin)) {
+    if (needsDeviceEnglish(card)) {
       audioPlayer.pause();
       audioPlayer.dataset.cardId = '';
     } else if (audioPlayer.dataset.cardId !== card.id) {
@@ -2245,16 +2324,16 @@ window.OPIC_CARD_TOPIC_MAP = {
       audioPlayer.load();
     }
     const voiceChoice = renderVoiceChoices(card);
-    const playRecording = !['custom','template'].includes(card.origin) && voiceChoice === 'recorded';
+    const playRecording = !needsDeviceEnglish(card) && voiceChoice === 'recorded';
     audioPlayer.hidden = !playRecording;
     $('customVoiceButton').hidden = playRecording;
     $('cardNumber').textContent = String(state.index+1).padStart(2,'0');
     $('filteredTotal').textContent = String(deck.length).padStart(2,'0');
     $('deckProgressFill').style.width = `${((state.index+1) / deck.length)*100}%`;
-    $('sourceBadge').textContent = originLabel;
+    $('sourceBadge').textContent = state.overrides[card.id] ? `${originLabel} · 내 수정` : originLabel;
     $('sourceBadge').classList.toggle('variant', card.kind !== 'core');
     $('topicLabel').textContent = card.origin === 'custom' ? `${card.topic} · 내가 만든 문장` : card.source
-      ? `${card.source}${card.fit === 'optional' ? ' · 내 서베이 외 참고' : ''}${card.kind === 'variation' ? ` · ${card.topic}로 응용` : ''}`
+      ? `${card.source}${card.fit === 'optional' ? ' · 내 서베이 외 참고' : ''}${card.kind === 'variation' ? ` · ${card.topic} 주제 응용` : ''}`
       : (card.kind === 'core' ? `${chapterName} · 말하기 기본 문장` : `${card.topic} · ${chapterName} 주제로 응용`);
     $('saveButton').textContent = saved ? '★' : '☆';
     $('saveButton').classList.toggle('saved', saved);
@@ -2268,7 +2347,7 @@ window.OPIC_CARD_TOPIC_MAP = {
     $('reviewButton').setAttribute('aria-label', review ? reviewReady ? '다시 보기 표시 해제' : '3일 연속 O 확인 후 다시 보기 해제 가능' : '다시 보기로 표시');
     $('reviewButton').title = review ? reviewReady ? '다시 보기 ✓ (해제하려면 누르기)' : '3일 연속 O 확인 후 복습 목록에서 뺄 수 있어' : '다시 보기';
     $('removeCardButton').textContent = card.origin === 'custom' ? '🗑 문장 삭제' : '× 학습 목록에서 제외';
-    $('editCardButton').hidden = card.origin !== 'custom';
+    $('editCardButton').hidden = false;
     $('recordingCardName').textContent = `현재 문장: ${card.ko}`;
     $('recordStartButton').disabled = recordingPhase !== 'idle';
     if ($('recordingPanel').dataset.cardId !== card.id) {
@@ -2418,8 +2497,85 @@ window.OPIC_CARD_TOPIC_MAP = {
 
   function editCurrentCard() {
     const card = currentCard();
-    if (!card || card.origin !== 'custom') return;
-    editCustomById(card.id);
+    if (!card) return;
+    if (card.origin==='custom') editCustomById(card.id);
+    else openSentenceEditor(card.id);
+  }
+
+  function closeSentenceEditor() {
+    state.editingBuiltInId=null;
+    const dialog=$('sentenceEditDialog');
+    if (typeof dialog.close==='function' && dialog.open) dialog.close();
+    else {dialog.removeAttribute('open');dialog.open=false;}
+  }
+
+  function openSentenceEditor(id) {
+    const card=cards.find(item=>item.id===id);
+    if (!card) return;
+    if (card.origin==='custom') {editCustomById(id);return;}
+    state.editingBuiltInId=id;
+    $('sentenceEditKorean').value=card.ko;
+    $('sentenceEditEnglish').value=card.en;
+    $('sentenceEditCategory').value=card.category;
+    $('sentenceEditRestore').hidden=!state.overrides[id];
+    $('sentenceEditFeedback').textContent=state.overrides[id]
+      ? '내가 수정한 문장이야. 필요하면 원문 복구도 할 수 있어.'
+      : '한국어·영어·주제 중 잘못된 내용을 고쳐 줘. 이 기기에만 저장돼.';
+    $('sentenceEditFeedback').className='sentence-edit-feedback';
+    const dialog=$('sentenceEditDialog');
+    if (typeof dialog.showModal==='function') {if(!dialog.open) dialog.showModal();}
+    else {dialog.setAttribute('open','');dialog.open=true;}
+    $('sentenceEditKorean').focus();
+  }
+
+  function saveSentenceCorrection(event) {
+    event.preventDefault();
+    const id=state.editingBuiltInId;
+    const base=baseCardById.get(id);
+    if (!base) return;
+    const ko=$('sentenceEditKorean').value.trim();
+    const en=$('sentenceEditEnglish').value.trim();
+    const category=$('sentenceEditCategory').value;
+    if (!ko || !en || !/[a-z]/i.test(en) || !allowedTopics.has(category) || category==='all') {
+      $('sentenceEditFeedback').textContent='한국어와 영어를 모두 입력하고 올바른 주제를 선택해 줘.';
+      $('sentenceEditFeedback').className='sentence-edit-feedback warning';
+      return;
+    }
+    const previous=state.overrides[id];
+    const corrected=cleanOverrides({[id]:{ko,en,category,topic:base.topic}})[id];
+    if (corrected) state.overrides[id]=corrected;
+    else delete state.overrides[id];
+    rebuildCards();
+    if (!persist()) {
+      if (previous) state.overrides[id]=previous; else delete state.overrides[id];
+      rebuildCards();
+      $('sentenceEditFeedback').textContent='저장 공간이 부족해 수정 내용을 저장하지 못했어. 입력 내용은 남겨 둘게.';
+      $('sentenceEditFeedback').className='sentence-edit-feedback warning';
+      return;
+    }
+    closeSentenceEditor();
+    if (state.hidden.has(id)) {refresh();showPage('manage');}
+    else openCardById(id);
+    $('studyNotice').textContent=corrected?'문장 수정을 저장했어. 이전 복습·암기·녹음 기록은 그대로야.':'기본 원문과 같아서 개인 수정 표시를 해제했어.';
+  }
+
+  function restoreSentenceOriginal(id=state.editingBuiltInId) {
+    if (!baseCardById.has(id) || !state.overrides[id]) return;
+    if (!window.confirm('이 문장에 직접 수정한 내용을 지우고 기본 원문으로 되돌릴까? 복습·녹음 기록은 유지돼.')) return;
+    const previous=state.overrides[id];
+    delete state.overrides[id];
+    rebuildCards();
+    if (!persist()) {
+      state.overrides[id]=previous;
+      rebuildCards();
+      $('sentenceEditFeedback').textContent='저장 공간 문제로 원문을 복구하지 못했어.';
+      $('sentenceEditFeedback').className='sentence-edit-feedback warning';
+      return;
+    }
+    closeSentenceEditor();
+    if (state.hidden.has(id)) {refresh();showPage('manage');}
+    else openCardById(id);
+    $('studyNotice').textContent='기본 원문으로 되돌렸어. 해당 카드의 기존 복습·녹음 기록은 유지돼.';
   }
 
   function editCustomById(id) {
@@ -2485,10 +2641,10 @@ window.OPIC_CARD_TOPIC_MAP = {
     $('manageList').innerHTML=found.slice(0,state.manageLimit).map(card=>{
       const hidden=state.hidden.has(card.id);
       const isCustom=card.origin==='custom';
-      const source=isCustom?'직접 추가':card.origin==='template'?'만능 템플릿':card.origin.startsWith('lecture-')?'강의 표현':'학습 예문';
+      const source=(isCustom?'직접 추가':card.origin==='template'?'만능 템플릿':card.origin.startsWith('lecture-')?'강의 표현':'학습 예문')+(state.overrides[card.id]?' · 내 수정':'');
       const actions=isCustom
         ? `<button type="button" data-manage-action="edit" data-card-id="${card.id}">수정</button><button class="danger" type="button" data-manage-action="delete" data-card-id="${card.id}">삭제</button>`
-        : `<button type="button" data-manage-action="${hidden?'restore':'exclude'}" data-card-id="${card.id}">${hidden?'복원':'학습에서 제외'}</button>`;
+        : `<button type="button" data-manage-action="edit" data-card-id="${card.id}">수정</button>${state.overrides[card.id]?`<button type="button" data-manage-action="original" data-card-id="${card.id}">원문 복구</button>`:''}<button type="button" data-manage-action="${hidden?'restore':'exclude'}" data-card-id="${card.id}">${hidden?'복원':'학습에서 제외'}</button>`;
       return `<article class="manage-card"><div class="manage-card-main"><div class="manage-card-meta"><span class="manage-card-tag">${escapeHtml(nameFor(card.category))}</span><span>${source}</span>${card.kind==='variation'?'<span>· 응용</span>':''}</div><p class="manage-ko">${escapeHtml(card.ko)}</p><p class="manage-en">${escapeHtml(card.en)}</p></div><div class="manage-card-actions">${!hidden?`<button type="button" data-manage-action="practice" data-card-id="${card.id}">연습</button>`:''}${actions}</div></article>`;
     }).join('');
     document.querySelectorAll('[data-manage-filter]').forEach(button=>{
@@ -2555,6 +2711,7 @@ window.OPIC_CARD_TOPIC_MAP = {
       state.known=new Set(data.known.filter(x=>typeof x==='string'));
       state.review=new Set(data.review.filter(x=>typeof x==='string'));
       state.reviewChecks=cleanReviewChecks(data.reviewChecks);
+      state.overrides=cleanOverrides(data.overrides);
       state.saved=new Set(data.saved.filter(x=>typeof x==='string'));
       state.hidden=new Set(Array.isArray(data.hidden)?data.hidden.filter(x=>typeof x==='string'):[]);
       state.daily=data.daily&&typeof data.daily==='object'&&Array.isArray(data.daily.ids)?{date:String(data.daily.date||''),ids:data.daily.ids.filter(x=>typeof x==='string').slice(0,2000)}:{};
@@ -2853,6 +3010,8 @@ window.OPIC_CARD_TOPIC_MAP = {
     $('sessionStatus').textContent=chosen ? `${chosen.name} 음성으로 읽어 주는 중...` : '기기 영어 음성으로 읽어 주는 중...';
   }
   makeCategories();
+  $('sentenceEditCategory').innerHTML=categories.filter(category=>category.id!=='all')
+    .map(category=>`<option value="${category.id}">${escapeHtml(category.name)}</option>`).join('');
   const templateTopics=new Set(templateCards.map(card=>card.category));
   $('templateTopic').innerHTML='<option value="all">모든 주제</option>'+categories
     .filter(category=>category.id!=='all'&&templateTopics.has(category.id))
@@ -2958,7 +3117,8 @@ window.OPIC_CARD_TOPIC_MAP = {
     const button=event.target.closest('[data-manage-action]');
     if(!button) return;
     const id=button.dataset.cardId;
-    if(button.dataset.manageAction==='edit') editCustomById(id);
+    if(button.dataset.manageAction==='edit') openSentenceEditor(id);
+    if(button.dataset.manageAction==='original') restoreSentenceOriginal(id);
     if(button.dataset.manageAction==='practice') openCardById(id);
     if(button.dataset.manageAction==='delete'||button.dataset.manageAction==='exclude') void removeCardById(id);
     if(button.dataset.manageAction==='restore') {state.hidden.delete(id);refresh();}
@@ -2995,6 +3155,11 @@ window.OPIC_CARD_TOPIC_MAP = {
     }
   });
   $('editCardButton').addEventListener('click',editCurrentCard);
+  $('sentenceEditForm').addEventListener('submit',saveSentenceCorrection);
+  $('sentenceEditClose').addEventListener('click',closeSentenceEditor);
+  $('sentenceEditCancel').addEventListener('click',closeSentenceEditor);
+  $('sentenceEditRestore').addEventListener('click',()=>restoreSentenceOriginal());
+  $('sentenceEditDialog').addEventListener('close',()=>{state.editingBuiltInId=null;});
   $('removeCardButton').addEventListener('click',()=>{void removeCurrentCard();});
   $('restoreHiddenButton').addEventListener('click',()=>{
     if (!state.hidden.size || !window.confirm(`학습에서 제외한 ${state.hidden.size}개 문장을 모두 복원할까?`)) return;
@@ -3044,7 +3209,27 @@ window.OPIC_CARD_TOPIC_MAP = {
     }
     state.listen.gapSeconds=seconds;
     persist();
-    if (continuous.waiting && continuous.status==='playing') {
+    if (continuous.waiting && continuous.status==='playing' && !(continuous.phase==='en' && continuous.englishPass>1)) {
+      if (continuous.delayTimer) clearTimeout(continuous.delayTimer);
+      continuous.delayTimer=null;
+      continuous.waiting=false;
+      continuous.notice='';
+      playOrWaitContinuous();
+    } else {
+      continuous.notice='';
+      renderContinuous();
+    }
+  });
+  $('continuousRepeatGapSeconds').addEventListener('change',event=>{
+    const seconds=Number(event.target.value);
+    if (event.target.value.trim()==='' || !Number.isInteger(seconds) || seconds<0 || seconds>30) {
+      continuous.notice='영어 반복 간격은 0~30초 사이의 정수로 입력해 줘.';
+      event.target.value=String(state.listen.repeatGapSeconds);
+      renderContinuous();return;
+    }
+    state.listen.repeatGapSeconds=seconds;
+    persist();
+    if (continuous.waiting && continuous.status==='playing' && continuous.phase==='en' && continuous.englishPass>1) {
       if (continuous.delayTimer) clearTimeout(continuous.delayTimer);
       continuous.delayTimer=null;
       continuous.waiting=false;
